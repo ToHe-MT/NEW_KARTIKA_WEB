@@ -1,8 +1,15 @@
 <script>
 	import Category from './Category.svelte';
-    import PaketUmroh from './PaketUmroh.svelte';
-    import { onMount } from 'svelte';
+	import PaketUmroh from './PaketUmroh.svelte';
+	import { onMount } from 'svelte';
+	import UmrohProcess from './UmrohProcess.svelte';
+
+	export let data;
 </script>
+
+<svelte:head>
+	<title>Kartika Mas Tours &amp; Travel | Umroh dan Haji Plus Murah</title>
+</svelte:head>
 
 <div class="tour-hero bg-primary-3p">
 	<a
@@ -165,4 +172,6 @@
 <Category />
 <!-- /Category Section  -->
 
-<PaketUmroh/>
+<PaketUmroh data={data.umroh} />
+
+<UmrohProcess/>
