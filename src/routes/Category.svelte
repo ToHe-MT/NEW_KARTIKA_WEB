@@ -1,6 +1,6 @@
 <section class="section-space position-relative z-1">
 	<img
-		src="./assets/img/category-section-el.png"
+		src="/assets/img/category-section-el.png"
 		alt="image"
 		class="img-fluid d-none d-xxl-block position-absolute category-section-element"
 	/>

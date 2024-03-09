@@ -10,8 +10,8 @@
 				<ul class="list list-row flex-wrap gap-3 align-items-center justify-content-between">
 					<li>
 						<a href="index.html" class="link d-inline-block">
-							<img src="./assets/img/favicon.png" alt="logo" class="logo d-xl-none" />
-							<img src="./assets/img/logo.png" alt="logo" class="logo d-none d-xl-inline-block" />
+							<img src="/assets/img/favicon.png" alt="logo" class="logo d-xl-none" />
+							<img src="/kartikamas-logo.png" alt="logo" class="logo d-none d-xl-inline-block" />
 						</a>
 					</li>
 					<li>
@@ -83,7 +83,7 @@
 							href="contact.html"
 							class="link btn bg-primary-300 :bg-primary-300 clr-neutral-0 :clr-neutral-0 fw-600 py-4 px-8 rounded-pill"
 						>
-							Submit Property
+							Order Sekarang
 						</a>
 					</li>
 				</ul>
@@ -175,7 +175,7 @@
 													<a href="#" class="link d-flex gap-4 dropdown-item px-0 px-md-4">
 														<div class="flex-shrink-0 d-none d-sm-block">
 															<img
-																src="./assets/img/user-3.jpg"
+																src="/assets/img/user-3.jpg"
 																alt="image"
 																class="img-fluid w-12 h-12 rounded-circle objec-fit-cover"
 															/>
@@ -195,155 +195,28 @@
 						</ul>
 					</div>
 					<ul class="list list-lg-row menu-nav order-lg-1">
-						<li class="menu-list current-page">
-							<a href="#" class="link menu-link has-sub"> Home </a>
+						<li class="menu-item current-page">
+							<a href="/" class="link menu-link"> Beranda </a>
+						</li>
+						<li class="menu-list">
+							<a href="#" class="link menu-link has-sub"> Paket Umroh & Haji </a>
 							<ul class="list menu-sub">
 								<li class="menu-sub-list">
-									<a href="index.html" class="link menu-sub-link"> Real Estate </a>
+									<a href="/paket/umroh" class="link menu-sub-link"> Paket Umroh </a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="home-2.html" class="link menu-sub-link"> Property Listing </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="home-3.html" class="link menu-sub-link"> Car Rental </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="home-4.html" class="link menu-sub-link"> Hotel Booking </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="home-5.html" class="link menu-sub-link"> Tour Booking </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="home-6.html" class="link menu-sub-link"> Flight Booking </a>
+									<a href="/paket/haji" class="link menu-sub-link"> Paket Haji </a>
 								</li>
 							</ul>
 						</li>
-						<li class="menu-list">
-							<a href="#" class="link menu-link has-sub"> Listings </a>
-							<ul class="list menu-sub">
-								<li class="menu-sub-list">
-									<a href="property-list.html" class="link menu-sub-link"> Property List </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="property-grid.html" class="link menu-sub-link"> Property List (Grid) </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="property-map.html" class="link menu-sub-link"> Property Map </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="cab-listing.html" class="link menu-sub-link"> Cab Listing </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="cab-listing-grid.html" class="link menu-sub-link">
-										Cab Listing (Grid)
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="cab-listing-map.html" class="link menu-sub-link"> Cab Listing (Map) </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="hotel-listing.html" class="link menu-sub-link"> Hotel Listing </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="hotel-listing-grid.html" class="link menu-sub-link">
-										Hotel Listing (Grid)
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="hotel-listing-map.html" class="link menu-sub-link">
-										Hotel Listing (Map)
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="tour-listing.html" class="link menu-sub-link"> Tour Listing </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="tour-listing-grid.html" class="link menu-sub-link">
-										Tour Listing (Grid)
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="tour-listing-map.html" class="link menu-sub-link">
-										Tour Listing (Map)
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="flight-list.html" class="link menu-sub-link"> Flight List </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="compare-listing.html" class="link menu-sub-link"> Compare Listing </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="add-property.html" class="link menu-sub-link"> Add Property </a>
-								</li>
-							</ul>
+						<li class="menu-item">
+							<a href="/sewa-transportasi" class="link menu-link"> Sewa Transportasi </a>
 						</li>
-						<li class="menu-list">
-							<a href="#" class="link menu-link has-sub"> Pages </a>
-							<ul class="list menu-sub">
-								<li class="menu-sub-list">
-									<a href="about-us.html" class="link menu-sub-link"> About Us </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="add-property.html" class="link menu-sub-link"> Add Property </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="property-details-1.html" class="link menu-sub-link">
-										Property Details 1
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="property-details-2.html" class="link menu-sub-link">
-										Property Details 2
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="cab-listing-details.html" class="link menu-sub-link">
-										Cab Listing Details
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="hotel-listing-details.html" class="link menu-sub-link">
-										Hotel Listing Details
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="tour-listing-details.html" class="link menu-sub-link">
-										Tour Listing Details
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="flight-details.html" class="link menu-sub-link"> Flight Details </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="payment-method.html" class="link menu-sub-link"> Payment Method </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="service.html" class="link menu-sub-link"> Service </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="service-details.html" class="link menu-sub-link"> Service Details </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="agent.html" class="link menu-sub-link"> Agent </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="agent-details-grid.html" class="link menu-sub-link">
-										Agent Details Grid
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="agent-details-list.html" class="link menu-sub-link">
-										Agent Details List
-									</a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="agent-details-review.html" class="link menu-sub-link"> Agent Review </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="pricing-plan.html" class="link menu-sub-link"> Pricing Plan </a>
-								</li>
-							</ul>
+						<li class="menu-item">
+							<a href="https://blog.kartikamas.com" class="link menu-link"> Blog </a>
+						</li>
+						<li class="menu-item">
+							<a href="/tentang-kartikamas" class="link menu-link"> Tentang </a>
 						</li>
 						<li class="menu-list">
 							<a href="#" class="link menu-link has-sub clear-content">
@@ -351,25 +224,15 @@
 							</a>
 							<ul class="list menu-sub">
 								<li class="menu-sub-list">
-									<a href="blog-grid.html" class="link menu-sub-link"> Blog </a>
+									<a href="blog-grid.html" class="link menu-sub-link"> Peryaratan Umroh </a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="blog-details.html" class="link menu-sub-link"> Blog Details </a>
+									<a href="blog-details.html" class="link menu-sub-link">
+										Kebijakan Privasi Data
+									</a>
 								</li>
 								<li class="menu-sub-list">
 									<a href="faq.html" class="link menu-sub-link"> FAQ </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="contact.html" class="link menu-sub-link"> Contact Us </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="sign-in.html" class="link menu-sub-link"> Signin </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="signup.html" class="link menu-sub-link"> Signup </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="error.html" class="link menu-sub-link"> Error </a>
 								</li>
 							</ul>
 						</li>

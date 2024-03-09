@@ -1,58 +1,33 @@
 <script>
 	export let data;
+	export let page;
 
 	const money = new Intl.NumberFormat('id-ID', {
 		style: 'currency',
-		currency: 'IDR'
+		currency: 'IDR',
+		maximumFractionDigits: 0,
+		minimumFractionDigits: 0
 	});
 </script>
 
 {#each data as item}
-	<div class="col-md-6 col-xl-4">
+	<div class={page == 'paket-list' ? 'col-xl-6' : 'col-md-6 col-xl-4'}>
 		<div class="property-card">
 			<div class="property-card__head">
 				<div class="swiper property-card-slider">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="property-card__img">
-								<img
-									src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{item.image_1}"
-									alt="foto hotel"
-									class="img-fluid w-100"
-									style="height: 280px !important;"
-								/>
+						{#each item.images as image}
+							<div class="swiper-slide">
+								<div class="property-card__img">
+									<img
+										src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
+										alt="foto hotel"
+										class="img-fluid w-100"
+										style="height: 280px !important;"
+									/>
+								</div>
 							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="property-card__img">
-								<img
-									src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{item.image_2}"
-									alt="foto giat"
-									class="img-fluid w-100"
-									style="height: 280px !important;"
-								/>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="property-card__img">
-								<img
-									src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{item.image_3}"
-									alt="foto seragam"
-									class="img-fluid w-100"
-									style="height: 280px !important;"
-								/>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="property-card__img">
-								<img
-									src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{item.image_4}"
-									alt="kamar hotel"
-									class="img-fluid w-100"
-									style="height: 280px !important;"
-								/>
-							</div>
-						</div>
+						{/each}
 					</div>
 					<div class="swiper-pagination property-card-pagination"></div>
 					<div class="swiper-button-prev property-card-prev"></div>
@@ -140,7 +115,7 @@
 						{money.format(item.base_price)}
 					</span>
 					<a
-						href="property-details-1.html"
+						href="/paket/{item.jenis_paket}/{item.slug}"
 						class="btn btn-outline-primary py-3 px-6 rounded-pill d-inline-flex align-items-center gap-1 fw-semibold"
 					>
 						Order

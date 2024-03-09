@@ -17,7 +17,8 @@
 						</span>
 						<h2 class="mt-4 mb-6">Biar kartika yang menangani</h2>
 						<p class="mb-0">
-							Tidak hanya Haji dan Umroh, Kartikamas juga menyediakan layanan sewa transportasi domestik dan mancanegara.
+							Tidak hanya Haji dan Umroh, Kartikamas juga menyediakan layanan sewa transportasi
+							domestik dan mancanegara.
 						</p>
 					</div>
 				</div>
@@ -60,9 +61,7 @@
 						<span class="material-symbols-outlined mat-icon fw-200 fs-64"> airport_shuttle </span>
 					</div>
 					<h3 class="mt-8 mb-5">Reservasi Sekarang!</h3>
-					<p class="mb-0">
-						Reservasi sekarang dan nikmati perjalanan Anda dengan nyaman dan aman.
-					</p>
+					<p class="mb-0">Reservasi sekarang dan nikmati perjalanan Anda dengan nyaman dan aman.</p>
 				</div>
 			</div>
 		</div>

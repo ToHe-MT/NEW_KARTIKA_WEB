@@ -1,5 +1,5 @@
 <script>
-	import PaketItem from './PaketItem.svelte';
+	import TransportItem from './TransportItem.svelte';
 
 	export let data;
 </script>
@@ -29,12 +29,12 @@
 							>
 								<span class="material-symbols-outlined mat-icon fw-200"> arrow_right_alt </span>
 							</span>
-							<span class="h5 lh-1 m-0 clr-primary-400 fw-semibold"> Paket Umroh </span>
+							<span class="h5 lh-1 m-0 clr-primary-400 fw-semibold"> Transportasi </span>
 						</span>
-						<h2 class="mt-4 mb-6">Paket Umroh Bervariasi</h2>
+						<h2 class="mt-4 mb-6">Sewa Kendaraan</h2>
 						<p class="mb-0">
-							Pilih paket yang sesuai dengan kebutuhan Anda. Kartikamas menawarkan berbagai variasi
-							mulai dari paket regular, regular plus, hingga paket gold.
+							Kartika menyediakan berbagai macam jenis kendaraan untuk kebutuhan perjalanan Anda,
+							beberapa dilengkapi dengan TV, PS5, dan Karaoke Set.
 						</p>
 					</div>
 				</div>
@@ -51,41 +51,41 @@
 							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill active"
 							data-bs-toggle="list"
 						>
-							Semua Paket
+							Semua Jenis
 						</a>
 						<a
 							href="/?umroh_type=regular"
 							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
 							data-bs-toggle="list"
 						>
-							Regular
+							SUV
 						</a>
 						<a
 							href="/?umroh_type=regular_plus"
 							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
 							data-bs-toggle="list"
 						>
-							Regular Plus
+							Minivan
 						</a>
 						<a
 							href="/?umroh_type=gold"
 							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
 							data-bs-toggle="list"
 						>
-							Gold
+							Bus
 						</a>
 					</div>
 					<a
 						href="property-grid.html"
 						class="btn btn-outline-primary py-3 px-6 rounded-pill d-inline-flex align-items-center gap-1 fw-semibold"
 					>
-						View All <span class="material-symbols-outlined mat-icon lh-1"> trending_flat </span>
+						Lihat Semua <span class="material-symbols-outlined mat-icon lh-1"> trending_flat </span>
 					</a>
 				</div>
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="new-york">
 						<div class="row g-4">
-							<PaketItem {data} />
+							<TransportItem {data} />
 						</div>
 					</div>
 					<div class="tab-pane fade" id="mumbai">
@@ -2362,11 +2362,11 @@
 				</div>
 				<div class="text-center">
 					<a
-						href="property-grid.html"
+						href="/vehicle/list"
 						class="link d-inline-flex align-items-center gap-2 py-3 px-6 rounded-pill bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-semibold mt-10"
 					>
 						<span class="material-symbols-outlined"> hourglass_top </span>
-						<span class="d-inline-block"> Show More </span>
+						<span class="d-inline-block"> Lihat Lebih </span>
 					</a>
 				</div>
 			</div>

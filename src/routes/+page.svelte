@@ -1,4 +1,5 @@
 <script>
+	import PaketTransport from './PaketTransport.svelte';
 	import Category from './Category.svelte';
 	import PaketUmroh from './PaketUmroh.svelte';
 	import { onMount } from 'svelte';
@@ -174,4 +175,6 @@
 
 <PaketUmroh data={data.umroh} />
 
-<UmrohProcess/>
+<UmrohProcess />
+
+<PaketTransport data={data.vehicle} />
