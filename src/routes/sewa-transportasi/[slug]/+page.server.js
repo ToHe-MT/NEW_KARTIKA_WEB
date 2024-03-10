@@ -1,37 +1,38 @@
+import naryama from '$lib/server/naryama.js';
 import db from '$lib/server/db.js';
 import { error, redirect } from '@sveltejs/kit';
 export const ssr = true;
+export const prerender = false;
 
 export async function load({ url, params }) {
 	const filter = {
 		slug: params.slug
 	};
 	var limit = 1;
-	const umroh = await db.collection('schedule').find(filter).limit(limit).toArray();
-	umroh.forEach((umroh) => {
-		delete umroh._id;
+	const vehicles = await naryama.collection('vehicles').find(filter).limit(limit).toArray();
+	vehicles.forEach((vehicle) => {
+		delete vehicle._id;
 	});
 
-	if (umroh.length === 0) {
+	if (vehicles.length === 0) {
 		return error(404, 'Not found');
 	}
 
-	return { umroh: umroh[0], slug: params.slug };
+	return { info: vehicles[0], slug: params.slug };
 }
 
 export const actions = {
 	default: async ({ request, params }) => {
-		const infos = await db
-			.collection('schedule')
+		const vehicles = await naryama
+			.collection('vehicles')
 			.find({
 				slug: params.slug
 			})
 			.limit(1)
 			.toArray();
-		if (infos.length == 0) {
+		if (vehicles.length == 0) {
 			return error(404, 'Kendaraan tidak ditemukan');
 		}
-		const info = infos[0];
 
 		const data = await request.formData();
 		const token = data.get('cf-turnstile-response');
@@ -54,19 +55,18 @@ export const actions = {
 
 		await db.collection('order').insertOne({
 			slug: params.slug,
-			upgrade_kamar: data.get('upgrade_kamar').substring(0, 10),
-			jumlah_pax: data.get('jumlah_pax').substring(0, 5),
+			lokasi_jemput: data.get('lokasi_jemput').substring(0, 200),
 			whatsapp: data.get('whatsapp').substring(0, 30),
+			start_date: new Date(...data.get('start_date').split('-')),
+			end_date: new Date(...data.get('end_date').split('-')),
 			created_at: new Date(),
 			ip_address: request.headers.get('cf-connecting-ip'),
-			product_type: info['type'],
-			product_name: info['title'],
-			product_id: info['uuid']
+			product_type: 'vehicle'
 		});
 
 		redirect(
 			302,
-			`https://wa.me/62812100591?text=Halo%20saya%20ingin%20mendaftar%20paket%20${info['title']}%0adengan%20upgrade%20kamar%20${data.get('upgrade_kamar').substring(0, 10)}%0adengan%20jumlah%20pax%20${data.get('jumlah_pax').substring(0, 5)}%0adengan%20whatsapp%20${data.get('whatsapp').substring(0, 30)}`
+			`https://wa.me/62812100591?text=Saya ingin sewa kendaraan ${vehicles[0].name} dari tanggal ${data.get('start_date')} sampai ${data.get('end_date')}. Terima kasih!`
 		);
 	}
 };

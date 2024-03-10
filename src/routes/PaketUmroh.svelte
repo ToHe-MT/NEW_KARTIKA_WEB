@@ -1,11 +1,12 @@
 <script>
+	import { page } from '$app/stores';
 	import PaketItem from './PaketItem.svelte';
 
 	export let data;
 </script>
 
 <!-- Featured Property  -->
-<section class="section-space featured-property-section">
+<section class="section-space featured-property-section" id="paketumroh">
 	<img
 		src="/assets/img/category-section-el.png"
 		alt="image"
@@ -47,39 +48,53 @@
 				<div class="d-flex justify-content-md-between align-items-center flex-wrap gap-5 mb-10">
 					<div class="list-group flex-row flex-wrap gap-5">
 						<a
-							href="#new-york"
-							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill active"
-							data-bs-toggle="list"
+							href="/#paketumroh"
+							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill {$page.url.searchParams.get(
+								'level_paket'
+							)
+								? ''
+								: 'active'}"
 						>
 							Semua Paket
 						</a>
 						<a
-							href="/?umroh_type=regular"
-							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
-							data-bs-toggle="list"
+							href="/?level_paket=reguler#paketumroh"
+							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill {$page.url.searchParams.get(
+								'level_paket'
+							) == 'reguler'
+								? 'active'
+								: ''}"
 						>
-							Regular
+							Reguler
 						</a>
 						<a
-							href="/?umroh_type=regular_plus"
-							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
-							data-bs-toggle="list"
+							href="/?level_paket=plus#paketumroh"
+							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill {$page.url.searchParams.get(
+								'level_paket'
+							) == 'plus'
+								? 'active'
+								: ''}"
 						>
-							Regular Plus
+							Plus
 						</a>
 						<a
-							href="/?umroh_type=gold"
-							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
-							data-bs-toggle="list"
+							href="/?level_paket=premium#paketumroh"
+							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill {$page.url.searchParams.get(
+								'level_paket'
+							) == 'premium'
+								? 'active'
+								: ''}"
 						>
-							Gold
+							Premium
 						</a>
 					</div>
 					<a
-						href="property-grid.html"
+						href="/paket/umroh"
 						class="btn btn-outline-primary py-3 px-6 rounded-pill d-inline-flex align-items-center gap-1 fw-semibold"
 					>
-						View All <span class="material-symbols-outlined mat-icon lh-1"> trending_flat </span>
+						Lihat semua paket <span class="material-symbols-outlined mat-icon lh-1">
+							trending_flat
+						</span>
 					</a>
 				</div>
 				<div class="tab-content">

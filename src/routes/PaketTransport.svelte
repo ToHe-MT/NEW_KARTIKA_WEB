@@ -76,7 +76,7 @@
 						</a>
 					</div>
 					<a
-						href="property-grid.html"
+						href="/sewa-transportasi"
 						class="btn btn-outline-primary py-3 px-6 rounded-pill d-inline-flex align-items-center gap-1 fw-semibold"
 					>
 						Lihat Semua <span class="material-symbols-outlined mat-icon lh-1"> trending_flat </span>
@@ -2362,7 +2362,7 @@
 				</div>
 				<div class="text-center">
 					<a
-						href="/vehicle/list"
+						href="/sewa-transportasi"
 						class="link d-inline-flex align-items-center gap-2 py-3 px-6 rounded-pill bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-semibold mt-10"
 					>
 						<span class="material-symbols-outlined"> hourglass_top </span>

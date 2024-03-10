@@ -9,6 +9,9 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Listing Paket Umroh dan Haji Termurah & Jaminan Berangkat</title>
+</svelte:head>
 <!-- Property List -->
 <div class="section-space--sm bg-primary-5p">
 	<div class="container-lg">

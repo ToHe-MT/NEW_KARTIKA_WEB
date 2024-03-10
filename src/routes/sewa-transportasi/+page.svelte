@@ -15,6 +15,9 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Sewa Transportasi BUS/ELF/SUV Murah Include supir - kartikamas</title>
+</svelte:head>
 <!-- Cab List -->
 <div class="section-space--sm bg-primary-5p">
 	<div class="container-xl">
@@ -52,23 +55,7 @@
 										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
 										for="bus"
 									>
-										<span class="d-inline-block"> Bus </span>
-									</label>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex align-items-center gap-3">
-									<input
-										name="mini_bus"
-										class="custom-checkbox custom-checkbox--rounded flex-shrink-0"
-										type="checkbox"
-										id="toyota-corolla"
-									/>
-									<label
-										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
-										for="toyota-corolla"
-									>
-										<span class="d-inline-block"> Mini Bus </span>
+										<span class="d-inline-block"> Bus / Minibus </span>
 									</label>
 								</div>
 							</li>
@@ -84,7 +71,7 @@
 										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
 										for="honda-civic"
 									>
-										<span class="d-inline-block"> Van/Minivan </span>
+										<span class="d-inline-block"> Van/Minivan/ELF </span>
 									</label>
 								</div>
 							</li>
@@ -176,15 +163,15 @@
 						<div class="hr-dashed my-6 opacity-50"></div>
 						<p class="mb-4 clr-neutral-700 fs-20 fw-medium">Range Harga Harian</p>
 						<div class="range-slider">
-							<div class="range-slider__progress"></div>
+							<div class="range-slider__progress" style="left: 0%;"></div>
 							<span class="range-min-wrapper">
 								<input
 									name="price_start"
 									class="range-slider__input range-slider__min"
 									type="range"
 									min="0"
-									max="100"
-									value="25"
+									max="5"
+									value="0"
 								/>
 							</span>
 							<span class="range-max-wrapper">
@@ -193,18 +180,18 @@
 									class="range-slider__input range-slider__max"
 									type="range"
 									min="0"
-									max="100"
-									value="100"
+									max="5"
+									value="5"
 								/>
 							</span>
 						</div>
 						<div class="d-flex align-items-center justify-content-center gap-2 mt-3">
 							<div class="min-value range-slider__value">
-								$ <input type="number" min="0" max="100" value="25" disabled />
+								Rp. <input type="number" min="0" max="5" value="0" disabled />
 							</div>
 							<span>-</span>
 							<div class="max-value range-slider__value">
-								$ <input type="number" min="0" max="100" value="100" disabled />
+								Rp. <input type="number" min="0" max="5" value="5" disabled /> jt
 							</div>
 						</div>
 						<div class="hr-dashed my-6 opacity-50"></div>
@@ -238,7 +225,7 @@
 							</div>
 							<span>-</span>
 							<div class="max-value range-slider__value">
-								$ <input type="number" min="0" max="100" value="100" disabled />
+								<input type="number" min="0" max="100" value="100" disabled />
 							</div>
 						</div>
 						<div class="hr-dashed my-6 opacity-50"></div>
@@ -264,8 +251,9 @@
 									<li class="d-none d-lg-flex align-items-center">
 										<p class="mb-0 clr-neutral-500 flex-grow-1">Urutkan Berdasar :</p>
 										<select class="form-select py-0 border-0 w-auto" name="sort_by">
-											<option value="" selected>Listing Terbaru</option>
-											<option value="total_kursi">Total Kursi/Seat</option>
+											<option value="terbaru" selected>Listing Terbaru</option>
+											<option value="kursi_terbanyak">Kursi Paling Banyak</option>
+											<option value="kursi_tersedikit">Kursi Paling Sedikit</option>
 											<option value="termurah">Termurah</option>
 											<option value="termahal">Termahal</option>
 										</select>

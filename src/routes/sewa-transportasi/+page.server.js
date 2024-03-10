@@ -24,14 +24,34 @@ export async function load({ url, params }) {
 	}
 
 	let facility = [];
-	if (query.get('kereta_cepat')) {
-		facility.push('kereta_cepat');
+	if (query.get('karaoke') == 'on') {
+		facility.push('karaoke');
 	}
-	if (query.get('laundry')) {
-		facility.push('laundry');
+	if (query.get('kulkas') == 'on') {
+		facility.push('kulkas');
+	}
+	if (query.get('tv') == 'on') {
+		facility.push('tv');
+	}
+	if (query.get('ps5') == 'on') {
+		facility.push('ps5');
 	}
 	if (facility.length) {
-		filter.facility = { $all: facility };
+		// filter.facility = { $all: facility };
+	}
+
+	var kategori_transportasi = [];
+	if (query.get('bus') == 'on') {
+		kategori_transportasi.push('bus');
+	}
+	if (query.get('van') == 'on') {
+		kategori_transportasi.push('van');
+	}
+	if (query.get('suv') == 'on') {
+		kategori_transportasi.push('suv');
+	}
+	if (kategori_transportasi.length) {
+		filter.jenis_kendaraan = { $in: kategori_transportasi };
 	}
 
 	var limit = 6;
@@ -64,11 +84,11 @@ export async function load({ url, params }) {
 			case 'termahal':
 				sort = { base_price: -1 };
 				break;
-			case 'waktu_dekat':
-				sort = { start_date: 1 };
+			case 'kursi_terbanyak':
+				sort = { capacity: -1 };
 				break;
-			case 'waktu_lama':
-				sort = { start_date: -1 };
+			case 'kursi_tersedikit':
+				sort = { capacity: 1 };
 				break;
 		}
 	}

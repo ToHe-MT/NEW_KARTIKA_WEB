@@ -6,6 +6,10 @@ export const load = async ({ url }) => {
 		jenis_paket: 'umroh'
 	};
 
+	if (url.searchParams.get('level_paket')) {
+		filter.level_paket = url.searchParams.get('level_paket');
+	}
+
 	if (url.searchParams.get('category')) {
 		filter.type_category = url.searchParams.get('category');
 	}

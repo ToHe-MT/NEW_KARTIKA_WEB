@@ -1,6 +1,43 @@
 <script>
+	import { Turnstile } from 'svelte-turnstile';
+
 	export let data;
 	const info = data.umroh;
+
+	import Swiper from 'swiper';
+	import 'swiper/css';
+	import { Navigation, Pagination } from 'swiper/modules';
+	import { onMount } from 'svelte';
+
+	var swiper;
+	onMount(() => {
+		if (swiper) {
+			swiper.destroy();
+		}
+		swiper = new Swiper('.property-gallery-slider', {
+			loop: true,
+			slidesPerView: 1,
+			spaceBetween: 16,
+			centeredSlides: true,
+			centeredSlidesBounds: true,
+			navigation: {
+				nextEl: '.property-gallery-slider__btn-next',
+				prevEl: '.property-gallery-slider__btn-prev'
+			},
+			breakpoints: {
+				576: {
+					slidesPerView: 2.25
+				},
+				768: {
+					slidesPerView: 2.5
+				},
+				1200: {
+					slidesPerView: 3.25
+				}
+			},
+			modules: [Navigation, Pagination]
+		});
+	});
 
 	const money = new Intl.NumberFormat('id-ID', {
 		style: 'currency',
@@ -34,10 +71,12 @@
 	distributeFacilities(info.facility);
 
 	let upgrade_kamar = '';
+
+	let jumlah_pax = '';
 </script>
 
 <svelte:head>
-	<title>{info.title}</title>
+	<title>{info.title} - Paket Umroh Haji Termurah</title>
 </svelte:head>
 
 <!-- Property Gallery  -->
@@ -438,193 +477,226 @@
 				</div>
 			</div>
 			<div class="col-xl-4">
-				<div class="section-space--sm pb-0 mb-6 position-relative">
-					<div class="bg-neutral-0 rounded-4 py-8 px-6">
-						<p class="mb-3 fs-18 fw-medium">Harga Dasar</p>
-						<div class="d-flex align-items-start gap-2 mb-6">
-							<div class="d-flex gap-3 align-items-center">
-								<span class="material-symbols-outlined mat-icon"> sell </span>
-								<h3 class="mb-0">{money.format(info.base_price)}</h3>
+				<form action="" method="post">
+					<Turnstile siteKey="0x4AAAAAAAUhmoBRUzWB63Iy" />
+					<div class="section-space--sm pb-0 mb-6 position-relative">
+						<div class="bg-neutral-0 rounded-4 py-8 px-6">
+							<p class="mb-3 fs-18 fw-medium">Harga Dasar per Pax</p>
+							<div class="d-flex align-items-start gap-2 mb-6">
+								<div class="d-flex gap-3 align-items-center">
+									<span class="material-symbols-outlined mat-icon"> sell </span>
+									<h3 class="mb-0">{money.format(info.base_price)}</h3>
+								</div>
+								<span class="material-symbols-outlined mat-icon"> info </span>
 							</div>
-							<span class="material-symbols-outlined mat-icon"> info </span>
-						</div>
-						<div class="list-group about-tab mb-7">
-							<a class="list-group-item active" data-bs-toggle="list" href="#booking-list">
-								Booking Form
-							</a>
-						</div>
-						<div class="tab-content mb-8">
-							<div class="tab-pane fade show active" id="booking-list">
-								<div class="row g-3">
-									<div class="col-12">
-										<div class="property-search__select property-search__col rounded-pill px-6">
-											<select
-												name="upgrade_kamar"
-												class="form-select"
-												aria-label="Default select example"
-												bind:value={upgrade_kamar}
-											>
-												<option value="" selected="">Upgrade Kamar (Dari Quad)</option>
-												<option value="triple">Triple - 3 orang 1 kamar</option>
-												<option value="double">Double - 2 orang 1 kamar</option>
-											</select>
+							<div class="list-group about-tab mb-7">
+								<a class="list-group-item active" data-bs-toggle="list" href="#booking-list">
+									Booking Form
+								</a>
+							</div>
+							<div class="tab-content mb-8">
+								<div class="tab-pane fade show active" id="booking-list">
+									<div class="row g-3">
+										<div class="col-12">
+											<div class="property-search__select property-search__col rounded-pill px-6">
+												<select
+													name="upgrade_kamar"
+													class="form-select"
+													aria-label="Default select example"
+													bind:value={upgrade_kamar}
+												>
+													<option value="" selected="">Upgrade Kamar (Dari Quad)</option>
+													<option value="triple">Triple - 3 orang 1 kamar</option>
+													<option value="double">Double - 2 orang 1 kamar</option>
+												</select>
+											</div>
 										</div>
-									</div>
-									<div class="col-12" style="display: none !important;">
-										<div class="property-search__select property-search__col rounded-pill px-6">
-											<select
-												name="level_paket"
-												class="form-select"
-												aria-label="Default select example"
-											>
-												<option value="" selected="">Gunakan Personal Assistant</option>
-												<option value="">Tidak</option>
-												<option value="1">Gunakan</option>
-											</select>
+										<div class="col-12" style="display: none !important;">
+											<div class="property-search__select property-search__col rounded-pill px-6">
+												<select
+													name="level_paket"
+													class="form-select"
+													aria-label="Default select example"
+												>
+													<option value="" selected="">Gunakan Personal Assistant</option>
+													<option value="">Tidak</option>
+													<option value="1">Gunakan</option>
+												</select>
+											</div>
 										</div>
-									</div>
-									<div class="col-12">
-										<div class="input-group">
-											<input
-												type="text"
-												class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
-												placeholder="Masukkan nomor whatsapp anda"
-											/>
-											<span
-												class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
-											>
-												<span class="material-symbols-outlined mat-icon clr-neutral-100">
-													chat
+										<div class="col-12">
+											<div class="input-group">
+												<input
+													bind:value={jumlah_pax}
+													name="jumlah_pax"
+													min="1"
+													type="number"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
+													placeholder="Jumlah peserta/pax"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														person
+													</span>
 												</span>
-											</span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="input-group">
+												<input
+													name="whatsapp"
+													type="number"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
+													placeholder="Masukkan nomor whatsapp anda"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														chat
+													</span>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="enquiry-list">
+									<div class="row g-3">
+										<div class="col-12">
+											<div class="input-group">
+												<input
+													type="text"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
+													placeholder="Location"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														distance
+													</span>
+												</span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="input-group">
+												<input
+													type="text"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
+													placeholder="Check In"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														calendar_month
+													</span>
+												</span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="input-group">
+												<input
+													type="text"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
+													placeholder="Check Out"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														alarm_on
+													</span>
+												</span>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="tab-pane fade" id="enquiry-list">
-								<div class="row g-3">
-									<div class="col-12">
-										<div class="input-group">
-											<input
-												type="text"
-												class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
-												placeholder="Location"
-											/>
-											<span
-												class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
-											>
-												<span class="material-symbols-outlined mat-icon clr-neutral-100">
-													distance
-												</span>
-											</span>
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="input-group">
-											<input
-												type="text"
-												class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
-												placeholder="Check In"
-											/>
-											<span
-												class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
-											>
-												<span class="material-symbols-outlined mat-icon clr-neutral-100">
-													calendar_month
-												</span>
-											</span>
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="input-group">
-											<input
-												type="text"
-												class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
-												placeholder="Check Out"
-											/>
-											<span
-												class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
-											>
-												<span class="material-symbols-outlined mat-icon clr-neutral-100">
-													alarm_on
-												</span>
-											</span>
-										</div>
-									</div>
-								</div>
+							<div class="d-flex align-items-center justify-content-between mb-4">
+								<p class="mb-0 clr-neutral-500">Base Price</p>
+								<p class="mb-0 fw-medium">{money.format(info.base_price)}</p>
 							</div>
+							<div class="d-flex align-items-center justify-content-between mb-4">
+								<p class="mb-0 clr-neutral-500">Upgrade Kamar</p>
+								<p class="mb-0 fw-medium">
+									{upgrade_kamar == ''
+										? 'Rp. 0'
+										: money.format(info['hotel_price_' + upgrade_kamar])}
+								</p>
+							</div>
+							<div class="d-flex align-items-center justify-content-between mb-4">
+								<p class="mb-0 clr-neutral-500">Total Pax</p>
+								<p class="mb-0 fw-medium">
+									{jumlah_pax}
+								</p>
+							</div>
+							<div class="hr-dashed my-4"></div>
+							<div class="d-flex align-items-center justify-content-between mb-10">
+								<p class="mb-0 clr-neutral-500">Total</p>
+								<p class="mb-0 fw-medium">
+									{#if jumlah_pax > 0}
+										{money.format(
+											upgrade_kamar == ''
+												? parseInt(info.base_price) * parseInt(jumlah_pax)
+												: (parseInt(info.base_price) +
+														parseInt(info['hotel_price_' + upgrade_kamar])) *
+														parseInt(jumlah_pax)
+										)}
+									{:else}
+										<i>tuliskan jumlah pax</i>
+									{/if}
+								</p>
+							</div>
+							<button
+								type="submit"
+								class="link d-inline-flex align-items-center gap-2 py-3 px-6 rounded-pill bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-medium w-100 justify-content-center mb-6"
+							>
+								<span class="d-inline-block"> Pesan Sekarang </span>
+							</button>
+							<ul class="list list-row justify-content-center gap-3 flex-wrap">
+								<li>
+									<img
+										loading="lazy"
+										src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/2560px-Bank_Central_Asia.svg.png"
+										style="width: 83px;height:27px;"
+										alt="bca"
+										class="img-fluid"
+									/>
+								</li>
+								<li>
+									<img
+										loading="lazy"
+										src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/1280px-BANK_BRI_logo.svg.png"
+										style="width: 100px;height:27px;"
+										alt="bri"
+										class="img-fluid"
+									/>
+								</li>
+								<li>
+									<img
+										loading="lazy"
+										src="https://seeklogo.com/images/A/atm-bersama-logo-0CE85215D0-seeklogo.com.png"
+										style="height:27px;"
+										alt="bca"
+										class="img-fluid"
+									/>
+								</li>
+								<li>
+									<img
+										loading="lazy"
+										src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
+										style="width: 83px;height:27px;"
+										alt="bca"
+										class="img-fluid"
+									/>
+								</li>
+							</ul>
 						</div>
-						<div class="d-flex align-items-center justify-content-between mb-4">
-							<p class="mb-0 clr-neutral-500">Base Price</p>
-							<p class="mb-0 fw-medium">{money.format(info.base_price)}</p>
-						</div>
-						<div class="d-flex align-items-center justify-content-between mb-4">
-							<p class="mb-0 clr-neutral-500">Upgrade Kamar</p>
-							<p class="mb-0 fw-medium">
-								{upgrade_kamar == '' ? 'Rp. 0' : money.format(info['hotel_price_' + upgrade_kamar])}
-							</p>
-						</div>
-						<div class="d-flex align-items-center justify-content-between mb-4">
-							<p class="mb-0 clr-neutral-500">PPN</p>
-							<p class="mb-0 fw-medium">Rp. 0</p>
-						</div>
-						<div class="hr-dashed my-4"></div>
-						<div class="d-flex align-items-center justify-content-between mb-10">
-							<p class="mb-0 clr-neutral-500">Total</p>
-							<p class="mb-0 fw-medium">
-								{money.format(
-									upgrade_kamar == ''
-										? parseInt(info.base_price)
-										: parseInt(info.base_price) + parseInt(info['hotel_price_' + upgrade_kamar])
-								)}
-							</p>
-						</div>
-						<a
-							href="#"
-							class="link d-inline-flex align-items-center gap-2 py-3 px-6 rounded-pill bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-medium w-100 justify-content-center mb-6"
-						>
-							<span class="d-inline-block"> Pesan Sekarang </span>
-						</a>
-						<ul class="list list-row justify-content-center gap-3 flex-wrap">
-							<li>
-								<img
-									loading="lazy"
-									src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/2560px-Bank_Central_Asia.svg.png"
-									style="width: 83px;height:27px;"
-									alt="bca"
-									class="img-fluid"
-								/>
-							</li>
-							<li>
-								<img
-									loading="lazy"
-									src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BANK_BRI_logo.svg/1280px-BANK_BRI_logo.svg.png"
-									style="width: 100px;height:27px;"
-									alt="bri"
-									class="img-fluid"
-								/>
-							</li>
-							<li>
-								<img
-									loading="lazy"
-									src="https://seeklogo.com/images/A/atm-bersama-logo-0CE85215D0-seeklogo.com.png"
-									style="height:27px;"
-									alt="bca"
-									class="img-fluid"
-								/>
-							</li>
-							<li>
-								<img
-									loading="lazy"
-									src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
-									style="width: 83px;height:27px;"
-									alt="bca"
-									class="img-fluid"
-								/>
-							</li>
-						</ul>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>

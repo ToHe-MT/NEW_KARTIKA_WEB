@@ -2,6 +2,40 @@
 	export let data;
 	export let page;
 
+	import Swiper from 'swiper';
+	import 'swiper/css';
+	import { Navigation, Pagination } from 'swiper/modules';
+	import { onDestroy, onMount } from 'svelte';
+
+	var swiper;
+	onMount(() => {
+		if (swiper) {
+			swiper.destroy();
+			swiper = null;
+		}
+		swiper = new Swiper('.property-card-slider', {
+			loop: true,
+			pagination: {
+				el: '.property-card-pagination'
+			},
+			navigation: {
+				nextEl: '.property-card-next',
+				prevEl: '.property-card-prev'
+			},
+			modules: [Navigation, Pagination]
+		});
+	});
+	onDestroy(() => {
+		if (swiper) {
+			try {
+				swiper.destroy();
+			} catch (error) {
+				console.log(error);
+			}
+			swiper = null;
+		}
+	});
+
 	const money = new Intl.NumberFormat('id-ID', {
 		style: 'currency',
 		currency: 'IDR',
@@ -53,7 +87,7 @@
 				</div>
 				<div class="d-flex justify-content-between mb-2">
 					<a
-						href="tour-listing-details.html"
+						href="/paket/{item.jenis_paket}/{item.slug}"
 						class="link d-block flex-grow-1 clr-neutral-700 :clr-primary-300 fs-20 fw-medium"
 					>
 						{item.title}

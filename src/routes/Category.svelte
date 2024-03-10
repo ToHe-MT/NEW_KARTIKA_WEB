@@ -37,17 +37,17 @@
 				>
 					<div class="p-8">
 						<span class="material-symbols-outlined fs-60 clr-primary-300 lh-1 transition">
-							emoji_transportation
+							person
 						</span>
 						<h5 class="mt-5 transition">Umroh</h5>
-						<p class="mb-0">An apartment is a self-contained housing unit that</p>
+						<p class="mb-0">Paket umroh murah bintang 5 jaminan berangkat</p>
 					</div>
 					<div class="category-card__footer transition">
 						<a
-							href="property-list.html"
+							href="/paket/umroh"
 							class="link d-flex gap-1 align-items-center fw-semibold clr-primary-400 transition p-8"
 						>
-							Read More <span class="material-symbols-outlined mat-icon fw-200">
+							Lihat Paket <span class="material-symbols-outlined mat-icon fw-200">
 								arrow_right_alt
 							</span>
 						</a>
@@ -63,14 +63,14 @@
 							home_work
 						</span>
 						<h5 class="mt-5 transition">Haji Khusus</h5>
-						<p class="mb-0">A house is a standalone building that is designed for</p>
+						<p class="mb-0">haji khusus premium berangkat tahun ini.</p>
 					</div>
 					<div class="category-card__footer transition">
 						<a
-							href="property-list.html"
+							href="/paket/haji"
 							class="link d-flex gap-1 align-items-center fw-semibold clr-primary-400 transition p-8"
 						>
-							Read More <span class="material-symbols-outlined mat-icon fw-200">
+							Lihat Paket <span class="material-symbols-outlined mat-icon fw-200">
 								arrow_right_alt
 							</span>
 						</a>
@@ -83,17 +83,17 @@
 				>
 					<div class="p-8">
 						<span class="material-symbols-outlined fs-60 clr-tertiary-500 lh-1 transition">
-							add_business
+							emoji_transportation
 						</span>
-						<h5 class="mt-5 transition">Wisata Religi</h5>
-						<p class="mb-0">A family house is a type of residential building that is</p>
+						<h5 class="mt-5 transition">Sewa Kendaraan</h5>
+						<p class="mb-0">Sewa bus, elf, suv dengan fasilitas tv, ps5, netflix.</p>
 					</div>
 					<div class="category-card__footer transition">
 						<a
-							href="property-list.html"
+							href="/sewa-transportasi"
 							class="link d-flex gap-1 align-items-center fw-semibold clr-primary-400 transition p-8"
 						>
-							Read More <span class="material-symbols-outlined mat-icon fw-200">
+							Lihat Kendaraan <span class="material-symbols-outlined mat-icon fw-200">
 								arrow_right_alt
 							</span>
 						</a>
@@ -102,7 +102,7 @@
 			</div>
 			<div class="col-md-6 col-lg-4 col-xl-3">
 				<a
-					href="property-list.html"
+					href="/sewa-transportasi"
 					class="circle-btn link bg-secondary-75 text-center rounded-circle"
 				>
 					<span class="d4 d-block text-center clr-neutral-900 transition"> 25+ </span>

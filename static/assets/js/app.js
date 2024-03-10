@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
   * Property Card Slider
   */
-  const propertySlider = document.querySelectorAll('.property-card-slider')
+  const propertySlider = document.querySelectorAll('.property-card-slifsder')
   if (propertySlider) {
     propertySlider.forEach((e) => {
       const propertySliderInit = new Swiper(e, {
@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
   * Property Gallery Slider
   */
-  const propertyGallerySlider = document.querySelector('.property-gallery-slider');
+  const propertyGallerySlider = document.querySelector('.property-gallery-slidera');
   if (propertyGallerySlider) {
     new Swiper(propertyGallerySlider, {
       loop: true,

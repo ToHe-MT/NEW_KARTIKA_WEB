@@ -41,7 +41,7 @@
 				</p>
 			</div>
 			<div class="col-xxl-10">
-				<form action="#">
+				<form action="/paket/umroh">
 					<div class="property-search p-6 rounded-3 bg-neutral-0">
 						<div
 							class="property-search__content d-flex flex-wrap justify-content-center align-items-center gap-4"
@@ -60,28 +60,21 @@
 								class="property-search__select property-search__col rounded-pill d-flex align-items-center gap-2 px-6"
 							>
 								<span class="material-symbols-outlined mat-icon"> person </span>
-								<select class="form-select" aria-label="Default select example">
-									<option selected>Total Pax</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="3">4</option>
-									<option value="3">5</option>
-									<option value="3">6</option>
-									<option value="3">7</option>
+								<select name="level_paket" class="form-select" aria-label="Default select example">
+									<option selected>Paket</option>
+									<option value="reguler">Reguler</option>
+									<option value="plus">Plus</option>
+									<option value="premium">Premium</option>
 								</select>
 							</div>
 							<div
 								class="property-search__select property-search__col rounded-pill d-flex align-items-center gap-2 px-6"
 							>
 								<span class="material-symbols-rounded mat-icon"> grid_view </span>
-								<select class="form-select" aria-label="Default select example">
-									<option selected>Tanggal</option>
-									<option value="1">Maret 2024</option>
-									<option value="2">April 2024</option>
-									<option value="3">Mei 2024</option>
-									<option value="3">Juni 2024</option>
-									<option value="3">Juli 2024</option>
+								<select name="perlanjutan" class="form-select" aria-label="Default select example">
+									<option selected>Perlanjutan</option>
+									<option value="mesir">Mesir</option>
+									<option value="turki">Turki</option>
 								</select>
 							</div>
 							<div
@@ -93,6 +86,7 @@
 								</div>
 								<div class="property-search__range d-grid">
 									<input
+										name="price_start"
 										type="range"
 										min="1"
 										max="50"

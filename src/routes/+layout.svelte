@@ -9,7 +9,7 @@
 			<div class="col-12">
 				<ul class="list list-row flex-wrap gap-3 align-items-center justify-content-between">
 					<li>
-						<a href="index.html" class="link d-inline-block">
+						<a href="/" class="link d-inline-block">
 							<img src="/assets/img/favicon.png" alt="logo" class="logo d-xl-none" />
 							<img src="/kartikamas-logo.png" alt="logo" class="logo d-none d-xl-inline-block" />
 						</a>
@@ -80,7 +80,7 @@
 					</li>
 					<li class="d-none d-md-block">
 						<a
-							href="contact.html"
+							href="https://wa.me/62812100592"
 							class="link btn bg-primary-300 :bg-primary-300 clr-neutral-0 :clr-neutral-0 fw-600 py-4 px-8 rounded-pill"
 						>
 							Order Sekarang
@@ -224,15 +224,13 @@
 							</a>
 							<ul class="list menu-sub">
 								<li class="menu-sub-list">
-									<a href="blog-grid.html" class="link menu-sub-link"> Peryaratan Umroh </a>
+									<a href="/faq" class="link menu-sub-link"> Peryaratan Umroh </a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="blog-details.html" class="link menu-sub-link">
-										Kebijakan Privasi Data
-									</a>
+									<a href="/privacy-policy" class="link menu-sub-link"> Kebijakan Privasi Data </a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="faq.html" class="link menu-sub-link"> FAQ </a>
+									<a href="/faq" class="link menu-sub-link"> FAQ </a>
 								</li>
 							</ul>
 						</li>

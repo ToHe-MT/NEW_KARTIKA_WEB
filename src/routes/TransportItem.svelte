@@ -1,6 +1,29 @@
 <script>
 	export let data;
 
+	import Swiper from 'swiper';
+	import 'swiper/css';
+	import { Navigation, Pagination } from 'swiper/modules';
+	import { onMount } from 'svelte';
+
+	var swiper;
+	onMount(() => {
+		if (swiper) {
+			swiper.destroy();
+		}
+		swiper = new Swiper('.property-card-slider', {
+			loop: true,
+			pagination: {
+				el: '.property-card-pagination'
+			},
+			navigation: {
+				nextEl: '.property-card-next',
+				prevEl: '.property-card-prev'
+			},
+			modules: [Navigation, Pagination]
+		});
+	});
+
 	const money = new Intl.NumberFormat('id-ID', {
 		style: 'currency',
 		currency: 'IDR',
