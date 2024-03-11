@@ -17,7 +17,14 @@
 					<li>
 						<ul class="list list-row flex-wrap align-items-center list-divider">
 							<li>
-								<div class="d-flex align-items-center gap-5">
+								<!-- svelte-ignore a11y-click-events-have-key-events -->
+								<!-- svelte-ignore a11y-no-static-element-interactions -->
+								<div
+									class="d-flex align-items-center gap-5"
+									on:click={() => {
+										window.location.href = 'https://wa.me/62812100591';
+									}}
+								>
 									<div
 										class="w-10 h-10 rounded-circle bg-primary-300 d-grid place-content-center flex-shrink-0"
 									>
@@ -37,7 +44,14 @@
 								</div>
 							</li>
 							<li>
-								<div class="d-flex align-items-center gap-5">
+								<!-- svelte-ignore a11y-click-events-have-key-events -->
+								<!-- svelte-ignore a11y-no-static-element-interactions -->
+								<div
+									class="d-flex align-items-center gap-5"
+									on:click={() => {
+										window.location.href = 'https://wa.me/62812100592';
+									}}
+								>
 									<div
 										class="w-10 h-10 rounded-circle bg-secondary-300 d-grid place-content-center flex-shrink-0"
 									>
@@ -57,7 +71,14 @@
 								</div>
 							</li>
 							<li>
-								<div class="d-flex align-items-center gap-5">
+								<!-- svelte-ignore a11y-click-events-have-key-events -->
+								<!-- svelte-ignore a11y-no-static-element-interactions -->
+								<div
+									class="d-flex align-items-center gap-5"
+									on:click={() => {
+										window.location.href = 'https://maps.app.goo.gl/D9yuG9d7nu4LC1kQA';
+									}}
+								>
 									<div
 										class="w-10 h-10 rounded-circle bg-tertiary-300 d-grid place-content-center flex-shrink-0"
 									>
@@ -68,7 +89,9 @@
 									<div class="d-none d-lg-block">
 										<span class="fs-12 d-block"> Lokasi </span>
 										<span class="d-block">
-											Jl. Wijaya Kusuma No.30, Pd. Labu
+											<a href="https://maps.app.goo.gl/D9yuG9d7nu4LC1kQA"
+												>Jl. Wijaya Kusuma No.30, Pd. Labu</a
+											>
 											<span class="material-symbols-outlined" on:click={openMap}>
 												arrow_outward
 											</span>

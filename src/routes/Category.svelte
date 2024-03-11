@@ -21,8 +21,7 @@
 						</span>
 						<h2 class="mt-4 mb-6">Pilih Paket Perjalanan</h2>
 						<p class="mb-0">
-							Real estate can be bought, sold, leased, or rented, and can be a valuable investment
-							opportunity. The value of real estate can be...
+							Tak hanya menyediakan layanan umroh dan haji, kartikamas juga melayani reservasi transportasi untuk tour dan travel.
 						</p>
 					</div>
 				</div>
