@@ -281,7 +281,7 @@
 												<div class="col-xl-8">
 													<div class="d-flex gap-6 mb-2">
 														<a
-															href="cab-listing-details.html"
+															href="/sewa-transportasi/{vehicle.slug}"
 															class="link d-block clr-neutral-700 :clr-primary-300 fs-20 fw-medium"
 														>
 															{vehicle.name}

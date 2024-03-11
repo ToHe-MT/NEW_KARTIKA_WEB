@@ -1,7 +1,7 @@
-import { MONGODB_URI } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-const client = new MongoClient(MONGODB_URI);
+const client = new MongoClient(env.MONGODB_URI);
 
 await client.connect();
 

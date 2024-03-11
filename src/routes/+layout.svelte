@@ -10,7 +10,7 @@
 				<ul class="list list-row flex-wrap gap-3 align-items-center justify-content-between">
 					<li>
 						<a href="/" class="link d-inline-block">
-							<img src="/assets/img/favicon.png" alt="logo" class="logo d-xl-none" />
+							<img src="/kartikamas-logo.png" alt="logo" class="logo d-xl-none" />
 							<img src="/kartikamas-logo.png" alt="logo" class="logo d-none d-xl-inline-block" />
 						</a>
 					</li>

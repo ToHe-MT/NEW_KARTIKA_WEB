@@ -85,7 +85,7 @@
 				</div>
 				<div class="d-flex justify-content-between mb-2">
 					<a
-						href="tour-listing-details.html"
+						href="/sewa-transportasi/{item.slug}"
 						class="link d-block flex-grow-1 clr-neutral-700 :clr-primary-300 fs-20 fw-medium"
 					>
 						{item.name}
@@ -129,7 +129,7 @@
 						{money.format(item.base_price)} / day
 					</span>
 					<a
-						href="property-details-1.html"
+						href="/sewa-transportasi/{item.slug}"
 						class="btn btn-outline-primary py-3 px-6 rounded-pill d-inline-flex align-items-center gap-1 fw-semibold"
 					>
 						Order
