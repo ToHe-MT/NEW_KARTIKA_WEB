@@ -120,7 +120,7 @@
 									</li>
 								</ul>
 							</div>
-							<div class="col-xl-6">
+							<!-- <div class="col-xl-6">
 								<ul class="list gap-4">
 									<li>
 										<div class="d-flex align-items-center gap-3">
@@ -134,7 +134,7 @@
 										</div>
 									</li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 						<div class="hr-dashed my-6 opacity-50"></div>
 						<button
