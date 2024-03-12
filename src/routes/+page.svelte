@@ -40,7 +40,7 @@
 					hingga kepulangan dengan nyaman dan tenang.
 				</p>
 			</div>
-			<div class="col-xxl-10">
+			<div class="col-xxl-12">
 				<form action="/paket/umroh">
 					<div class="property-search p-6 rounded-3 bg-neutral-0">
 						<div
@@ -62,19 +62,19 @@
 								<span class="material-symbols-outlined mat-icon"> person </span>
 								<select name="level_paket" class="form-select" aria-label="Default select example">
 									<option selected>Paket</option>
-									<option value="reguler">Reguler</option>
-									<option value="plus">Plus</option>
-									<option value="premium">Premium</option>
+									<option value="reguler">Reguler (⭐️⭐️⭐️)</option>
+									<option value="vip">VIP (⭐️⭐️⭐️⭐️)</option>
+									<option value="vvip">VVIP (⭐️⭐️⭐️⭐️⭐️)</option>
+									<option value="private">Private (custom)</option>
 								</select>
 							</div>
 							<div
 								class="property-search__select property-search__col rounded-pill d-flex align-items-center gap-2 px-6"
 							>
 								<span class="material-symbols-rounded mat-icon"> grid_view </span>
-								<select name="perlanjutan" class="form-select" aria-label="Default select example">
-									<option selected>Perlanjutan</option>
-									<option value="mesir">Mesir</option>
-									<option value="turki">Turki</option>
+								<select name="bandara_keberangkatan" class="form-select" aria-label="Default select example">
+									<option selected>Bandara Keberangkatan</option>
+									<option value="cgk">CGK</option>
 								</select>
 							</div>
 							<div
@@ -110,7 +110,7 @@
 						</div>
 					</div>
 				</form>
-				<div class="d-flex align-items-center gap-4 align-items-center flex-wrap mt-10">
+				<!-- <div class="d-flex align-items-center gap-4 align-items-center flex-wrap mt-10">
 					<ul class="list user-group">
 						<li>
 							<div class="w-13 h-13 border border-neutral-0 rounded-circle overflow-hidden">
@@ -157,7 +157,7 @@
 					<p class="mb-0 fs-18">
 						16 orang melakukan <span class="clr-primary-300 fw-semibold">booking</span> dalam 24jam terakhir
 					</p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
