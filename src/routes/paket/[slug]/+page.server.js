@@ -25,8 +25,8 @@ export async function load({ url, params }) {
 	if (query.get('level_paket')) {
 		filter.level_paket = query.get('level_paket');
 	}
-	if (query.get('perlanjutan')) {
-		filter.perlanjutan = query.get('perlanjutan');
+	if (query.get('departure_from')) {
+		filter.departure_from = query.get('departure_from').toUpperCase();
 	}
 
 	if (query.get('price_start') && query.get('price_end')) {

@@ -21,7 +21,8 @@
 						</span>
 						<h2 class="mt-4 mb-6">Pilih Paket Perjalanan</h2>
 						<p class="mb-0">
-							Tak hanya menyediakan layanan umroh dan haji, kartikamas juga melayani reservasi transportasi untuk tour dan travel.
+							Tak hanya menyediakan layanan umroh dan haji, kartikamas juga melayani reservasi
+							transportasi untuk tour dan travel.
 						</p>
 					</div>
 				</div>
@@ -106,7 +107,7 @@
 				>
 					<span class="d4 d-block text-center clr-neutral-900 transition"> 25+ </span>
 					<span class="d-block text-center clr-neutral-900 max-text-20 mb-6 transition">
-						Lihat Paket Sewa Kendaraan
+						Lihat Rute Pariwisata Kartikamas
 					</span>
 					<span
 						class="circle-btn__arrow d-grid w-15 h-15 rounded-circle place-content-center bg-neutral-0 clr-neutral-900 mx-auto transition"

@@ -18,7 +18,7 @@ export const load = async ({ url }) => {
 		delete umroh._id;
 	});
 
-	const vehicle = await naryama.collection('vehicles').find().toArray();
+	const vehicle = await db.collection('vehicles').find().toArray();
 	vehicle.forEach((vehicle) => {
 		delete vehicle._id;
 	});

@@ -108,7 +108,7 @@
 							<span class="d-block"> Include Driver </span>
 						</div>
 					</li>
-					{#each [...item.feature.interior, ...item.feature.safety, ...item.feature.extra] as feature}
+					{#each item.feature as feature}
 						<li class="col-6">
 							<div class="d-flex align-items-center gap-2">
 								<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">

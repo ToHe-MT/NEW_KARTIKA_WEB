@@ -71,22 +71,30 @@
 									<li class="menu-list">
 										<!-- svelte-ignore a11y-click-events-have-key-events -->
 										<!-- svelte-ignore a11y-no-static-element-interactions -->
-										<a
-											href="#"
-											class="d-flex align-items-center gap-5 link menu-link has-sub"
-										>
+										<a href="#" class="d-flex align-items-center gap-5 link menu-link has-sub">
 											<div class="flex-container">
 												<div
 													class="w-10 h-10 rounded-circle bg-secondary-300 d-grid place-content-center flex-shrink-0"
 												>
-													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-whatsapp" viewBox="0 0 16 16">
-														<path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="20"
+														height="20"
+														fill="white"
+														class="bi bi-whatsapp"
+														viewBox="0 0 16 16"
+													>
+														<path
+															d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
+														/>
 													</svg>
 												</div>
 												<div
 													class="hamburger-icon w-4 h-4 rounded-circle bg-primary-300 d-grid place-content-center flex-shrink-0"
 												>
-													<span class="material-symbols-outlined clr-neutral-0 mat-icon fs-10"> menu </span>
+													<span class="material-symbols-outlined clr-neutral-0 mat-icon fs-10">
+														menu
+													</span>
 												</div>
 											</div>
 											<div class="d-none d-lg-block">
@@ -100,7 +108,7 @@
 													class="link menu-sub-link clr-neutral-700 :clr-primary-300"
 												>
 													<div>
-														<p class="fw-medium"> Admin 1 </p>
+														<p class="fw-medium">Admin 1</p>
 														<p>0812-100-591</p>
 													</div>
 												</a>
@@ -111,7 +119,7 @@
 													class="link menu-sub-link clr-neutral-700 :clr-primary-300"
 												>
 													<div>
-														<p class="fw-medium"> Admin 2 </p>
+														<p class="fw-medium">Admin 2</p>
 														<p>0812-100-592</p>
 													</div>
 												</a>
@@ -130,7 +138,9 @@
 											<div
 												class="w-10 h-10 rounded-circle bg-tertiary-300 d-grid place-content-center flex-shrink-0"
 											>
-												<span class="material-symbols-outlined mat-icon fs-24 clr-neutral-700 fw-300">
+												<span
+													class="material-symbols-outlined mat-icon fs-24 clr-neutral-700 fw-300"
+												>
 													pin_drop
 												</span>
 											</div>
@@ -316,14 +326,13 @@
 <!-- /Header -->
 <slot />
 
-
 <style>
-	@media (max-width:991px){
+	@media (max-width: 991px) {
 		.header-sub {
 			position: absolute;
 			background-color: white;
 			z-index: 1000;
-			box-shadow:0 .5rem 1rem hsl(var(--black)/.1);
+			box-shadow: 0 0.5rem 1rem hsl(var(--black) / 0.1);
 		}
 	}
 
@@ -332,7 +341,7 @@
 	}
 
 	.hamburger-icon {
-    position: absolute;
+		position: absolute;
 		bottom: 0;
 		right: 0;
 	}

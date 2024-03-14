@@ -67,20 +67,22 @@
 		}
 	}
 
-	distributeFacilities([
-		...info.feature.interior,
-		...info.feature.exterior,
-		...info.feature.safety,
-		...info.feature.extra
-	]);
+	distributeFacilities(info.feature);
+
+	let date = new Date();
+	let minStartDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+	minStartDate.setDate(minStartDate.getDate() + 1);
+	minStartDate = minStartDate.toISOString().split('T')[0];
 
 	let startDate;
 	let endDate;
+	let endDateMin;
 
 	// Function to calculate the difference in days
 	function getDifferenceInDays(start, end) {
 		const startDate = new Date(start);
 		const endDate = new Date(end);
+		endDate.setDate(endDate.getDate() + 1); // Include the end date in the calculation
 		const difference = endDate - startDate;
 		return difference / (1000 * 3600 * 24);
 	}
@@ -90,6 +92,26 @@
 
 	// Reactive validation to check if the end date is before the start date
 	$: isValidDateRange = !startDate || !endDate || new Date(endDate) >= new Date(startDate);
+
+	let selectedRoute = '';
+	let basePrice = 0;
+	let minimumDays = 1;
+
+	$: if (selectedRoute && selectedRoute !== 'custom') {
+		const [routeId, vehiclePrice, minimalDays] = selectedRoute.split('|');
+		basePrice = parseInt(vehiclePrice);
+		info.base_price = basePrice;
+		minimumDays = parseInt(minimalDays);
+	}
+
+	$: {
+		if (startDate) {
+			endDateMin = new Date(startDate);
+			endDateMin.setDate(endDateMin.getDate() + minimumDays - 1);
+			endDateMin = endDateMin.toISOString().split('T')[0];
+			console.log(endDateMin);
+		}
+	}
 </script>
 
 <!-- Property Gallery  -->
@@ -475,9 +497,28 @@
 							<div class="tab-content mb-8">
 								<div class="tab-pane fade show active" id="booking-list">
 									<div class="row g-3">
+										<div class="col-12" title="Masukkan Nama anda">
+											<div class="input-group">
+												<input
+													required
+													name="nama"
+													type="text"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
+													placeholder="Masukkan Nama anda"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														person
+													</span>
+												</span>
+											</div>
+										</div>
 										<div class="col-12" title="Masukkan No. whatsapp anda">
 											<div class="input-group">
 												<input
+													required
 													name="whatsapp"
 													type="text"
 													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
@@ -495,6 +536,7 @@
 										<div class="col-12" title="Tulis Kecamatan & Kab Penjemputan">
 											<div class="input-group">
 												<input
+													required
 													name="lokasi_jemput"
 													type="text"
 													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
@@ -510,11 +552,68 @@
 											</div>
 										</div>
 										<div class="col-12">
-											<p class="mb-0 clr-neutral-500">Jalan di tanggal:</p>
+											<div class="property-search__select property-search__col rounded-pill px-6">
+												<select
+													name="rute_pilihan"
+													class="form-select"
+													aria-label="Default select example"
+													bind:value={selectedRoute}
+													required
+												>
+													<option value="" selected="">Pilih Rute Perjalanan</option>
+													<option value="custom">Custom</option>
+													{#each data.route_list as route}
+														<option
+															value="{route.route_id}|{route.vehicle_price[info.spec.model]}|{route
+																.route_information.minimal_days}|{route.title}"
+															>{route.title} - {money.format(
+																route.vehicle_price[info.spec.model]
+															)}/hari</option
+														>
+													{/each}
+												</select>
+											</div>
+										</div>
+										{#if selectedRoute != 'custom' && selectedRoute != ''}
+											<div class="hr-dashed my-4"></div>
+											<div class="d-flex align-items-center justify-content-between mb-4">
+												<p class="mb-0 clr-neutral-500 ps-2 pb-1">Minimal Hari</p>
+												<p class="mb-0 fw-medium">
+													{selectedRoute.split('|')[2]} Hari / {money.format(
+														parseInt(selectedRoute.split('|')[1]) *
+															parseInt(selectedRoute.split('|')[2])
+													)}
+												</p>
+											</div>
+										{/if}
+										{#if selectedRoute == 'custom'}
+											<div class="col-12" title="Tulis Alamat Tujuan">
+												<div class="input-group">
+													<input
+														name="lokasi_tujuan"
+														type="text"
+														class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
+														placeholder="Tulis alamat tujuan"
+													/>
+													<span
+														class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+													>
+														<span class="material-symbols-outlined mat-icon clr-neutral-100">
+															tour
+														</span>
+													</span>
+												</div>
+											</div>
+										{/if}
+										<div class="hr-dashed"></div>
+										<div class="col-12">
+											<p class="mb-0 clr-neutral-500 ps-2 pb-1">Jalan di tanggal:</p>
 											<div class="input-group">
 												<input
+													required
 													name="start_date"
 													bind:value={startDate}
+													min={minStartDate}
 													type="date"
 													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
 													placeholder="Booking dari tanggal"
@@ -529,11 +628,12 @@
 											</div>
 										</div>
 										<div class="col-12">
-											<p class="mb-0 clr-neutral-500">Sampai dengan:</p>
+											<p class="mb-0 clr-neutral-500 ps-2 pb-1">Sampai dengan:</p>
 											<div class="input-group">
 												<input
 													name="end_date"
 													bind:value={endDate}
+													min={endDateMin}
 													type="date"
 													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
 													placeholder="Pickup Date"
@@ -547,37 +647,45 @@
 												</span>
 											</div>
 										</div>
+										<div class="hr-dashed my-4"></div>
 									</div>
 								</div>
 							</div>
-							<div class="d-flex align-items-center justify-content-between mb-4">
-								<p class="mb-0 clr-neutral-500">Base Price (1 hari)</p>
-								<p class="mb-0 fw-medium">{money.format(info.base_price)}</p>
-							</div>
-							<div class="d-flex align-items-center justify-content-between mb-4">
-								<p class="mb-0 clr-neutral-500">Tambahan ({differenceInDays} hari)</p>
-								<p class="mb-0 fw-medium">
-									{differenceInDays > 0
-										? money.format(differenceInDays * info.base_price - info.base_price)
-										: 'Rp. 0'}
-								</p>
-							</div>
-							<div class="d-flex align-items-center justify-content-between mb-4">
-								<p class="mb-0 clr-neutral-500">Pajak 2%</p>
-								<p class="mb-0 fw-medium">
-									{money.format((2 * (differenceInDays * info.base_price)) / 100)}
-								</p>
-							</div>
-							<div class="hr-dashed my-4"></div>
-							<div class="d-flex align-items-center justify-content-between mb-10">
-								<p class="mb-0 clr-neutral-500">Total</p>
-								<p class="mb-0 fw-medium">
-									{money.format(
-										(2 * (differenceInDays * info.base_price)) / 100 +
-											differenceInDays * info.base_price
-									)}
-								</p>
-							</div>
+							{#if selectedRoute == 'custom'}
+								<div class="d-flex align-items-center justify-content-center" style="height: 5vh;">
+									<p>Hubungi admin untuk penawaran</p>
+								</div>
+							{:else}
+								<div class="d-flex align-items-center justify-content-between mb-4">
+									<p class="mb-0 clr-neutral-500">Minimal Hari</p>
+									{#if selectedRoute != 'custom' && selectedRoute != ''}
+										<p class="mb-0 fw-medium">
+											{minimumDays} hari / {money.format(
+												info.base_price * parseInt(selectedRoute.split('|')[2])
+											)}
+										</p>
+									{:else}
+										<p class="mb-0 fw-medium">
+											{minimumDays} hari / {money.format(info.base_price)}
+										</p>
+									{/if}
+								</div>
+								<div class="d-flex align-items-center justify-content-between mb-4">
+									<p class="mb-0 clr-neutral-500">Tambahan Durasi/Hari</p>
+									<p class="mb-0 fw-medium">
+										{differenceInDays > minimumDays
+											? `${differenceInDays - minimumDays} hari / ${money.format((differenceInDays - minimumDays) * info.base_price)}`
+											: '0 hari / Rp. 0'}
+									</p>
+								</div>
+								<div class="hr-dashed my-4"></div>
+								<div class="d-flex align-items-center justify-content-between mb-10">
+									<p class="mb-0 clr-neutral-500">Total</p>
+									<p class="mb-0 fw-medium">
+										{money.format(differenceInDays * info.base_price)}
+									</p>
+								</div>
+							{/if}
 							<button
 								type="submit"
 								class="link d-inline-flex align-items-center gap-2 py-3 px-6 rounded-pill bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-medium w-100 justify-content-center mb-6"

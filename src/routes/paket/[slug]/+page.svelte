@@ -46,9 +46,10 @@
 											aria-label="Default select example"
 										>
 											<option value="" selected="">Paket Umroh</option>
-											<option value="reguler">Reguler</option>
-											<option value="plus">Plus</option>
-											<option value="premium">Premium</option>
+											<option value="reguler">Reguler (⭐️⭐️⭐️)</option>
+											<option value="vip">VIP (⭐️⭐️⭐️⭐️)</option>
+											<option value="vvip">VVIP (⭐️⭐️⭐️⭐️⭐️)</option>
+											<option value="private">Private (custom)</option>
 										</select>
 									</div>
 								</li>
@@ -56,14 +57,12 @@
 							<li>
 								<div class="property-search__select property-search__col rounded-pill px-6">
 									<select
-										name="perlanjutan"
+										name="departure_from"
 										class="form-select"
 										aria-label="Default select example"
 									>
 										<option value="" selected="">Perlanjutan</option>
-										<option value="">Tidak Ada (Hanya Umroh)</option>
-										<option value="mesir">Cairo Mesir</option>
-										<option value="turki">Turki</option>
+										<option value="cgk">CGK, Cengkareng</option>
 									</select>
 								</div>
 							</li>
