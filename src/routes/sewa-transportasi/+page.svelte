@@ -288,7 +288,7 @@
 									<div class="property-card__head">
 										<div class="property-card__img">
 											<img
-												src="{import.meta.env.VITE_S3_PUBLIC_URL_2}/vehicle/{vehicle.images[0]
+												src="{import.meta.env.VITE_S3_PUBLIC_URL}/vehicle/{vehicle.images[0]
 													.picture_id}"
 												alt="vehicle"
 												class="img-fluid w-100"
