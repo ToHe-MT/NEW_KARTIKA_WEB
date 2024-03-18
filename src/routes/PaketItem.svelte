@@ -42,6 +42,17 @@
 		maximumFractionDigits: 0,
 		minimumFractionDigits: 0
 	});
+
+	function getDifferenceInDaysAndNights(start, end) {
+		const startDate = new Date(start);
+		const endDate = new Date(end);
+		endDate.setDate(endDate.getDate() + 1); // Include the end date in the calculation
+		const differenceInMilliseconds = endDate - startDate;
+		const differenceInDays = differenceInMilliseconds / (1000 * 3600 * 24);
+		const differenceInNights = differenceInDays - 1;
+		return `${differenceInDays} hari ${differenceInNights} malam`;
+		return { days: differenceInDays, nights: differenceInNights };
+	}
 </script>
 
 {#each data as item}
@@ -76,7 +87,9 @@
 						<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
 							dark_mode
 						</span>
-						<span class="d-block"> 6 Hari 5 Malam </span>
+						<span class="d-block">
+							{getDifferenceInDaysAndNights(item.departure_date, item.return_date)}
+						</span>
 					</div>
 				</a>
 			</div>

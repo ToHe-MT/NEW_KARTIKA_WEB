@@ -74,14 +74,14 @@
 						<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
 							dark_mode
 						</span>
-						<span class="d-block"> 6 Hari 5 Malam </span>
+						<span class="d-block"> -</span>
 					</div>
 				</a>
 			</div>
 			<div class="property-card__body">
 				<div class="d-flex align-items-center gap-1 mb-4">
 					<span class="material-symbols-outlined mat-icon clr-tertiary-400"> pin_drop </span>
-					<span class="d-inline-block"> Radudongkal, Pemalang </span>
+					<span class="d-inline-block"> DKI Jakarta </span>
 				</div>
 				<div class="d-flex justify-content-between mb-2">
 					<a

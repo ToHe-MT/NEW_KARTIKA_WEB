@@ -1,9 +1,11 @@
 import naryama from '$lib/server/naryama.js';
 import db from '$lib/server/db.js';
 import { error, redirect } from '@sveltejs/kit';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('123456789ABCDEFGHJKLMNPQRSTUWXYZ', 6);
+
 export const ssr = true;
 export const prerender = false;
-import { uuid } from 'uuidv4';
 
 export async function load({ url, params }) {
 	const filter = {
@@ -20,7 +22,7 @@ export async function load({ url, params }) {
 	}
 
 	const filter2 = { [`vehicle_price.${vehicles[0]['spec']['model']}`]: { $exists: true } };
-	const route_list = await db.collection('routes').find(filter2).toArray();
+	const route_list = await naryama.collection('routes').find(filter2).toArray();
 	route_list.forEach((item) => {
 		delete item._id;
 	});
@@ -31,7 +33,7 @@ export async function load({ url, params }) {
 
 export const actions = {
 	default: async ({ request, params }) => {
-		const vehicles = await naryama
+		const vehicles = await db
 			.collection('vehicles')
 			.find({
 				slug: params.slug
@@ -43,28 +45,11 @@ export const actions = {
 		}
 
 		const data = await request.formData();
-		const token = data.get('cf-turnstile-response');
-
-		// const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'content-type': 'application/json'
-		// 	},
-		// 	body: JSON.stringify({
-		// 		response: token,
-		// 		secret: '0x4AAAAAAAUhmrIbS5N885MCP6lsN24n3nY'
-		// 	})
-		// });
-
-		// const cfr = await response.json();
-		// if (!cfr.success) {
-		// 	return error(403, 'Captcha terdeteksi bukan manusia');
-		// }
 
 		await db.collection('order').insertOne({
-			uuid: uuid(),
+			order_id: nanoid(),
 			slug: params.slug,
-			nama: data.get('nama').substring(0, 100),
+			nama_pemesan: data.get('nama').substring(0, 100),
 			lokasi_jemput: data.get('lokasi_jemput').substring(0, 200),
 			whatsapp: data.get('whatsapp').substring(0, 30),
 			start_date: new Date(...data.get('start_date').split('-')),
@@ -74,6 +59,8 @@ export const actions = {
 			rute_pilihan: data.get('rute_pilihan').split('|')[0],
 			lokasi_tujuan: data.get('lokasi_tujuan'),
 			product_type: 'vehicle',
+			product_name: vehicles[0].name,
+			product_id: vehicles[0].vehicle_id,
 			created_at: new Date(),
 			payment_status: 'waiting'
 		});

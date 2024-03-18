@@ -77,6 +77,10 @@
 
 <svelte:head>
 	<title>{info.title} - Paket Umroh Haji Termurah</title>
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+	/>
 </svelte:head>
 
 <!-- Property Gallery  -->
@@ -497,20 +501,6 @@
 							<div class="tab-content mb-8">
 								<div class="tab-pane fade show active" id="booking-list">
 									<div class="row g-3">
-										<div class="col-12">
-											<div class="property-search__select property-search__col rounded-pill px-6">
-												<select
-													name="upgrade_kamar"
-													class="form-select"
-													aria-label="Default select example"
-													bind:value={upgrade_kamar}
-												>
-													<option value="" selected="">Upgrade Kamar (Dari Quad)</option>
-													<option value="triple">Triple - 3 orang 1 kamar</option>
-													<option value="double">Double - 2 orang 1 kamar</option>
-												</select>
-											</div>
-										</div>
 										<div class="col-12" style="display: none !important;">
 											<div class="property-search__select property-search__col rounded-pill px-6">
 												<select
@@ -527,15 +517,14 @@
 										<div class="col-12">
 											<div class="input-group">
 												<input
-													bind:value={jumlah_pax}
-													name="jumlah_pax"
-													min="1"
-													type="number"
-													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
-													placeholder="Jumlah peserta/pax"
+													required
+													name="nama_pemesan"
+													type="text"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-2 px-5"
+													placeholder="Nama Pemesan"
 												/>
 												<span
-													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-2 pe-5 ps-0"
 												>
 													<span class="material-symbols-outlined mat-icon clr-neutral-100">
 														person
@@ -546,18 +535,96 @@
 										<div class="col-12">
 											<div class="input-group">
 												<input
-													name="whatsapp"
+													required
+													name="nik"
 													type="number"
-													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-3 px-5"
-													placeholder="Masukkan nomor whatsapp anda"
+													maxlength="16"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-2 px-5"
+													placeholder="NIK"
 												/>
 												<span
-													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-3 pe-5 ps-0"
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-2 pe-5 ps-0"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														height="24"
+														viewBox="0 -960 960 960"
+														width="24"
+														><path
+															d="M560-440h200v-80H560v80Zm0-120h200v-80H560v80ZM200-320h320v-22q0-45-44-71.5T360-440q-72 0-116 26.5T200-342v22Zm160-160q33 0 56.5-23.5T440-560q0-33-23.5-56.5T360-640q-33 0-56.5 23.5T280-560q0 33 23.5 56.5T360-480ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-480H160v480Zm0 0v-480 480Z"
+														/></svg
+													>
+												</span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="input-group">
+												<input
+													required
+													name="alamat"
+													type="text"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-2 px-5"
+													placeholder="Alamat"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-2 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														home
+													</span>
+												</span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="input-group">
+												<input
+													required
+													name="whatsapp"
+													type="number"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-2 px-5"
+													placeholder="No WhatsApp"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-2 pe-5 ps-0"
 												>
 													<span class="material-symbols-outlined mat-icon clr-neutral-100">
 														chat
 													</span>
 												</span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="input-group">
+												<input
+													required
+													bind:value={jumlah_pax}
+													name="jumlah_pax"
+													min="1"
+													type="number"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-2 px-5"
+													placeholder="Jumlah Pax"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-2 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														group
+													</span>
+												</span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="property-search__select property-search__col rounded-pill px-6">
+												<select
+													name="upgrade_kamar"
+													class="form-select"
+													aria-label="Default select example"
+													bind:value={upgrade_kamar}
+												>
+													<option value="" selected="">Upgrade Kamar (Dari Quad)</option>
+													<option value="triple">Triple - 3 orang 1 kamar</option>
+													<option value="double">Double - 2 orang 1 kamar</option>
+												</select>
 											</div>
 										</div>
 									</div>
@@ -650,6 +717,15 @@
 									{/if}
 								</p>
 							</div>
+							<input
+								type="text"
+								style="display: none;"
+								name="price"
+								value={upgrade_kamar == ''
+									? parseInt(info.base_price) * parseInt(jumlah_pax)
+									: (parseInt(info.base_price) + parseInt(info['hotel_price_' + upgrade_kamar])) *
+										parseInt(jumlah_pax)}
+							/>
 							<button
 								type="submit"
 								class="link d-inline-flex align-items-center gap-2 py-3 px-6 rounded-pill bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-medium w-100 justify-content-center mb-6"

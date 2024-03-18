@@ -1,4 +1,6 @@
 <script>
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	export let data;
 
 	const changePage = (page) => {
@@ -12,6 +14,21 @@
 		currency: 'IDR',
 		maximumFractionDigits: 0,
 		minimumFractionDigits: 0
+	});
+
+	let checkboxes = {
+		'BIGBUS JETBUS': false,
+		'HIACE PREMIO LUXURY': false,
+		'HIACE PREMIO': false,
+		'ELF GIGA LONG': false
+	};
+
+	onMount(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		for (let key in checkboxes) {
+			console.log(urlParams.get(key))
+			checkboxes[key] = urlParams.get(key) === 'on';
+		}
 	});
 </script>
 
@@ -46,7 +63,8 @@
 							<li>
 								<div class="d-flex align-items-center gap-3">
 									<input
-										name="bus"
+										bind:checked={checkboxes['BIGBUS JETBUS']}
+										name="BIGBUS JETBUS"
 										class="custom-checkbox custom-checkbox--rounded flex-shrink-0"
 										type="checkbox"
 										id="bus"
@@ -55,14 +73,15 @@
 										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
 										for="bus"
 									>
-										<span class="d-inline-block"> Bus / Minibus </span>
+										<span class="d-inline-block"> BIGBUS JETBUS </span>
 									</label>
 								</div>
 							</li>
 							<li>
 								<div class="d-flex align-items-center gap-3">
 									<input
-										name="van"
+										bind:checked={checkboxes['HIACE PREMIO LUXURY']}
+										name="HIACE PREMIO LUXURY"
 										class="custom-checkbox custom-checkbox--rounded flex-shrink-0"
 										type="checkbox"
 										id="honda-civic"
@@ -71,14 +90,15 @@
 										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
 										for="honda-civic"
 									>
-										<span class="d-inline-block"> Van/Minivan/ELF </span>
+										<span class="d-inline-block"> HIACE PREMIO LUXURY </span>
 									</label>
 								</div>
 							</li>
 							<li>
 								<div class="d-flex align-items-center gap-3">
 									<input
-										name="suv"
+										bind:checked={checkboxes['ELF GIGA LONG']}
+										name="ELF GIGA LONG"
 										class="custom-checkbox custom-checkbox--rounded flex-shrink-0"
 										type="checkbox"
 										id="ford-mustung"
@@ -87,7 +107,7 @@
 										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
 										for="ford-mustung"
 									>
-										<span class="d-inline-block"> SUV/Mini SUV </span>
+										<span class="d-inline-block"> ELF GIGA LONG </span>
 									</label>
 								</div>
 							</li>

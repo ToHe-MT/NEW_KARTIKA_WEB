@@ -1,5 +1,8 @@
 import db from '$lib/server/db.js';
 import { error, redirect } from '@sveltejs/kit';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('123456789ABCDEFGHJKLMNPQRSTUWXYZ', 6);
+
 export const ssr = true;
 
 export async function load({ url, params }) {
@@ -34,39 +37,42 @@ export const actions = {
 		const info = infos[0];
 
 		const data = await request.formData();
-		const token = data.get('cf-turnstile-response');
 
-		const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json'
-			},
-			body: JSON.stringify({
-				response: token,
-				secret: '0x4AAAAAAAUhmrIbS5N885MCP6lsN24n3nY'
-			})
-		});
-
-		const cfr = await response.json();
-		if (!cfr.success) {
-			return error(403, 'Captcha terdeteksi bukan manusia');
-		}
-
-		await db.collection('order').insertOne({
+		const newOrder = {
+			order_id: nanoid(),
 			slug: params.slug,
+
 			upgrade_kamar: data.get('upgrade_kamar').substring(0, 10),
 			jumlah_pax: data.get('jumlah_pax').substring(0, 5),
 			whatsapp: data.get('whatsapp').substring(0, 30),
+			nama_pemesan: data.get('nama_pemesan').substring(0, 100),
+			nik_pemesan: data.get('nik').substring(0, 16),
+			alamat_pemesan: data.get('alamat').substring(0, 355),
+
 			created_at: new Date(),
 			ip_address: request.headers.get('cf-connecting-ip'),
 			product_type: info['type'],
 			product_name: info['title'],
-			product_id: info['uuid']
-		});
+			product_id: info['uuid'],
+			suggested_price: parseInt(info['price']),
+			final_price: 0,
+			payment_status: 'pending'
+		};
+		await db.collection('order').insertOne(newOrder);
 
-		redirect(
-			302,
-			`https://wa.me/62812100591?text=Halo%20saya%20ingin%20mendaftar%20paket%20${info['title']}%0adengan%20upgrade%20kamar%20${data.get('upgrade_kamar').substring(0, 10)}%0adengan%20jumlah%20pax%20${data.get('jumlah_pax').substring(0, 5)}%0adengan%20whatsapp%20${data.get('whatsapp').substring(0, 30)}`
-		);
+		const text = `
+*Pemesanan Baru*
+
+*ID*: ${newOrder.order_id}
+*Paket*: ${info['title']}
+*Upgrade Kamar*: ${newOrder.upgrade_kamar}
+*Jumlah Pax*: ${newOrder.jumlah_pax}
+
+*Nama*: ${newOrder.nama_pemesan}
+*NIK*: ${newOrder.nik_pemesan}
+*Alamat*: ${newOrder.alamat_pemesan}
+*Whatsapp*: ${newOrder.whatsapp}`;
+
+		redirect(302, `https://wa.me/62812100591?text=${encodeURI(text)}`);
 	}
 };

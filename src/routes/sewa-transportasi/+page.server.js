@@ -1,7 +1,5 @@
-import naryama from '$lib/server/naryama.js';
+import db from '$lib/server/db.js';
 import { error } from '@sveltejs/kit';
-
-var db = naryama;
 
 export async function load({ url, params }) {
 	const filter = {};
@@ -41,16 +39,21 @@ export async function load({ url, params }) {
 	}
 
 	var kategori_transportasi = [];
-	if (query.get('bus') == 'on') {
-		kategori_transportasi.push('bus');
+	
+	if (query.get('BIGBUS JETBUS') == 'on') {
+		kategori_transportasi.push('BIGBUS JETBUS');
 	}
-	if (query.get('van') == 'on') {
-		kategori_transportasi.push('van');
+	if (query.get('HIACE PREMIO LUXURY') == 'on') {
+		kategori_transportasi.push('HIACE PREMIO LUXURY');
 	}
-	if (query.get('suv') == 'on') {
-		kategori_transportasi.push('suv');
+	if (query.get('HIACE PREMIO') == 'on') {
+		kategori_transportasi.push('HIACE PREMIO');
 	}
-	if (kategori_transportasi.length) {
+	if (query.get('ELF GIGA LONG') == 'on') {
+		kategori_transportasi.push('ELF GIGA LONG');
+	}
+	
+	if (kategori_transportasi.length > 0) {
 		filter.jenis_kendaraan = { $in: kategori_transportasi };
 	}
 
