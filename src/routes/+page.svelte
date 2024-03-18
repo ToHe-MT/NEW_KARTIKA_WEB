@@ -59,9 +59,11 @@
 									class="form-select"
 									aria-label="Default select example"
 								>
-									<option value="1" selected>Umroh</option>
-									<option value="2">Haji</option>
-									<option value="3">Sewa Armada</option>
+									<option selected value="">Jenis Produk</option>
+									<option value="umroh">UMROH</option>
+									<option value="umroh plus" selected>UMROH PLUS</option>
+									<option value="haji plus/furoda">HAJI PLUS/FURODA</option>
+									<option value="sewa armada">SEWA ARMADA</option>
 								</select>
 							</div>
 							{#if jenis_produk == '3'}
@@ -121,10 +123,10 @@
 										aria-label="Default select example"
 									>
 										<option selected>Paket</option>
-										<option value="reguler">Reguler (⭐️⭐️⭐️)</option>
+										<option value="reguler">REGULER (⭐️⭐️⭐️)</option>
 										<option value="vip">VIP (⭐️⭐️⭐️⭐️)</option>
 										<option value="vvip">VVIP (⭐️⭐️⭐️⭐️⭐️)</option>
-										<option value="private">Private (custom)</option>
+										<option value="private">PRIVATE (CUSTOM)</option>
 									</select>
 								</div>
 							{/if}
