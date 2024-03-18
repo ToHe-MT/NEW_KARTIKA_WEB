@@ -8,11 +8,12 @@
 	export let data;
 
 	let form_action = {
-		'1': '/paket/umroh',
-		'2': '/paket/haji',
-		'3': '/sewa-transportasi'
+		'umroh': '/paket/umroh',
+		'umroh plus': '/paket/umroh-plus',
+		'haji': '/paket/haji',
+		'sewa armada': '/sewa-transportasi'
 	};
-	let jenis_produk = '1';
+	let jenis_produk = 'umroh';
 
 	let selectedVehicle = '';
 	let isBigBusJetbusSelected = false;
@@ -62,11 +63,11 @@
 									<option selected value="">Jenis Produk</option>
 									<option value="umroh">UMROH</option>
 									<option value="umroh plus" selected>UMROH PLUS</option>
-									<option value="haji plus/furoda">HAJI PLUS/FURODA</option>
+									<option value="haji">HAJI PLUS/FURODA</option>
 									<option value="sewa armada">SEWA ARMADA</option>
 								</select>
 							</div>
-							{#if jenis_produk == '3'}
+							{#if jenis_produk == 'sewa armada'}
 								<div
 									class="property-search__select property-search__col rounded-pill d-flex align-items-center gap-2 px-6"
 								>
@@ -122,7 +123,7 @@
 										class="form-select"
 										aria-label="Default select example"
 									>
-										<option selected>Paket</option>
+										<option selected value="">Paket</option>
 										<option value="reguler">REGULER (⭐️⭐️⭐️)</option>
 										<option value="vip">VIP (⭐️⭐️⭐️⭐️)</option>
 										<option value="vvip">VVIP (⭐️⭐️⭐️⭐️⭐️)</option>

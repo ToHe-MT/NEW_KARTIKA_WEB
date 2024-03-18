@@ -2,7 +2,7 @@ import db from '$lib/server/db.js';
 import { error } from '@sveltejs/kit';
 
 export async function load({ url, params }) {
-	if (['umroh', 'haji'].includes(params.slug) === false) {
+	if (['umroh', 'umroh-plus', 'haji'].includes(params.slug) === false) {
 		return error(404, {
 			message: 'Paket tidak ditemukan.'
 		});
