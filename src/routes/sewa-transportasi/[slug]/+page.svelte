@@ -562,6 +562,9 @@
 												>
 													<option value="" selected="">Pilih Rute Perjalanan</option>
 													<option value="custom">Custom</option>
+													<option value="BALI">BALI (⭐️⭐️⭐️)</option>
+													<option value="JOGJA">JOGJA (⭐️⭐️⭐️)</option>
+													<option value="BANDUNG">BANDUNG (⭐️⭐️⭐️)</option>
 													{#each data.route_list as route}
 														<option
 															value="{route.route_id}|{route.vehicle_price[info.spec.model]}|{route
@@ -574,7 +577,7 @@
 												</select>
 											</div>
 										</div>
-										{#if selectedRoute != 'custom' && selectedRoute != ''}
+										{#if selectedRoute != 'custom' && selectedRoute != 'BALI' && selectedRoute != 'JOGJA' && selectedRoute != 'BANDUNG' && selectedRoute != ''}
 											<div class="hr-dashed my-4"></div>
 											<div class="d-flex align-items-center justify-content-between mb-4">
 												<p class="mb-0 clr-neutral-500 ps-2 pb-1">Minimal Hari</p>
@@ -651,7 +654,7 @@
 									</div>
 								</div>
 							</div>
-							{#if selectedRoute == 'custom'}
+							{#if selectedRoute == 'custom' || selectedRoute == 'BALI' || selectedRoute == 'JOGJA' || selectedRoute == 'BANDUNG'}
 								<div class="d-flex align-items-center justify-content-center" style="height: 5vh;">
 									<p>Hubungi admin untuk penawaran</p>
 								</div>
