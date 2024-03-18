@@ -81,10 +81,10 @@
 				</a>
 			</div>
 			<div class="property-card__body">
-				<div class="d-flex align-items-center gap-1 mb-4">
+				<!-- <div class="d-flex align-items-center gap-1 mb-4">
 					<span class="material-symbols-outlined mat-icon clr-tertiary-400"> flight_takeoff </span>
 					<span class="d-inline-block"> {item.departure_from} </span>
-				</div>
+				</div> -->
 				<div class="d-flex justify-content-between mb-2">
 					<a
 						href="/paket/{item.jenis_paket}/{item.slug}"
