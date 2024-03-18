@@ -288,7 +288,10 @@
 									<a href="/paket/umroh" class="link menu-sub-link"> Paket Umroh </a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="/paket/haji" class="link menu-sub-link"> Paket Haji </a>
+									<a href="/paket/umroh-plus" class="link menu-sub-link"> Paket Umroh Plus</a>
+								</li>
+								<li class="menu-sub-list">
+									<a href="/paket/haji" class="link menu-sub-link"> Paket Haji Plus/Furoda</a>
 								</li>
 							</ul>
 						</li>
