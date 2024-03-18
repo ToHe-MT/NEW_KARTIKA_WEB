@@ -37,7 +37,7 @@
 						<div class="hr-dashed my-6 opacity-50"></div>
 						<!-- <p class="mb-4 clr-neutral-700 fs-20 fw-medium">Select Types</p> -->
 						<ul class="list gap-4">
-							{#if data.slug == 'umroh'}
+							{#if data.slug == 'umroh' || data.slug == 'umroh-plus'}
 								<li>
 									<div class="property-search__select property-search__col rounded-pill px-6">
 										<select
