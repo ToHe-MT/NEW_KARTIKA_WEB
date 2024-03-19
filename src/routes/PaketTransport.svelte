@@ -3,7 +3,7 @@
 
 	export let data;
 </script>
-
+	
 <!-- Featured Property  -->
 <section class="section-space featured-property-section">
 	<img

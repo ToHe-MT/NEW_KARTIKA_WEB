@@ -72,7 +72,26 @@
 
 	let upgrade_kamar = '';
 
-	let jumlah_pax = '';
+	let jumlah_pax_quad = '';
+	let jumlah_pax_triple = '';
+	let jumlah_pax_double = '';
+
+	// Function to safely parse an integer
+	function safeParseInt(value) {
+		// Try parsing the value into an integer
+		const parsedValue = parseInt(value);
+
+		// Check if parsing was successful and the result is a number
+		if (!isNaN(parsedValue)) {
+			return parsedValue; // Return the parsed integer
+		} else {
+			return 0; // Return 0 or any default value if parsing failed
+		}
+	}
+	$: jumlah_pax =
+		safeParseInt(jumlah_pax_double) +
+			safeParseInt(jumlah_pax_triple) +
+			safeParseInt(jumlah_pax_quad) || '';
 </script>
 
 <svelte:head>
@@ -594,11 +613,14 @@
 											</div>
 										</div>
 										<div class="col-12">
+											<div class="px-2">
+												Quad - default
+											</div>
 											<div class="input-group">
 												<input
 													required
-													bind:value={jumlah_pax}
-													name="jumlah_pax"
+													bind:value={jumlah_pax_quad}
+													name="jumlah_pax_quad"
 													min="1"
 													type="number"
 													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-2 px-5"
@@ -614,6 +636,52 @@
 											</div>
 										</div>
 										<div class="col-12">
+											<div class="px-2">
+												Triple  <span class="text-body-tertiary fs-6">(+{money.format(parseInt(info.hotel_price_triple))}/pax)</span>
+											</div>
+											<div class="input-group">
+												<input
+													required
+													bind:value={jumlah_pax_triple}
+													name="jumlah_pax_triple"
+													min="1"
+													type="number"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-2 px-5"
+													placeholder="Jumlah Pax"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-2 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														group
+													</span>
+												</span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="px-2">
+												Double  <span class="text-body-tertiary fs-6">(+{money.format(parseInt(info.hotel_price_double))}/pax)</span>
+											</div>
+											<div class="input-group">
+												<input
+													required
+													bind:value={jumlah_pax_double}
+													name="jumlah_pax_double"
+													min="1"
+													type="number"
+													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded-pill rounded-end-0 py-2 px-5"
+													placeholder="Jumlah Pax"
+												/>
+												<span
+													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-2 pe-5 ps-0"
+												>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														group
+													</span>
+												</span>
+											</div>
+										</div>
+										<!-- <div class="col-12">
 											<div class="property-search__select property-search__col rounded-pill px-6">
 												<select
 													name="upgrade_kamar"
@@ -626,7 +694,7 @@
 													<option value="double">Double - 2 orang 1 kamar</option>
 												</select>
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</div>
 								<div class="tab-pane fade" id="enquiry-list">
@@ -683,34 +751,53 @@
 								</div>
 							</div>
 							<div class="d-flex align-items-center justify-content-between mb-4">
-								<p class="mb-0 clr-neutral-500">Base Price</p>
-								<p class="mb-0 fw-medium">{money.format(info.base_price)}</p>
-							</div>
-							<div class="d-flex align-items-center justify-content-between mb-4">
-								<p class="mb-0 clr-neutral-500">Upgrade Kamar</p>
-								<p class="mb-0 fw-medium">
-									{upgrade_kamar == ''
-										? 'Rp. 0'
-										: money.format(info['hotel_price_' + upgrade_kamar])}
-								</p>
-							</div>
-							<div class="d-flex align-items-center justify-content-between mb-4">
 								<p class="mb-0 clr-neutral-500">Total Pax</p>
 								<p class="mb-0 fw-medium">
 									{jumlah_pax}
 								</p>
 							</div>
+							<div class="d-flex align-items-center justify-content-between mb-4">
+								<p class="mb-0 clr-neutral-500">Base Price</p>
+								<p class="mb-0 fw-medium">{money.format(info.base_price)}</p>
+							</div>
+							<div class="d-flex align-items-center justify-content-between mb-4">
+								<p class="mb-0 clr-neutral-500 fw-semibold">Total Base Price</p>
+								<p class="mb-0 fw-bold">{money.format(info.base_price * jumlah_pax)}</p>
+							</div>
+
+							{#if jumlah_pax_double || jumlah_pax_triple}
+								<div class="hr-dashed my-4"></div>
+							{/if}
+							{#if jumlah_pax_triple}
+								<div class="d-flex align-items-center justify-content-between mb-4">
+									<p class="mb-0 clr-neutral-500">Triple - {jumlah_pax_triple} pax</p>
+									<p class="mb-0 fw-medium">
+										{money.format(jumlah_pax_triple * info.hotel_price_triple)}
+									</p>
+								</div>
+							{/if}
+							{#if jumlah_pax_double}
+								<div class="d-flex align-items-center justify-content-between mb-4">
+									<p class="mb-0 clr-neutral-500">Double - {jumlah_pax_double} pax</p>
+									<p class="mb-0 fw-medium">
+											{money.format(jumlah_pax_double * info.hotel_price_double)}									</p>
+								</div>
+							{/if}
+							{#if jumlah_pax_double || jumlah_pax_triple}
+								<div class="d-flex align-items-center justify-content-between mb-4">
+									<p class="mb-0 clr-neutral-500 fw-semibold fs-6">Total Upgrade Kamar</p>
+									<p class="mb-0 fw-semibold">
+										{money.format((jumlah_pax_triple * info.hotel_price_triple)+(jumlah_pax_double * info.hotel_price_double))}
+									</p>
+								</div>
+							{/if}
 							<div class="hr-dashed my-4"></div>
 							<div class="d-flex align-items-center justify-content-between mb-10">
-								<p class="mb-0 clr-neutral-500">Total</p>
-								<p class="mb-0 fw-medium">
+								<p class="mb-0 clr-neutral-500 fw-bold">Total</p>
+								<p class="mb-0 fw-bold">
 									{#if jumlah_pax > 0}
 										{money.format(
-											upgrade_kamar == ''
-												? parseInt(info.base_price) * parseInt(jumlah_pax)
-												: (parseInt(info.base_price) +
-														parseInt(info['hotel_price_' + upgrade_kamar])) *
-														parseInt(jumlah_pax)
+											((jumlah_pax_triple * info.hotel_price_triple)+(jumlah_pax_double * info.hotel_price_double))+(info.base_price * jumlah_pax)
 										)}
 									{:else}
 										<i>tuliskan jumlah pax</i>
