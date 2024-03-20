@@ -9,6 +9,7 @@ export async function load({ url, params }) {
 	const filter = {
 		slug: params.slug
 	};
+	console.log("FIRST" , params.slug);
 	var limit = 1;
 	const umroh = await db.collection('schedule').find(filter).limit(limit).toArray();
 	umroh.forEach((umroh) => {
@@ -18,7 +19,7 @@ export async function load({ url, params }) {
 	if (umroh.length === 0) {
 		return error(404, 'Not found');
 	}
-
+	console.log(umroh[0]);
 	return { umroh: umroh[0], slug: params.slug };
 }
 
@@ -43,7 +44,9 @@ export const actions = {
 			slug: params.slug,
 
 			upgrade_kamar: data.get('upgrade_kamar').substring(0, 10),
-			jumlah_pax: data.get('jumlah_pax').substring(0, 5),
+			jumlah_pax_quad: data.get('jumlah_pax_quad').substring(0, 5),
+			jumlah_pax_triple: data.get('jumlah_pax_triple').substring(0, 5),
+			jumlah_pax_double: data.get('jumlah_pax_double').substring(0, 5),
 			whatsapp: data.get('whatsapp').substring(0, 30),
 			nama_pemesan: data.get('nama_pemesan').substring(0, 100),
 			nik_pemesan: data.get('nik').substring(0, 16),
@@ -65,8 +68,9 @@ export const actions = {
 
 *ID*: ${newOrder.order_id}
 *Paket*: ${info['title']}
-*Upgrade Kamar*: ${newOrder.upgrade_kamar}
-*Jumlah Pax*: ${newOrder.jumlah_pax}
+*Pax Quad Room*: ${newOrder.jumlah_pax_quad}
+*Pax Double Room*: ${newOrder.jumlah_pax_double}
+*Pax Triple Room*: ${newOrder.jumlah_pax_triple}
 
 *Nama*: ${newOrder.nama_pemesan}
 *NIK*: ${newOrder.nik_pemesan}

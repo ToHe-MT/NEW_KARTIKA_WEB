@@ -50,12 +50,12 @@
 					<div class="swiper-wrapper">
 						{#each item.images as image}
 							<div class="swiper-slide">
-								<div class="property-card__img">
+								<div class="property-card__img d-flex justify-content-center">
 									<img
 										src="{import.meta.env.VITE_S3_PUBLIC_URL}/vehicle/{image.picture_id}"
 										alt="foto hotel"
-										class="img-fluid w-100"
-										style="height: 280px !important;"
+										class="img-fluid w-auto h-auto"
+										
 									/>
 								</div>
 							</div>
