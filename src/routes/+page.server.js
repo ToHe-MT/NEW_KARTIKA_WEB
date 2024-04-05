@@ -23,5 +23,11 @@ export const load = async ({ url }) => {
 		delete vehicle._id;
 	});
 
-	return { umroh, vehicle };
+	const paketWisata = await db
+    .collection('paket-wisata-kartika')
+    .find({ status: "active" }, { projection: { slug:1, duration: 1, base_price: 1, title: 1, _id: 0, "images": { $elemMatch: { primary: true } } } })
+    .toArray();
+
+
+	return { umroh, vehicle, paketWisata };
 };

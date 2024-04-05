@@ -7,6 +7,9 @@
 		urlParams.set('page', page);
 		goto(`?${urlParams.toString()}`);
 	};
+
+	let minPrice = 10;
+	let maxPrice = 100;
 </script>
 
 <svelte:head>
@@ -61,7 +64,7 @@
 										class="form-select"
 										aria-label="Default select example"
 									>
-										<option value="" selected="">Perlanjutan</option>
+										<option value="" selected="">Departure From</option>
 										<option value="cgk">CGK, Cengkareng</option>
 									</select>
 								</div>
@@ -70,7 +73,7 @@
 						<div class="hr-dashed my-6 opacity-50"></div>
 						<p class="mb-4 clr-neutral-700 fs-20 fw-medium">Range Harga Dasar</p>
 						<div class="range-slider">
-							<div class="range-slider__progress" style="left: 20%;"></div>
+							<div class="range-slider__progress" style="left: {minPrice}%; right: {100-maxPrice}%;"></div>
 							<span class="range-min-wrapper">
 								<input
 									name="price_start"
@@ -78,7 +81,7 @@
 									type="range"
 									min="0"
 									max="100"
-									value="20"
+									bind:value={minPrice}
 								/>
 							</span>
 							<span class="range-max-wrapper">
@@ -88,17 +91,17 @@
 									type="range"
 									min="0"
 									max="100"
-									value="100"
+									bind:value={maxPrice}
 								/>
 							</span>
 						</div>
 						<div class="d-flex align-items-center justify-content-center gap-2 mt-3">
 							<div class="min-value range-slider__value">
-								Rp <input type="number" min="0" max="100" value="20" disabled />jt
+								Rp <input type="number" min="0" max="100" bind:value={minPrice} disabled />jt
 							</div>
 							<span>-</span>
 							<div class="max-value range-slider__value">
-								Rp <input type="number" min="0" max="100" value="100" disabled />jt
+								Rp <input type="number" min="0" max="100" bind:value={maxPrice} disabled />jt
 							</div>
 						</div>
 						<div class="hr-dashed my-6 opacity-50"></div>

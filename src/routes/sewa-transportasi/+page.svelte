@@ -1,8 +1,8 @@
 <script>
-	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 	export let data;
+	import { goto } from '$app/navigation';
 
+	console.log(data);
 	const changePage = (page) => {
 		const urlParams = new URLSearchParams(window.location.search);
 		urlParams.set('page', page);
@@ -15,21 +15,15 @@
 		maximumFractionDigits: 0,
 		minimumFractionDigits: 0
 	});
+	let valueHargaMin = 0;
+	let valueHargaMax = 5;
+	let valueSeatMin = 0;
+	let valueSeatMax = 100;
 
-	let checkboxes = {
-		'BIGBUS JETBUS': false,
-		'HIACE PREMIO LUXURY': false,
-		'HIACE PREMIO': false,
-		'ELF GIGA LONG': false
-	};
-
-	onMount(() => {
-		const urlParams = new URLSearchParams(window.location.search);
-		for (let key in checkboxes) {
-			console.log(urlParams.get(key))
-			checkboxes[key] = urlParams.get(key) === 'on';
-		}
-	});
+	function handleUrutkan(e) {
+		const submitButton = document.getElementById('submitButton');
+    	submitButton.click();
+  }
 </script>
 
 <svelte:head>
@@ -63,51 +57,48 @@
 							<li>
 								<div class="d-flex align-items-center gap-3">
 									<input
-										bind:checked={checkboxes['BIGBUS JETBUS']}
 										name="BIGBUS JETBUS"
 										class="custom-checkbox custom-checkbox--rounded flex-shrink-0"
 										type="checkbox"
-										id="bus"
+										id="BIGBUS JETBUS"
 									/>
 									<label
 										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
-										for="bus"
+										for="BIGBUS JETBUS"
 									>
-										<span class="d-inline-block"> BIGBUS JETBUS </span>
+										<span class="d-inline-block"> Bigbus Jetbus </span>
 									</label>
 								</div>
 							</li>
 							<li>
 								<div class="d-flex align-items-center gap-3">
 									<input
-										bind:checked={checkboxes['HIACE PREMIO LUXURY']}
 										name="HIACE PREMIO LUXURY"
 										class="custom-checkbox custom-checkbox--rounded flex-shrink-0"
 										type="checkbox"
-										id="honda-civic"
+										id="HIACE PREMIO LUXURY"
 									/>
 									<label
 										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
-										for="honda-civic"
+										for="HIACE PREMIO LUXURY"
 									>
-										<span class="d-inline-block"> HIACE PREMIO LUXURY </span>
+										<span class="d-inline-block"> Hiace Premio Luxury </span>
 									</label>
 								</div>
 							</li>
 							<li>
 								<div class="d-flex align-items-center gap-3">
 									<input
-										bind:checked={checkboxes['ELF GIGA LONG']}
 										name="ELF GIGA LONG"
 										class="custom-checkbox custom-checkbox--rounded flex-shrink-0"
 										type="checkbox"
-										id="ford-mustung"
+										id="ELF GIGA LONG"
 									/>
 									<label
 										class="clr-neutral-500 flex-grow-1 d-flex align-items-center justify-content-between"
-										for="ford-mustung"
+										for="ELF GIGA LONG"
 									>
-										<span class="d-inline-block"> ELF GIGA LONG </span>
+										<span class="d-inline-block"> Elf Giga Long </span>
 									</label>
 								</div>
 							</li>
@@ -183,7 +174,11 @@
 						<div class="hr-dashed my-6 opacity-50"></div>
 						<p class="mb-4 clr-neutral-700 fs-20 fw-medium">Range Harga Harian</p>
 						<div class="range-slider">
-							<div class="range-slider__progress" style="left: 0%;"></div>
+							<div
+								class="range-slider__progress"
+								style="left: {`${valueHargaMin * 20}%`}; right: {`${100 - valueHargaMax * 20}%`}"
+							></div>
+
 							<span class="range-min-wrapper">
 								<input
 									name="price_start"
@@ -191,7 +186,7 @@
 									type="range"
 									min="0"
 									max="5"
-									value="0"
+									bind:value={valueHargaMin}
 								/>
 							</span>
 							<span class="range-max-wrapper">
@@ -201,23 +196,26 @@
 									type="range"
 									min="0"
 									max="5"
-									value="5"
+									bind:value={valueHargaMax}
 								/>
 							</span>
 						</div>
 						<div class="d-flex align-items-center justify-content-center gap-2 mt-3">
 							<div class="min-value range-slider__value">
-								Rp. <input type="number" min="0" max="5" value="0" disabled />
+								Rp. <input type="number" min="0" max="5" bind:value={valueHargaMin} disabled />
 							</div>
 							<span>-</span>
 							<div class="max-value range-slider__value">
-								Rp. <input type="number" min="0" max="5" value="5" disabled /> jt
+								Rp. <input type="number" min="0" max="5" bind:value={valueHargaMax} disabled /> jt
 							</div>
 						</div>
 						<div class="hr-dashed my-6 opacity-50"></div>
 						<p class="mb-4 clr-neutral-700 fs-20 fw-medium">Jumlah Kursi</p>
 						<div class="range-slider">
-							<div class="range-slider__progress" style="left: 10%;"></div>
+							<div
+								class="range-slider__progress"
+								style="left: {`${valueSeatMin}%`}; right: {`${100 - valueSeatMax}%`} "
+							></div>
 							<span class="range-min-wrapper">
 								<input
 									name="seat_min"
@@ -225,7 +223,7 @@
 									type="range"
 									min="0"
 									max="100"
-									value="10"
+									bind:value={valueSeatMin}
 								/>
 							</span>
 							<span class="range-max-wrapper">
@@ -235,21 +233,22 @@
 									type="range"
 									min="0"
 									max="100"
-									value="100"
+									bind:value={valueSeatMax}
 								/>
 							</span>
 						</div>
 						<div class="d-flex align-items-center justify-content-center gap-2 mt-3">
 							<div class="min-value range-slider__value">
-								<input type="number" min="0" max="100" value="25" disabled />
+								<input type="number" min="0" max="100" bind:value={valueSeatMin} disabled />
 							</div>
 							<span>-</span>
 							<div class="max-value range-slider__value">
-								<input type="number" min="0" max="100" value="100" disabled />
+								<input type="number" min="0" max="100" bind:value={valueSeatMax} disabled />
 							</div>
 						</div>
 						<div class="hr-dashed my-6 opacity-50"></div>
 						<button
+							id="submitButton"
 							type="submit"
 							class="btn btn-outline-primary py-3 px-6 rounded-pill d-inline-flex align-items-center justify-content-center gap-2 fw-semibold w-100 text-center"
 						>
@@ -261,24 +260,40 @@
 					<div class="row g-4">
 						<div class="col-12">
 							<div class="bg-neutral-0 rounded-2 py-3 px-6 box-shadow">
-								<ul class="list list-row align-items-center flex-wrap gap-3">
-									<li class="d-none d-xl-block">
-										<p class="mb-0 clr-neutral-500">
-											Menampilkan {data.vehicles.length} dari {data.total} kendaraan
-										</p>
-									</li>
-									<li class="flex-grow-1"></li>
-									<li class="d-none d-lg-flex align-items-center">
-										<p class="mb-0 clr-neutral-500 flex-grow-1">Urutkan Berdasar :</p>
-										<select class="form-select py-0 border-0 w-auto" name="sort_by">
-											<option value="terbaru" selected>Listing Terbaru</option>
-											<option value="kursi_terbanyak">Kursi Paling Banyak</option>
-											<option value="kursi_tersedikit">Kursi Paling Sedikit</option>
-											<option value="termurah">Termurah</option>
-											<option value="termahal">Termahal</option>
-										</select>
-									</li>
-								</ul>
+								{#if data.vehicles.length}
+									<ul class="list list-row align-items-center flex-wrap gap-3">
+										<!-- content here -->
+										<li class="d-block d-lg-block">
+											<p class="mb-0 clr-neutral-500">
+												Menampilkan {data.vehicles.length} dari {data.total} kendaraan
+											</p>
+										</li>
+										<li class="flex-grow-1"></li>
+										<li class="d-none d-lg-flex align-items-center">
+											<p class="mb-0 clr-neutral-500 flex-grow-1">Urutkan Berdasar :</p>
+											<select
+												class="form-select py-0 border-0 w-auto"
+												name="sort_by"
+												on:change={handleUrutkan}
+											>
+												<option value="terbaru" selected>Listing Terbaru</option>
+												<option value="kursi_terbanyak">Kursi Paling Banyak</option>
+												<option value="kursi_tersedikit">Kursi Paling Sedikit</option>
+												<option value="termurah">Termurah</option>
+												<option value="termahal">Termahal</option>
+											</select>
+										</li>
+									</ul>
+								{:else}
+									<ul class="list list-row align-items-center flex-wrap gap-3">
+										<!-- content here -->
+										<li class="d-none d-xl-block">
+											<p class="mb-0 clr-neutral-500">
+												Kendaraan dengan Spek Tersebut Tidak Tersedia
+											</p>
+										</li>
+									</ul>
+								{/if}
 							</div>
 						</div>
 
@@ -287,12 +302,14 @@
 								<div class="property-card property-card--row property-card--row-sm">
 									<div class="property-card__head">
 										<div class="property-card__img">
-											<img
-												src="{import.meta.env.VITE_S3_PUBLIC_URL}/vehicle/{vehicle.images[0]
-													.picture_id}"
-												alt="vehicle"
-												class="img-fluid w-100"
-											/>
+											{#if vehicle.images.length > 0}
+												<img
+													src="{import.meta.env.VITE_S3_PUBLIC_URL}/vehicle/{vehicle.images[0]
+														.picture_id}"
+													alt="vehicle"
+													class="img-fluid w-100"
+												/>
+											{/if}
 										</div>
 									</div>
 									<div class="property-card__content overflow-hidden">
