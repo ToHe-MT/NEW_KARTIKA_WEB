@@ -1,4 +1,5 @@
 <script>
+	import '../app.css';
 	const openMap = () => {};
 </script>
 
@@ -297,6 +298,9 @@
 						</li>
 						<li class="menu-item">
 							<a href="/sewa-transportasi" class="link menu-link"> Sewa Transportasi </a>
+						</li>
+						<li class="menu-item">
+							<a href="/paket-wisata" class="link menu-link"> Paket Wisata </a>
 						</li>
 						<li class="menu-item">
 							<a href="https://blog.kartikamas.com" class="link menu-link"> Blog </a>

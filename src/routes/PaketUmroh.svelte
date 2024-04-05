@@ -3,6 +3,15 @@
 	import PaketItem from './PaketItem.svelte';
 
 	export let data;
+	let filteredData = data
+	console.log(data);
+	function filterData(model){
+		if(model === ""){
+			filteredData=data
+		} else {
+			filteredData = data.filter(item => item.level_paket === model);
+		}
+	}
 </script>
 
 <!-- Featured Property  -->
@@ -48,44 +57,39 @@
 				<div class="d-flex justify-content-md-between align-items-center flex-wrap gap-5 mb-10">
 					<div class="list-group flex-row flex-wrap gap-5">
 						<a
-							href="/#paketumroh"
-							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill {$page.url.searchParams.get(
-								'level_paket'
-							)
-								? ''
-								: 'active'}"
+							href="#"
+							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill active"
+							data-bs-toggle="list"
+							on:click={()=>filterData("")}
 						>
 							Semua Paket
 						</a>
+						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							href="/?level_paket=reguler#paketumroh"
-							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill {$page.url.searchParams.get(
-								'level_paket'
-							) == 'reguler'
-								? 'active'
-								: ''}"
+							href=""
+							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
+							data-bs-toggle="list"
+							on:click={()=>filterData("reguler")}
 						>
 							Reguler
 						</a>
+						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							href="/?level_paket=plus#paketumroh"
-							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill {$page.url.searchParams.get(
-								'level_paket'
-							) == 'plus'
-								? 'active'
-								: ''}"
+							href=""
+							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
+							data-bs-toggle="list"
+							on:click={()=>filterData("vip")}
 						>
-							Plus
+							VIP
 						</a>
+						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							href="/?level_paket=premium#paketumroh"
-							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill {$page.url.searchParams.get(
-								'level_paket'
-							) == 'premium'
-								? 'active'
-								: ''}"
+							href=""
+							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
+							data-bs-toggle="list"
+							on:click={()=>filterData("vvip")}
 						>
-							Premium
+							VVIP
 						</a>
 					</div>
 					<a
@@ -100,7 +104,7 @@
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="new-york">
 						<div class="row g-4">
-							<PaketItem {data} />
+							<PaketItem data={filteredData} />
 						</div>
 					</div>
 				</div>

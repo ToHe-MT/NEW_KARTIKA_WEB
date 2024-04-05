@@ -38,8 +38,10 @@
 		NETFLIX: 'movie',
 		YOUTUBE: 'movie',
 		KULKAS: 'kitchen',
-		'USB CHARGER': 'cable'
+		'USB CHARGER': 'cable',
+		"Karaoke":"mic"
 	};
+	console.log(data);
 </script>
 
 {#each data as item}

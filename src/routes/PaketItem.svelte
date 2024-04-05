@@ -51,7 +51,7 @@
 		const differenceInDays = differenceInMilliseconds / (1000 * 3600 * 24);
 		const differenceInNights = differenceInDays - 1;
 		return `${differenceInDays} hari ${differenceInNights} malam`;
-		return { days: differenceInDays, nights: differenceInNights };
+		// return { days: differenceInDays, nights: differenceInNights };
 	}
 </script>
 

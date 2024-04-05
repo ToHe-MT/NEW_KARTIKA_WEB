@@ -2,6 +2,14 @@
 	import TransportItem from './TransportItem.svelte';
 
 	export let data;
+	let filteredData = data
+	function filterData(model){
+		if(model === ""){
+			filteredData=data
+		} else {
+			filteredData = data.filter(item => item.model === model);
+		}
+	}
 </script>
 	
 <!-- Featured Property  -->
@@ -46,31 +54,39 @@
 			<div class="col-12">
 				<div class="d-flex justify-content-md-between align-items-center flex-wrap gap-5 mb-10">
 					<div class="list-group flex-row flex-wrap gap-5">
+						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							href="#new-york"
+							href="#"
 							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill active"
 							data-bs-toggle="list"
+							on:click={()=>filterData("")}
 						>
 							Semua Jenis
 						</a>
+						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							href="/?umroh_type=regular"
+							href=""
 							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
 							data-bs-toggle="list"
+							on:click={()=>filterData("ELF GIGA LONG")}
 						>
-							SUV
+							Elf
 						</a>
+						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							href="/?umroh_type=regular_plus"
+							href=""
 							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
 							data-bs-toggle="list"
+							on:click={()=>filterData("HIACE PREMIO LUXURY")}
 						>
 							Minivan
 						</a>
+						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							href="/?umroh_type=gold"
+							href=""
 							class="featured-tab link fw-semibold clr-primary-400 d-inline-block py-3 px-6 bg-primary-50 :bg-primary-300 :clr-neutral-0 rounded-pill"
 							data-bs-toggle="list"
+							on:click={()=>filterData("BIGBUS JETBUS")}
 						>
 							Bus
 						</a>
@@ -78,14 +94,15 @@
 					<a
 						href="/sewa-transportasi"
 						class="btn btn-outline-primary py-3 px-6 rounded-pill d-inline-flex align-items-center gap-1 fw-semibold"
-					>
+
+						>
 						Lihat Semua <span class="material-symbols-outlined mat-icon lh-1"> trending_flat </span>
 					</a>
 				</div>
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="new-york">
 						<div class="row g-4">
-							<TransportItem {data} />
+							<TransportItem data={filteredData} />
 						</div>
 					</div>
 				</div>

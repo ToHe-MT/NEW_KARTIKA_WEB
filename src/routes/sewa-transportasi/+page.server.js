@@ -1,9 +1,10 @@
 import db from '$lib/server/db.js';
 import { error } from '@sveltejs/kit';
 
+
 export async function load({ url, params }) {
 	const filter = {};
-
+	filter['$expr'] = { $and: [] };
 	if (url.searchParams.get('category')) {
 		filter.type_category = url.searchParams.get('category');
 	}
@@ -15,46 +16,42 @@ export async function load({ url, params }) {
 	}
 
 	if (query.get('price_start') && query.get('price_end')) {
-		filter.base_price = {
-			$gte: parseInt(query.get('price_start')) * 1000000,
-			$lte: parseInt(query.get('price_end')) * 1000000
-		};
+		filter['$expr']['$and'].push({
+			$and: [
+				{ $gte: [{ $toInt: '$base_price' }, query.get('price_start') * 1000000] },
+				{ $lte: [{ $toInt: '$base_price' }, query.get('price_end') * 1000000] }
+			]
+		});
 	}
-
 	let facility = [];
 	if (query.get('karaoke') == 'on') {
-		facility.push('karaoke');
+		facility.push('Karaoke');
 	}
 	if (query.get('kulkas') == 'on') {
 		facility.push('kulkas');
 	}
 	if (query.get('tv') == 'on') {
-		facility.push('tv');
+		facility.push('TV');
 	}
 	if (query.get('ps5') == 'on') {
 		facility.push('ps5');
 	}
 	if (facility.length) {
-		// filter.facility = { $all: facility };
+		filter.feature = { $all: facility };
 	}
 
 	var kategori_transportasi = [];
-	
-	if (query.get('BIGBUS JETBUS') == 'on') {
+	if (query.get('bus') == 'on' || query.get('BIGBUS JETBUS') == 'on') {
 		kategori_transportasi.push('BIGBUS JETBUS');
 	}
-	if (query.get('HIACE PREMIO LUXURY') == 'on') {
+	if (query.get('van') == 'on' || query.get('HIACE PREMIO LUXURY') == 'on') {
 		kategori_transportasi.push('HIACE PREMIO LUXURY');
 	}
-	if (query.get('HIACE PREMIO') == 'on') {
-		kategori_transportasi.push('HIACE PREMIO');
-	}
-	if (query.get('ELF GIGA LONG') == 'on') {
+	if (query.get('suv') == 'on' || query.get('ELF GIGA LONG') == 'on') {
 		kategori_transportasi.push('ELF GIGA LONG');
 	}
-	
-	if (kategori_transportasi.length > 0) {
-		filter.jenis_kendaraan = { $in: kategori_transportasi };
+	if (kategori_transportasi.length) {
+		filter.model = { $in: kategori_transportasi };
 	}
 
 	var limit = 6;
@@ -94,6 +91,14 @@ export async function load({ url, params }) {
 				sort = { capacity: 1 };
 				break;
 		}
+	}
+	if (query.get('seat_min') && query.get('seat_max')) {
+		filter['$expr']['$and'].push({
+			$and: [
+				{ $gte: [{ $toInt: '$capacity' }, parseInt(query.get('seat_min'))] },
+				{ $lte: [{ $toInt: '$capacity' }, parseInt(query.get('seat_max'))] }
+			]
+		});
 	}
 
 	const total = await db.collection('vehicles').find(filter).count();
