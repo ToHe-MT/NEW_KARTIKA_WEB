@@ -1,6 +1,6 @@
 import db from '$lib/server/db.js';
 
-export async function load({ cookies, locals, url }) {
+export async function load({ cookies, locals, url, params }) {
 	let sort = { duration: 1 };
 	let skip = 0;
 
@@ -9,12 +9,28 @@ export async function load({ cookies, locals, url }) {
 	const match = {
 		status: 'active'
 	};
-
+	
 	let limit = 6;
 	if (url.searchParams.get('limit')) {
 		limit = parseInt(url.searchParams.get('limit'));
 		if (limit > 50) {
 			limit = 50;
+		}
+	}
+
+	let hari = "all"
+	if (url.searchParams.get('hari')) {
+		if (url.searchParams.get('hari') !== 'all') {
+			hari = parseInt(url.searchParams.get('hari'));
+			console.log(hari);
+			match.duration=hari;
+		}
+	}
+	let destinasi = "all"
+	if (url.searchParams.get('destinasi')) {
+		if (url.searchParams.get('destinasi') !== 'all') {
+			destinasi = (url.searchParams.get('destinasi'));
+			match.destination=destinasi;
 		}
 	}
 
@@ -26,17 +42,16 @@ export async function load({ cookies, locals, url }) {
 		skip = (page - 1) * limit;
 	}
 
-	let hari = "all"
-	if (url.searchParams.get('hari')) {
-		if (url.searchParams.get('hari') !== 'all') {
-			hari = parseInt(url.searchParams.get('hari'));
-			match.duration=hari;
-		}
-	}
-
 	
 
 	let totalData = await db.collection('paket-wisata-kartika').find(match).count();
+
+	let maxPage = Math.ceil(totalData/limit)
+	if (page>maxPage){
+		page = 1
+		skip = 0
+	}
+
 
 	let paket_wisata = await db
 		.collection('paket-wisata-kartika')
@@ -55,7 +70,6 @@ export async function load({ cookies, locals, url }) {
 	let destinations = await db.collection('paket-wisata-kartika').distinct('destination');
 	let durations = await db.collection('paket-wisata-kartika').distinct('duration');
 
-	console.log(page);
 	return {
 		paket_wisata,
 		page,
@@ -63,6 +77,8 @@ export async function load({ cookies, locals, url }) {
 		totalData,
 		destinations,
 		durations,
-		hari
+		hari,
+		destinasi,
+		slug: params.slug
 	};
 }

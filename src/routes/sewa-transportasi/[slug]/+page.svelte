@@ -10,26 +10,15 @@
 		if (swiper) {
 			swiper.destroy();
 		}
-		swiper = new Swiper('.property-gallery-slider', {
+		swiper = new Swiper('.swiper', {
 			loop: true,
-			slidesPerView: 1,
+			slidesPerView: 'auto',
 			spaceBetween: 16,
 			centeredSlides: true,
 			centeredSlidesBounds: true,
 			navigation: {
 				nextEl: '.property-gallery-slider__btn-next',
 				prevEl: '.property-gallery-slider__btn-prev'
-			},
-			breakpoints: {
-				576: {
-					slidesPerView: 2.25
-				},
-				768: {
-					slidesPerView: 2.5
-				},
-				1200: {
-					slidesPerView: 3.25
-				}
 			},
 			modules: [Navigation, Pagination]
 		});
@@ -38,6 +27,7 @@
 	export let data;
 
 	const info = data.info;
+	console.log(info);
 	const money = new Intl.NumberFormat('id-ID', {
 		style: 'currency',
 		currency: 'IDR',
@@ -124,15 +114,15 @@
 	<div class="row g-0">
 		<div class="col-12">
 			<div class="swiper property-gallery-slider">
-				<div class="swiper-wrapper property-gallery-slaider">
+				<div class="swiper-wrapper property-gallery-slider">
 					{#each info.images as image}
-						<div class="swiper-slide">
+						<div class="swiper-slide" style="width: auto;">
 							<div class="link property-gallery paroperty-card__img">
 								<img
 									src="{import.meta.env.VITE_S3_PUBLIC_URL}/vehicle/{image.picture_id}"
 									alt="foto hotel"
-									class="img-fluid w-100"
-									style="max-height: 600px !important;"
+									class="img-fluid w-auto"
+									style="max-height:400px !important; object-fit:cover"
 								/>
 							</div>
 						</div>

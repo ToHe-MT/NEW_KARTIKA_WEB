@@ -16,24 +16,13 @@
 		}
 		swiper = new Swiper('.property-gallery-slider', {
 			loop: true,
-			slidesPerView: 1,
+			slidesPerView: 'auto',
 			spaceBetween: 16,
 			centeredSlides: true,
 			centeredSlidesBounds: true,
 			navigation: {
 				nextEl: '.property-gallery-slider__btn-next',
 				prevEl: '.property-gallery-slider__btn-prev'
-			},
-			breakpoints: {
-				576: {
-					slidesPerView: 2.25
-				},
-				768: {
-					slidesPerView: 2.5
-				},
-				1200: {
-					slidesPerView: 3.25
-				}
 			},
 			modules: [Navigation, Pagination]
 		});
@@ -110,18 +99,15 @@
 				<div class="swiper property-gallery-slider">
 					<div class="swiper-wrapper">
 						{#each info.images as image}
-							<div class="swiper-slide">
-								<a
-									href="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
-									class="link d-block property-gallery"
-								>
+							<div class="swiper-slide" style="width: auto;">
+								<div class="link property-gallery paroperty-card__img">
 									<img
 										src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
-										alt="foto kegiatan, hotel, acara, dll"
-										class="img-fluid rounded-4"
-										style="max-height: 400px;"
+										alt="foto hotel"
+										class="img-fluid w-auto"
+										style="max-height:400px !important; object-fit:cover"
 									/>
-								</a>
+								</div>
 							</div>
 						{/each}
 					</div>
@@ -613,9 +599,7 @@
 											</div>
 										</div>
 										<div class="col-12">
-											<div class="px-2">
-												Quad - default
-											</div>
+											<div class="px-2">Quad - default</div>
 											<div class="input-group">
 												<input
 													required
@@ -637,7 +621,9 @@
 										</div>
 										<div class="col-12">
 											<div class="px-2">
-												Triple  <span class="text-body-tertiary fs-6">(+{money.format(parseInt(info.hotel_price_triple))}/pax)</span>
+												Triple <span class="text-body-tertiary fs-6"
+													>(+{money.format(parseInt(info.hotel_price_triple))}/pax)</span
+												>
 											</div>
 											<div class="input-group">
 												<input
@@ -660,7 +646,9 @@
 										</div>
 										<div class="col-12">
 											<div class="px-2">
-												Double  <span class="text-body-tertiary fs-6">(+{money.format(parseInt(info.hotel_price_double))}/pax)</span>
+												Double <span class="text-body-tertiary fs-6"
+													>(+{money.format(parseInt(info.hotel_price_double))}/pax)</span
+												>
 											</div>
 											<div class="input-group">
 												<input
@@ -780,14 +768,18 @@
 								<div class="d-flex align-items-center justify-content-between mb-4">
 									<p class="mb-0 clr-neutral-500">Double - {jumlah_pax_double} pax</p>
 									<p class="mb-0 fw-medium">
-											{money.format(jumlah_pax_double * info.hotel_price_double)}									</p>
+										{money.format(jumlah_pax_double * info.hotel_price_double)}
+									</p>
 								</div>
 							{/if}
 							{#if jumlah_pax_double || jumlah_pax_triple}
 								<div class="d-flex align-items-center justify-content-between mb-4">
 									<p class="mb-0 clr-neutral-500 fw-semibold fs-6">Total Upgrade Kamar</p>
 									<p class="mb-0 fw-semibold">
-										{money.format((jumlah_pax_triple * info.hotel_price_triple)+(jumlah_pax_double * info.hotel_price_double))}
+										{money.format(
+											jumlah_pax_triple * info.hotel_price_triple +
+												jumlah_pax_double * info.hotel_price_double
+										)}
 									</p>
 								</div>
 							{/if}
@@ -797,7 +789,9 @@
 								<p class="mb-0 fw-bold">
 									{#if jumlah_pax > 0}
 										{money.format(
-											((jumlah_pax_triple * info.hotel_price_triple)+(jumlah_pax_double * info.hotel_price_double))+(info.base_price * jumlah_pax)
+											jumlah_pax_triple * info.hotel_price_triple +
+												jumlah_pax_double * info.hotel_price_double +
+												info.base_price * jumlah_pax
 										)}
 									{:else}
 										<i>tuliskan jumlah pax</i>

@@ -22,8 +22,9 @@
 
 	function handleUrutkan(e) {
 		const submitButton = document.getElementById('submitButton');
-    	submitButton.click();
-  }
+		submitButton.click();
+	}
+	
 </script>
 
 <svelte:head>
@@ -285,14 +286,15 @@
 										</li>
 									</ul>
 								{:else}
-									<ul class="list list-row align-items-center flex-wrap gap-3">
-										<!-- content here -->
-										<li class="d-none d-xl-block">
-											<p class="mb-0 clr-neutral-500">
-												Kendaraan dengan Spek Tersebut Tidak Tersedia
+									<div class="col-12">
+										<div class="text-center">
+											<h2 class="mt-10 mb-5">Paket tidak ditemukan</h2>
+											<p class="mb-8">
+												Mohon rubah filter anda atau tunggu kartikamas membuat jadwal keberangkatan
+												baru
 											</p>
-										</li>
-									</ul>
+										</div>
+									</div>
 								{/if}
 							</div>
 						</div>
