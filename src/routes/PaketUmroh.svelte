@@ -104,7 +104,7 @@
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="new-york">
 						<div class="row g-4">
-							<PaketItem data={filteredData} />
+							<PaketItem data={filteredData} page={page}/>
 						</div>
 					</div>
 				</div>

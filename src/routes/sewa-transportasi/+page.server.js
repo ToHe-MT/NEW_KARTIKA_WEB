@@ -3,6 +3,7 @@ import { error } from '@sveltejs/kit';
 
 
 export async function load({ url, params }) {
+	
 	const filter = {};
 	filter['$expr'] = { $and: [] };
 	if (url.searchParams.get('category')) {

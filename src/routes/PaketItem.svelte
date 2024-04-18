@@ -26,14 +26,7 @@
 		});
 	});
 	onDestroy(() => {
-		if (swiper) {
-			try {
-				swiper.destroy();
-			} catch (error) {
-				console.log(error);
-			}
-			swiper = null;
-		}
+		swiper = null;
 	});
 
 	const money = new Intl.NumberFormat('id-ID', {

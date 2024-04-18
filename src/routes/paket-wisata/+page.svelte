@@ -1,61 +1,19 @@
 <script>
+	import { goto } from '$app/navigation';
 	export let data;
-	const paket_wisata = data.paket_wisata;
-	console.log(paket_wisata[0]);
+	$: paket_wisata = data.paket_wisata;
 
 	const destinations = data.destinations;
-	console.log(destinations);
 
 	const durations = data.durations;
-	console.log(durations);
+	let currentPage = data.page;
 
-	const currentPage = data.page;
-	console.log(currentPage);
+	$: limit = data.limit;
 
-	const limit = data.limit;
-	console.log(limit);
+	$: totalData = data.totalData;
+	$:  durasi = data.hari;
+	$:  destinasi = data.destinasi;
 
-	const totalData = data.totalData;
-	console.log(totalData);
-
-    const hari = data.hari
-    console.log(hari)
-
-	import Swiper from 'swiper';
-	import 'swiper/css';
-	import { Navigation, Pagination } from 'swiper/modules';
-	import { onDestroy, onMount } from 'svelte';
-
-	import { goto } from '$app/navigation';
-
-	var swiper;
-	onMount(() => {
-		if (swiper) {
-			swiper.destroy();
-			swiper = null;
-		}
-		swiper = new Swiper('.property-card-slider', {
-			loop: true,
-			pagination: {
-				el: '.property-card-pagination'
-			},
-			navigation: {
-				nextEl: '.property-card-next',
-				prevEl: '.property-card-prev'
-			},
-			modules: [Navigation, Pagination]
-		});
-	});
-	onDestroy(() => {
-		if (swiper) {
-			try {
-				swiper.destroy();
-			} catch (error) {
-				console.log(error);
-			}
-			swiper = null;
-		}
-	});
 	const money = new Intl.NumberFormat('id-ID', {
 		style: 'currency',
 		currency: 'IDR',
@@ -63,12 +21,13 @@
 		minimumFractionDigits: 0
 	});
 
-	const changePage = (page) => {
-		window.location.href = `?page=${page}`;
+	const changePage = async()  => {
+		try {
+			await goto (`paket-wisata?page=${currentPage}&hari=${durasi}&destinasi=${destinasi}`,{ replaceState: true, invalidateAll: true });
+		} catch (error) {
+			console.log(error);
+		}
 	};
-    const changeDuration = (hari)=> {
-        window.location.href=`?hari=${hari}`
-    }
 </script>
 
 <div class="section-space--sm bg-primary-5p">
@@ -76,29 +35,69 @@
 		<div class="row px-10">
 			<div class="col-12 mb-3">
 				<div class="bg-neutral-0 rounded-2 py-3 px-6 box-shadow">
-
-					<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-neutral-0 fs-6" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-black); --bs-nav-pills-link-active-color: hsl(var(--neutral-0)); --bs-nav-pills-link-active-bg: hsl(var(--primary-300)); --bs-nav-link-hover-color:hsl(var(--primary-300)); ">
-                        <li class="nav-item" role="presentation">
-                          <button 
-                          on:click={()=>changeDuration("all")}
-                          class="nav-link rounded-5 {hari==="all"? "active": ""}" id="all-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">All</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button 
-                          on:click={()=>changeDuration("1")}
-                          class="nav-link rounded-5 {hari===1? "active": ""}" id="1-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">1 Hari</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button 
-                          on:click={()=>changeDuration("2")}
-                          class="nav-link rounded-5 {hari===2? "active": ""}" id="2-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">2 Hari</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button 
-                          on:click={()=>changeDuration("3")}
-                          class="nav-link rounded-5 {hari===3? "active": ""}" id="3-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">3 Hari</button>
-                        </li>
-                      </ul>
+					<ul
+						class="nav nav-pills nav-fill gap-2 p-1 small bg-neutral-0 fs-6"
+						id="pillNav2"
+						role="tablist"
+						style="--bs-nav-link-color: var(--bs-black); --bs-nav-pills-link-active-color: hsl(var(--neutral-0)); --bs-nav-pills-link-active-bg: hsl(var(--primary-300)); --bs-nav-link-hover-color:hsl(var(--primary-300)); "
+					>
+						<li class="nav-item" role="presentation">
+							<button
+								on:click={() => {
+									durasi = 'all';
+									changePage();
+								}}
+								class="nav-link rounded-5 {durasi === 'all' ? 'active' : ''}"
+								id="all-tab2"
+								data-bs-toggle="tab"
+								type="button"
+								role="tab"
+								aria-selected="true">All</button
+							>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button
+								on:click={() => {
+									durasi = 1;
+									changePage();
+								}}
+								class="nav-link rounded-5 {durasi === 1 ? 'active' : ''}"
+								id="1-tab2"
+								data-bs-toggle="tab"
+								type="button"
+								role="tab"
+								aria-selected="false">1 Hari</button
+							>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button
+								on:click={() => {
+									durasi = 2;
+									changePage();
+								}}
+								class="nav-link rounded-5 {durasi === 2 ? 'active' : ''}"
+								id="2-tab2"
+								data-bs-toggle="tab"
+								type="button"
+								role="tab"
+								aria-selected="false">2 Hari</button
+							>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button
+								on:click={() => {
+									durasi = 3;
+									changePage();
+								}}
+								class="nav-link rounded-5 {durasi === 3 ? 'active' : ''}"
+								id="3-tab2"
+								data-bs-toggle="tab"
+								type="button"
+								role="tab"
+								aria-selected="false">3 Hari</button
+							>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div class="col-12">
@@ -113,12 +112,25 @@
 							</li>
 							<li class="flex-grow-1"></li>
 							<li class="d-none d-lg-flex align-items-center">
-								<p class="mb-0 clr-neutral-500 flex-grow-1">Urutkan Berdasar :</p>
-								<select class="form-select py-0 border-0 w-auto" name="sort_by">
-									<option value="kursi_terbanyak" selected>Durasi Terlama</option>
-									<option value="kursi_tersedikit">Durasi Terpendek</option>
-									<option value="termurah">Harga Termurah</option>
-									<option value="termahal">Harga Termahal</option>
+								<p class="mb-0 clr-neutral-500 flex-grow-1">Destinasi :</p>
+								<select
+									class="form-select py-0 border-0 w-auto"
+									name="sort_by"
+									on:change={() => {
+										destinasi = event.target.value;
+										changePage();
+									}}
+								>
+									<option value="all" selected={destinasi === ''}>Semua</option>
+									<option value="Lembang - Bandung" selected={destinasi === 'Lembang - Bandung'}
+										>Bandung</option
+									>
+									<option value="Bali" selected={destinasi === 'Bali'}>Bali</option>
+									<option value="Bromo" selected={destinasi === 'Bromo'}>Bromo</option>
+									<option value="Yogyakarta" selected={destinasi === 'Yogyakarta'}
+										>Yogyakarta</option
+									>
+									<option value="Dieng" selected={destinasi === 'Dieng'}>Dieng</option>
 								</select>
 							</li>
 						</ul>
@@ -126,21 +138,25 @@
 						<ul class="list list-row align-items-center flex-wrap gap-3">
 							<!-- content here -->
 							<li class="d-none d-xl-block">
-								<p class="mb-0 clr-neutral-500">Paket dengan durasi {hari} hari tidak tersedia</p>
+								<p class="mb-0 clr-neutral-500">Paket dengan durasi {durasi} hari tidak tersedia</p>
 							</li>
 						</ul>
 					{/if}
 				</div>
 			</div>
 			{#each paket_wisata as item}
-				<div class="col-md-6 col-lg-4 py-4 ">
+				<div class="col-md-6 col-lg-4 py-4">
 					<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<div class="property-card CARD cursor-pointer" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" on:click={()=>goto(`paket-wisata/${item.slug}`)}>
+					<div
+						class="property-card CARD cursor-pointer"
+						style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+						on:click={() => goto(`paket-wisata/${item.slug}`)}
+					>
 						<div class="property-card__head" style="padding: 0px; border-radius: 10px 10px 0 0;">
 							<div class="swiper property-card-slider">
 								<div class="swiper-wrapper">
-									{#each item.images as image}
+									{#each item.images.slice(0,1) as image}
 										<div class="swiper-slide">
 											<div class="property-card__img2" style="border-radius: 10px 10px 0 0;">
 												<img
@@ -153,9 +169,6 @@
 										</div>
 									{/each}
 								</div>
-								<div class="swiper-pagination property-card-pagination"></div>
-								<div class="swiper-button-prev property-card-prev"></div>
-								<div class="swiper-button-next property-card-next"></div>
 							</div>
 						</div>
 						<div class="property-card__body">
@@ -243,7 +256,10 @@
 										class="{currentPage === page
 											? 'clr-neutral-0 :clr-neutral-0 active-bg'
 											: ''} page-link p-0 w-10 h-10 d-grid place-content-center lh-1 rounded-circle border border-primary-300 clr-primary-300"
-										on:click={() => changePage(page)}
+										on:click={() => {
+											currentPage = page;
+											changePage(page);
+										}}
 										href="#">{page}</a
 									>
 								</li>
@@ -256,10 +272,9 @@
 	</div>
 </div>
 
-
 <style>
-    .CARD:hover{
-        transform: scale(1.02);
-        z-index: 100;
-    }
+	.CARD:hover {
+		transform: scale(1.02);
+		z-index: 100;
+	}
 </style>

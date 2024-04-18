@@ -9,7 +9,7 @@
 	var swiper;
 	onMount(() => {
 		if (swiper) {
-			swiper.destroy();
+			swiper=null
 		}
 		swiper = new Swiper('.property-card-slider', {
 			loop: true,
@@ -23,7 +23,6 @@
 			modules: [Navigation, Pagination]
 		});
 	});
-
 	const money = new Intl.NumberFormat('id-ID', {
 		style: 'currency',
 		currency: 'IDR',
@@ -41,7 +40,7 @@
 		'USB CHARGER': 'cable',
 		"Karaoke":"mic"
 	};
-	console.log(data);
+	
 </script>
 
 {#each data as item}

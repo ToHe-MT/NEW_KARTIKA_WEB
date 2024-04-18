@@ -15,6 +15,7 @@
 		'sewa armada': '/sewa-transportasi'
 	};
 	let jenis_produk = 'umroh';
+	$:console.log(jenis_produk)
 
 	let selectedVehicle = '';
 	let isBigBusJetbusSelected = false;
