@@ -303,7 +303,7 @@
 							<a href="/paket-wisata" class="link menu-link"> Paket Wisata </a>
 						</li>
 						<li class="menu-item">
-							<a href="https://blog.kartikamas.com" class="link menu-link"> Blog </a>
+							<a href="/blog" class="link menu-link"> Blog </a>
 						</li>
 						<li class="menu-item">
 							<a href="/tentang-kartikamas" class="link menu-link"> Tentang </a>

@@ -87,6 +87,9 @@
 .mat-icon.fs-64 {
   --mat-size: 64px
 }
+.mat-icon.fs-120 {
+	--mat-size: 120px
+  }
 .mat-icon.fw-100 {
   --mat-wght: 100
 }

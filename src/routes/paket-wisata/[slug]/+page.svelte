@@ -76,6 +76,17 @@
 		// Join the words back into a sentence
 		return words.join(' ');
 	}
+
+	const termsAndConditions = [
+		'Pembayaran Harus Dilakukan Untuk Konfirmasi Pendaftaran.',
+		'Pembayaran Tidak Dapat Dikembalikan Kecuali Ada Pembatalan Dari Pihak Kartikamas Tour & Travel.',
+		'Pembayaran Dilakukan Dengan Sistem DP, Dan Pelunasan Maksimal 1 minggu Sebelum Keberangkatan. Peserta Harus Memberikan Informasi Pribadi Yang Akurat.',
+		'Kartikamas Tour & Travel Tidak Bertanggung Jawab Atas Informasi Yang Tidak Akurat. Peserta Harus Menyediakan Dokumen Perjalanan Yang Valid.',
+		'Kartikamas Tour & Travel Tidak Bertanggung Jawab Atas Masalah Yang Timbul Akibat Kelalaian Peserta Dalam Menyediakan Dokumen Yang Diperlukan. Perubahan Atau Pembatalan Harus Disampaikan Secara Tertulis.',
+		'Dapat Dikenakan Biaya Tambahan Sesuai Kebijakan Yang Berlaku. Kartikamas Tour & Travel Bertanggung Jawab Atas Penyelenggaraan Paket Wisata Sesuai Yang Dijanjikan.',
+		'Tidak Bertanggung Jawab Atas Kejadian Di Luar Kendali. Kartikamas Tour & Travel Berhak Menolak Pendaftaran Yang Dianggap Tidak Memenuhi Syarat.',
+		'Dengan Mendaftar, Peserta Dianggap Telah Memahami Dan Menyetujui Semua Syarat Dan Ketentuan Tersebut.'
+	];
 </script>
 
 <div class="bg-primary-5p">
@@ -460,12 +471,16 @@
 						<div class="row">
 							<div class="col-12 px-2">
 								<ol class=" col-12 px-6">
-									{#if paket.included && paket.included.length > 0}
-										{#each paket.included as item, idx}
+										{#each termsAndConditions as item}
 											<li class="px-1 py-1">{item}</li>
 										{/each}
-									{/if}
 								</ol>
+							</div>
+							<div class="d-flex align-items-start justify-content-center gap-2">
+								<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300 p-1"> info </span>
+								<p class="mb-0 fs-6 clr-primary-300">
+									Dengan melakukan pemesanan maka anda menerima syarat dan ketetuan. Harap baca terlebih dahulu untuk memastikan.
+								</p>
 							</div>
 						</div>
 					</div>
@@ -751,7 +766,7 @@
 	<div class="container-xl">
 		<div class="row px-10">
 			{#if others && others.length > 0}
-				<h3> Other Packages</h3>
+				<h3>Other Packages</h3>
 
 				{#each others as item}
 					<div class="col-md-6 col-lg-4 py-4">
