@@ -1,3 +1,7 @@
+<script>
+	export const bg = ""
+</script>
+
 <section class="section-space position-relative z-1">
 	<img
 		src="/assets/img/category-section-el.png"
