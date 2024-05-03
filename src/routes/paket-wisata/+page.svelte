@@ -23,7 +23,7 @@
 
 	const changePage = async()  => {
 		try {
-			await goto (`paket-wisata?page=${currentPage}&hari=${durasi}&destinasi=${destinasi}`,{ replaceState: true, invalidateAll: true });
+			await goto (`/paket-wisata?page=${currentPage}&hari=${durasi}&destinasi=${destinasi}`,{ replaceState: true, invalidateAll: true });
 		} catch (error) {
 			console.log(error);
 		}

@@ -3,6 +3,7 @@
 
 	export let data;
 	const info = data.umroh;
+	console.log(info.itinerari);
 
 	import Swiper from 'swiper';
 	import 'swiper/css';
@@ -81,6 +82,28 @@
 		safeParseInt(jumlah_pax_double) +
 			safeParseInt(jumlah_pax_triple) +
 			safeParseInt(jumlah_pax_quad) || '';
+
+	let requirements = [
+		'Pasport asli berlaku minimal 8 bulan sebelum keberangkatan',
+		'Copy KTP (Kartu Tanda Penduduk) dan Copy KK (Kartu Keluarga)',
+		'Copy Buku Nikah (untuk suami istri)',
+		'Copy Akte Kelahiran asli (untuk anak-anak)',
+		'Pas foto dengan background putih tampak wajah 80%. Bagi jamaah Perempuan mengenakan jilbab berwarna',
+		'Membayar deposit minimal IDR. 10.000.000'
+	];
+
+	function capitalizeEachWord(sentence) {
+		// Split the sentence into words
+		let words = sentence.split(' ');
+
+		// Capitalize the first letter of each word
+		for (let i = 0; i < words.length; i++) {
+			words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+		}
+
+		// Join the words back into a sentence
+		return words.join(' ');
+	}
 </script>
 
 <svelte:head>
@@ -171,15 +194,12 @@
 							</li>
 							<li>
 								<p class="mb-0">
-									Dari <span class="clr-primary-300"
-										>{info.departure_date.toISOString().split('T')[0]}</span
-									>
+									Dari <span class="clr-primary-300">{info.departure_date}</span>
 									s/d
-									<span class="clr-primary-300">{info.return_date.toISOString().split('T')[0]}</span
-									>
+									<span class="clr-primary-300">{info.return_date}</span>
 								</p>
 							</li>
-							<li>
+							<!-- <li>
 								<div class="d-flex align-items-center gap-1">
 									<p class="mb-0">
 										{info.hotel_star}
@@ -191,296 +211,137 @@
 										</span> Hotel
 									</p>
 								</div>
-							</li>
+							</li> -->
 						</ul>
 						<div class="hr-dashed my-8"></div>
-						<ul class="list list-row align-items-center flex-wrap gap-3">
-							<li>
-								<span class="d-block fs-18 fw-medium"> Facilities - </span>
-							</li>
-							<li>
-								<div
-									class="d-grid place-content-center w-10 h-10 rounded-circle bg-primary-5p clr-primary-300"
-								>
-									<img
-										src="/assets/img/icon-car-parking.png"
-										alt="image"
-										class="img-fluid w-7 h-7 object-fit-contain"
-									/>
-								</div>
-							</li>
-							<li>
-								<div
-									class="d-grid place-content-center w-10 h-10 rounded-circle bg-primary-5p clr-primary-300"
-								>
-									<img
-										src="/assets/img/icon-breakfast.png"
-										alt="image"
-										class="img-fluid w-7 h-7 object-fit-contain"
-									/>
-								</div>
-							</li>
-							<li>
-								<div
-									class="d-grid place-content-center w-10 h-10 rounded-circle bg-primary-5p clr-primary-300"
-								>
-									<img
-										src="/assets/img/icon-room-service.png"
-										alt="image"
-										class="img-fluid w-7 h-7 object-fit-contain"
-									/>
-								</div>
-							</li>
-							<li>
-								<div
-									class="d-grid place-content-center w-10 h-10 rounded-circle bg-primary-5p clr-primary-300"
-								>
-									<img
-										src="/assets/img/icon-fitness.png"
-										alt="image"
-										class="img-fluid w-7 h-7 object-fit-contain"
-									/>
-								</div>
-							</li>
-							<li>
-								<div
-									class="d-grid place-content-center w-10 h-10 rounded-circle bg-primary-5p clr-primary-300"
-								>
-									<img
-										src="/assets/img/icon-swimming-pool.png"
-										alt="image"
-										class="img-fluid w-7 h-7 object-fit-contain"
-									/>
-								</div>
-							</li>
-							<li>
-								<div
-									class="d-grid place-content-center w-10 h-10 rounded-circle bg-primary-5p clr-primary-300"
-								>
-									<img
-										src="/assets/img/icon-laundry.png"
-										alt="image"
-										class="img-fluid w-7 h-7 object-fit-contain"
-									/>
-								</div>
-							</li>
-							<li>
-								<div
-									class="d-grid place-content-center w-10 h-10 rounded-circle bg-primary-5p clr-primary-300"
-								>
-									<img
-										src="/assets/img/icon-glob.png"
-										alt="image"
-										class="img-fluid w-7 h-7 object-fit-contain"
-									/>
-								</div>
-							</li>
-						</ul>
+						<div class="row px-2">
+							{#if info.bonus && info.bonus.length > 0}
+								{#each info.bonus as item}
+									<div class="col-4 d-flex justify-content-start align-items-center p-1 gap-2">
+										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
+											{item.logo}
+										</span>
+										{item.title}
+									</div>
+								{/each}
+							{/if}
+						</div>
 					</div>
 					<div class="p-6 bg-neutral-0 rounded-4 mb-10">
-						<h4 class="mb-5">Deskripsi</h4>
-						<p class="mb-5 clr-neutral-500" style="white-space: pre-wrap;">
-							{info.desc_long}
-						</p>
+						<div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+							<h4 class="mt-4 mb-0">Jadwal Perjalanan</h4>
+						</div>
+						<!-- Section: Timeline -->
+						<section class="py-5">
+							<ul class="timeline">
+								{#if info.itinerari && info.itinerari.length > 0}
+									{#each info.itinerari as item, idx}
+										<li class="timeline-item mb-5">
+											<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+											<h5
+												class="fw-bold"
+												data-bs-toggle="collapse"
+												href={`#collapseExample${idx}`}
+												role="button"
+												aria-expanded="false"
+												aria-controls={`collapseExample${idx}`}
+											>
+												Hari ke - {item.hari}
+											</h5>
+											<p class="text-muted mb-2 fw-bold">{capitalizeEachWord(item.route)}</p>
+
+											<div class="collapse" id={`collapseExample${idx}`}>
+												<div class="">
+													<div class="">
+														{#if item.deskripsi}
+															<!-- content here -->
+															<p class="text-muted fs-14 text-justify">
+																{item.deskripsi}
+															</p>
+														{:else}
+															<p class="text-muted fs-14 text-justify">-</p>
+														{/if}
+													</div>
+												</div>
+											</div>
+										</li>
+									{/each}
+								{/if}
+							</ul>
+						</section>
+						<div class="d-flex align-items-start gap-2">
+							<span class="material-symbols-outlined mat-icon fs-20"> info </span>
+							<p class="mb-0 fs-16">
+								Note: program acara dapat berubah sewaktu – waktu tergantung kondisi cuaca pada saat
+								tour berlangsung.
+							</p>
+						</div>
 					</div>
 					<div class="p-6 bg-neutral-0 rounded-4 mb-10">
-						<h4 class="mb-5">Fasilitas</h4>
-						<div class="mb-10">
-							<div class="row g-4">
-								<div class="col-md-4 col-lg-3">
-									<ul class="list gap-4">
-										{#each fac1 as fac}
-											<li>
-												<div class="d-flex align-items-center gap-2">
-													<div
-														class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-													>
-														<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-															check
-														</span>
-													</div>
-													<span class="d-inline-block"> {fac.replace('_', ' ')} </span>
-												</div>
-											</li>
+						<div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+							<h4 class="mt-4 mb-0">What's Included</h4>
+						</div>
+						<div class="row">
+							<div class="col-12 px-2">
+								<ol class=" col-12 px-2 list-unstyled">
+									{#if info.included && info.included.length > 0}
+										{#each info.included as item, idx}
+											<div class="d-flex align-items-center gap-4 py-1">
+												<span
+													class="material-symbols-outlined mat-icon clr-secondary-400 rounded-circle fs-20 my-1"
+													style="background-color: #e4ffe2; font-weight:700;"
+												>
+													check
+												</span>
+												<p class="mb-0 fs-14">{item}</p>
+											</div>
 										{/each}
-									</ul>
-								</div>
-								<div class="col-md-4 col-lg-3">
-									<ul class="list gap-4">
-										{#each fac2 as fac}
-											<li>
-												<div class="d-flex align-items-center gap-2">
-													<div
-														class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-													>
-														<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-															check
-														</span>
-													</div>
-													<span class="d-inline-block"> {fac.replace('_', ' ')} </span>
-												</div>
-											</li>
-										{/each}
-									</ul>
-								</div>
-								<div class="col-md-4 col-lg-3">
-									<ul class="list gap-4">
-										{#each fac3 as fac}
-											<li>
-												<div class="d-flex align-items-center gap-2">
-													<div
-														class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-													>
-														<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-															check
-														</span>
-													</div>
-													<span class="d-inline-block"> {fac.replace('_', ' ')} </span>
-												</div>
-											</li>
-										{/each}
-									</ul>
-								</div>
-								<div class="col-md-4 col-lg-3">
-									<ul class="list gap-4">
-										{#each fac4 as fac}
-											<li>
-												<div class="d-flex align-items-center gap-2">
-													<div
-														class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-													>
-														<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-															check
-														</span>
-													</div>
-													<span class="d-inline-block"> {fac.replace('_', ' ')} </span>
-												</div>
-											</li>
-										{/each}
-									</ul>
-								</div>
+									{/if}
+								</ol>
 							</div>
 						</div>
-						<a
-							href="/fasilitas/syarat-dan-ketentuan"
-							class="btn btn-outline-primary py-1 px-4 rounded-pill d-inline-flex align-items-center gap-1 fw-semibold"
-						>
-							Baca S&K
-						</a>
+					</div>
+					<div class="p-6 bg-neutral-0 rounded-4 mb-10">
+						<div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+							<h4 class="mt-4 mb-0">What's Not Included</h4>
+						</div>
+						<div class="row">
+							<div class="col-12 px-2">
+								<ol class=" col-12 px-2 list-unstyled">
+									{#if info.not_included && info.not_included.length > 0}
+										{#each info.not_included as item, idx}
+											<div class="d-flex align-items-center gap-4 py-1">
+												<span
+													class="material-symbols-outlined mat-icon text-danger rounded-circle fs-20 my-1"
+													style="background-color: #FFE5E5; font-weight:700;"
+												>
+													close
+												</span>
+												<p class="mb-0 fs-14">{item}</p>
+											</div>
+										{/each}
+									{/if}
+								</ol>
+							</div>
+						</div>
 					</div>
 					<div class="p-6 bg-neutral-0 rounded-4 mb-10">
 						<h4 class="mb-5">Persyaratan</h4>
 						<ul class="list gap-4 mb-5">
-							<li>
-								<div class="d-flex gap-4">
-									<div
-										class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-									>
-										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-											check
-										</span>
+							{#each requirements as item}
+								<li>
+									<div class="d-flex gap-4">
+										<div
+											class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
+										>
+											<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
+												check
+											</span>
+										</div>
+										<span class="d-inline-block"> {item} </span>
 									</div>
-									<span class="d-inline-block"> Paspor ASLI </span>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex gap-4">
-									<div
-										class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-									>
-										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-											check
-										</span>
-									</div>
-									<span class="d-inline-block">
-										Suntik Vaksin Meningitis untuk saat ini tidak diwajibkan [Tetapi dianjurkan bagi
-										calon jamaah yang memiliki riwayat kesehatan penyakit tertentu (komorbid)]
-									</span>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex gap-4">
-									<div
-										class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-									>
-										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-											check
-										</span>
-									</div>
-									<span class="d-inline-block"> Fotocopy KTP </span>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex gap-4">
-									<div
-										class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-									>
-										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-											check
-										</span>
-									</div>
-									<span class="d-inline-block"> Fotocopy Kartu keluarga </span>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex gap-4">
-									<div
-										class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-									>
-										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-											check
-										</span>
-									</div>
-									<span class="d-inline-block">
-										Fotocopy Akta Nikah (Bagi Pasangan Suami istri yang berangkat bersama dan usia
-										istri di bawah 45th)
-									</span>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex gap-4">
-									<div
-										class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-									>
-										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-											check
-										</span>
-									</div>
-									<span class="d-inline-block">
-										Fotocopy Akta Kelahiran (Bagi anak usia di bawah 18th yang berangkat bersama
-										Ayah)
-									</span>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex gap-4">
-									<div
-										class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-									>
-										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-											check
-										</span>
-									</div>
-									<span class="d-inline-block">
-										Fotocopy sertifikat vaksin covid dosis 1, 2 dan 3 (booster) yang
-										didownload/diunduh dari aplikasi Peduli Lindungi atau yang kini telah
-										dikembangkan menjadi aplikasi yang bernama SATUSEHAT (Bisa login menggunakan
-										akun Peduli Lindungi)
-									</span>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex gap-4">
-									<div
-										class="w-6 h-6 d-grid place-content-center rounded-circle flex-shrink-0 bg-primary-50"
-									>
-										<span class="material-symbols-outlined mat-icon fs-20 clr-primary-300">
-											check
-										</span>
-									</div>
-									<span class="d-inline-block"> Fotocopy BPJS Kesehatan </span>
-								</div>
-							</li>
+								</li>
+							{/each}
 						</ul>
 					</div>
 				</div>
@@ -550,15 +411,9 @@
 												<span
 													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded-pill rounded-start-0 py-2 pe-5 ps-0"
 												>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														height="24"
-														viewBox="0 -960 960 960"
-														width="24"
-														><path
-															d="M560-440h200v-80H560v80Zm0-120h200v-80H560v80ZM200-320h320v-22q0-45-44-71.5T360-440q-72 0-116 26.5T200-342v22Zm160-160q33 0 56.5-23.5T440-560q0-33-23.5-56.5T360-640q-33 0-56.5 23.5T280-560q0 33 23.5 56.5T360-480ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-480H160v480Zm0 0v-480 480Z"
-														/></svg
-													>
+													<span class="material-symbols-outlined mat-icon clr-neutral-100">
+														badge
+													</span>
 												</span>
 											</div>
 										</div>
@@ -858,4 +713,32 @@
 		</div>
 	</div>
 </div>
+
 <!-- /Property Details Body -->
+
+<style>
+	.timeline {
+		border-left: 1px solid hsl(0, 0%, 77%);
+		position: relative;
+		list-style: none;
+	}
+
+	.timeline .timeline-item {
+		position: relative;
+	}
+
+	.timeline .timeline-item:after {
+		position: absolute;
+		display: block;
+		top: 0;
+	}
+
+	.timeline .timeline-item:after {
+		background-color: hsl(0, 62%, 39%);
+		left: -38px;
+		border-radius: 50%;
+		height: 11px;
+		width: 11px;
+		content: '';
+	}
+</style>

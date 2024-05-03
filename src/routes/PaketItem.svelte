@@ -41,7 +41,7 @@
 		const endDate = new Date(end);
 		endDate.setDate(endDate.getDate() + 1); // Include the end date in the calculation
 		const differenceInMilliseconds = endDate - startDate;
-		const differenceInDays = differenceInMilliseconds / (1000 * 3600 * 24);
+		const differenceInDays = Math.ceil(differenceInMilliseconds / (1000 * 3600 * 24));
 		const differenceInNights = differenceInDays - 1;
 		return `${differenceInDays} hari ${differenceInNights} malam`;
 		// return { days: differenceInDays, nights: differenceInNights };
@@ -98,52 +98,20 @@
 					>
 						{item.title}
 					</a>
-					<div class="d-flex align-items-center flex-shrink-0" title="Hotel Bintang 5 / Setara">
-						<span class="material-symbols-outlined mat-icon solid clr-tertiary-300">
-							star_rate
-						</span>
-						<span class="d-block clr-neutral-700"> {item.hotel_star} </span>
-					</div>
 				</div>
 				<ul class="list list-row row g-3">
-					<li class="col-6">
-						<div class="d-flex align-items-center gap-2">
-							<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
-								hotel
-							</span>
-							<span class="d-block"> 4/3/2 / Kamar </span>
-						</div>
-					</li>
-					<li class="col-6">
-						<div class="d-flex align-items-center gap-2">
-							<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
-								train
-							</span>
-							<span class="d-block"> Kereta Cepat </span>
-						</div>
-					</li>
-					<li class="col-6">
-						<div class="d-flex align-items-center gap-2">
-							<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
-								airport_shuttle
-							</span>
-							<span class="d-block"> Transport PP </span>
-						</div>
-					</li>
-					<li class="col-6">
-						<div class="d-flex align-items-center gap-2">
-							<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500"> wifi </span>
-							<span class="d-block"> Wifi Gratis </span>
-						</div>
-					</li>
-					<li class="col-6">
-						<div class="d-flex align-items-center gap-2">
-							<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
-								video_camera_front
-							</span>
-							<span class="d-block"> Dokumentasi </span>
-						</div>
-					</li>
+					{#if item.bonus && item.bonus.length>0}
+						 {#each item.bonus as item}
+							 <li class="col-12">
+								 <div class="d-flex align-items-center gap-2">
+									 <span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
+										 {item.logo}
+									 </span>
+									 <span class="d-block"> {item.title} </span>
+								 </div>
+							 </li>
+						 {/each}
+					{/if}
 				</ul>
 			</div>
 			<div class="property-card__body py-0">
@@ -152,7 +120,7 @@
 			<div class="property-card__body">
 				<div class="d-flex flex-wrap justify-content-between align-items-center">
 					<span class="d-block fs-20 fw-medium clr-primary-300">
-						{money.format(item.base_price)}
+						{money.format(item.hotel_price_quad)}
 					</span>
 					<a
 						href="/paket/{item.jenis_paket}/{item.slug}"
