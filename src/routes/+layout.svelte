@@ -1,6 +1,11 @@
 <script>
 	import '../app.css';
 	const openMap = () => {};
+	let expanded = false;
+
+	function toggleFab() {
+		expanded = !expanded;
+	}
 </script>
 
 <div class="py-3 border-bottom header-top">
@@ -261,6 +266,31 @@
 </header>
 <!-- /Header -->
 <slot />
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="fab-container {expanded ? 'expanded' : ''}">
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<div class="fab shadow" on:click={toggleFab}>
+		<div class="fab-content">
+			<span class="material-symbols-outlined mat-icon fs-28"> support_agent </span>
+		</div>
+	</div>
+	<div class="sub-button shadow">
+		<a href="https://wa.me/62812100591" target="_blank">
+			<span class="material-symbols-outlined mat-icon fs-28">phone</span>
+		</a>
+	</div>
+	<div class="sub-button shadow">
+		<a href="mailto:admin@kartikamas.com" target="_blank">
+			<span class="material-symbols-outlined mat-icon fs-28">mail_outline</span>
+		</a>
+	</div>
+	<div class="sub-button shadow">
+		<a href="/faq" target="_blank">
+			<span class="material-symbols-outlined mat-icon fs-28">help_outline</span>
+		</a>
+	</div>
+</div>
 
 <style>
 	@media (max-width: 991px) {
@@ -322,8 +352,96 @@
 		color: white;
 		text-decoration: none;
 	}
-	.list.menu-sub{
+	.list.menu-sub {
 		min-height: 250px;
 		min-width: 300px;
+	}
+	.fab-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: center;
+		user-select: none;
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+	}
+
+	.expanded .sub-button:nth-child(2) {
+		transform: translateY(-80px);
+	}
+
+	.expanded .sub-button:nth-child(3) {
+		transform: translateY(-140px);
+	}
+
+	.expanded .sub-button:nth-child(4) {
+		transform: translateY(-200px);
+	}
+
+	.expanded .sub-button:nth-child(5) {
+		transform: translateY(-260px);
+	}
+
+	.expanded .sub-button:nth-child(6) {
+		transform: translateY(-320px);
+	}
+
+	.fab {
+		position: relative;
+		height: 70px;
+		width: 70px;
+		background-color: #660000;
+		border-radius: 50%;
+		z-index: 2;
+	}
+
+	.fab::before {
+		content: ' ';
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		height: 35px;
+		width: 35px;
+		background-color: inherit;
+		border-radius: 0 0 10px 0;
+		z-index: -1;
+	}
+
+	.fab-content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		border-radius: 50%;
+	}
+
+	.material-symbols-outlined.mat-icon.fs-28 {
+		color: white;
+		font-size: 36px;
+	}
+
+	.sub-button {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		bottom: 10px;
+		right: 10px;
+		height: 50px;
+		width: 50px;
+		background-color: #660000;
+		border-radius: 50%;
+		transition: all 0.3s ease;
+	}
+
+	.sub-button:hover {
+		cursor: pointer;
+	}
+
+	.sub-button .material-symbols-outlined.mat-icon.fs-28 {
+		color: white;
+		padding-top: 6px;
 	}
 </style>
