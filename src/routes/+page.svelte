@@ -2,10 +2,14 @@
 	import PaketTransport from './PaketTransport.svelte';
 	import Category from './Category.svelte';
 	import PaketUmroh from './PaketUmroh.svelte';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import UmrohProcess from './UmrohProcess.svelte';
 	import PaketWisata from './PaketWisata.svelte';
 	import { goto } from '$app/navigation';
+
+	import Swiper from 'swiper';
+	import 'swiper/css';
+	import { Navigation, Pagination } from 'swiper/modules';
 
 	export let data;
 	console.log(data.umroh);
@@ -104,6 +108,25 @@
 
 		return formattedDate;
 	}
+	let testimonialSliderTwo;
+
+	onMount(() => {
+		testimonialSliderTwo = new Swiper('.testimonial-slider-two', {
+			loop: true,
+			navigation: {
+				nextEl: '.testimonial-slider-two__btn-next',
+				prevEl: '.testimonial-slider-two__btn-prev'
+			},
+			modules: [Navigation]
+		});
+	});
+
+	onDestroy(() => {
+		if (testimonialSliderTwo) {
+			testimonialSliderTwo.destroy();
+			testimonialSliderTwo = null;
+		}
+	});
 </script>
 
 <svelte:head>
@@ -494,7 +517,7 @@
 
 <div class="hr-dashed"></div>
 <!-- FASILITAS -->
-<div class="container pt-30">
+<div class="pt-30 bg-primary-3p w-100">
 	<div class="row px-20">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
 			<h5>FASILITAS JAMAAH</h5>
@@ -504,7 +527,7 @@
 	<div class="container py-10">
 		<div class="row">
 			{#each contents as content}
-				<div class="col-lg-4 col-xs-12 py-8 px-4">
+				<div class="col-lg-4 col-md-6 py-8 px-4">
 					<div class="komponen-sll-ready">
 						<div
 							class="sub-komponen-sll skssl-box-icon"
@@ -533,7 +556,7 @@
 	</div>
 </div>
 
-<div class="py-10 position-relative">
+<div class="position-relative">
 	<img
 		src="assets/img/DEPANKECIL.jpg"
 		alt=""
@@ -553,56 +576,224 @@
 	</div>
 </div>
 
-<!-- GALERRY JAMAAH -->
-<div class="container py-10">
+<!-- GALERRY Perlengkapan -->
+<div class="p-10 bg-primary-3p">
 	<div class="row px-20">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
-			<h5>FASILITAS JAMAAH</h5>
-			<h2>Fasilitas Yang Disediakan</h2>
+			<h5>GALERRY PERLENGKAPAN</h5>
+			<h2>Perlengkapan Umroh Ekslusif Kartika Mas</h2>
 		</div>
 	</div>
-	<div class="container py-10">
+	<div class="container px-10">
 		<div class="row">
-			{#each contents as content}
-				<div class="col-lg-4 col-xs-12 py-8 px-4">
-					<div class="komponen-sll-ready">
-						<div
-							class="sub-komponen-sll skssl-box-icon"
-							style="color: #424242; text-align: left; background-color: #ffffff;"
-						>
-							<div class="mc-box-icon mc-box-icon-top">
-								<div class="mcbi-image">
-									<div
-										class="d-flex justify-content-center align-items-center bg-primary-300 h-100 rounded shadow-sm"
-									>
-										<span class="material-symbols-outlined mat-icon clr-primary-50 fs-1">
-											{content.icon}
-										</span>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/BajuCewe-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/BajuCewe-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/Banner-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/Banner-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/BajuCowo-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/BajuCowo-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/Bantal-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/Bantal-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/Kalender-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/Kalender-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/Koper-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/Koper-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/Mukena-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/Mukena-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/Ransel-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/Ransel-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+				<div class="card-gallery">
+					<img src="/perlengkapan/Serut-1.JPG" class="card-img-top top" alt="..." />
+					<img src="/perlengkapan/Serut-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+			</div>
+			<div class="col-12 d-flex justify-content-center align-items-center p-4">
+				<div class="button-tentang">
+					<button
+						type="button"
+						class="btn bg-primary-300 text-white"
+						on:click={() => goto('paket/umroh')}>Lihat Paket</button
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="hr-dashed"></div>
+
+<div class="section-space testimoni">
+	<div class="section-space--sm-bottom">
+		<div class="container">
+			<div class="row align-items-center g-4">
+				<div class="col-12 d-flex justify-content-center align-items-center flex-column">
+					<h5>TESTIMONIAL</h5>
+					<h2>Mereka yang sudah berangkat</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-1 d-flex justify-content-center align-items-center">
+				<div
+					class="swiper-button-prev testimonial-slider-two__btn testimonial-slider-two__btn-prev"
+				></div>
+			</div>
+
+			<div class="col-10">
+				<div class="swiper testimonial-slider-two">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="p-5 rounded-4">
+								<div class="bg-primary-3p rounded-4 p-8">
+									<ul class="list list-row align-items-center justify-content-center mb-2">
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+									</ul>
+									<p class="fs-20 mb-0">
+										Baru pertama kali, umroh, selama aktifitas disediakan WiFi gratis dari kartika,
+										semoga bisa kembali.
+									</p>
+									<div class="hr-dashed my-8"></div>
+									<div class="d-flex align-items-end justify-content-center">
+										<div class="d-flex justify-content-between align-items-center gap-4 w-100">
+											<div class="d-flex gap-4 justify-content-center align-items-center">
+												<span class="d-inline-block"> 15 April 2024 </span>
+											</div>
+											<span class="d-block fs-20 fw-semibold mb-1 text-start"> Abdul Sodiq </span>
+										</div>
 									</div>
 								</div>
-								<div class="mcbi-text py-3">
-									<div class="fs-5 pt-4 fw-bold">{content.title}</div>
-									<div class="fs-6">{content.description}</div>
+							</div>
+						</div>
+
+						<div class="swiper-slide">
+							<div class="p-5 rounded-4">
+								<div class="bg-primary-3p rounded-4 p-8">
+									<ul class="list list-row align-items-center justify-content-center mb-2">
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_rate
+											</span>
+										</li>
+										<li>
+											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
+												star_half
+											</span>
+										</li>
+									</ul>
+									<p class="fs-20 mb-0">
+										Alhamdulillah pelayanan memuaskan, hotel dekat dengan Masjidil haram tinggal
+										jalan saja.
+									</p>
+									<div class="hr-dashed my-8"></div>
+									<div class="d-flex align-items-end justify-content-center">
+										<div class="d-flex justify-content-between align-items-center gap-4 w-100">
+											<div class="d-flex gap-4 justify-content-center align-items-center">
+												<span class="d-inline-block"> 15 April 2024 </span>
+											</div>
+											<span class="d-block fs-20 fw-semibold mb-1 text-start"> Fatiha Jara </span>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			{/each}
+			</div>
+			<div class="col-1 d-flex justify-content-center align-items-center">
+				<div
+					class="swiper-button-next testimonial-slider-two__btn testimonial-slider-two__btn-next"
+				></div>
+			</div>
 		</div>
 	</div>
 </div>
+<div class="hr-dashed"></div>
 
 <!-- Category Section  -->
-<Category />
+<!-- <Category /> -->
 <!-- /Category Section  -->
 
-<PaketUmroh data={data.umroh} />
+<!-- <PaketUmroh data={data.umroh} /> -->
 
-<UmrohProcess />
+<!-- <UmrohProcess /> -->
 
-<PaketTransport data={data.vehicle} />
-<PaketWisata paketWisata={data.paketWisata} />
+<!-- <PaketTransport data={data.vehicle} />
+<PaketWisata paketWisata={data.paketWisata} /> -->
 
 <style>
 	.button-tentang button {
@@ -610,9 +801,11 @@
 		padding: 10px;
 		font-size: 16px;
 		font-weight: 600;
+		transition: transform 0.4s;
 	}
 	.button-tentang button:hover {
-		background-color: rgb(60, 1, 1);
+		background: #660000;
+		transform: scale(1.1);
 	}
 	.primary-hero {
 		position: relative;
@@ -751,5 +944,43 @@
 	}
 	.property-card {
 		border-radius: 0;
+	}
+	.card-gallery {
+		transition: all 1s;
+		padding: 20px;
+		margin: 20px;
+		overflow: hidden;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+		position: relative;
+		height: auto;
+	}
+	.card-gallery img {
+		width: 100%;
+		height: auto;
+		border: 1px solid #ddd;
+		transition: 0.5s;
+	}
+	.card-gallery img.top {
+		z-index: 1;
+	}
+	.card-gallery img.bottom {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		opacity: 0;
+		padding: 20px;
+	}
+	.card-gallery:hover img.top {
+		opacity: 0;
+		transform: scale(1.05);
+		z-index: -1;
+	}
+	.card-gallery:hover img.bottom {
+		opacity: 1;
+		transform: scale(1.05);
+	}
+	.testimoni{
+		/* box-shadow: inset 0 10px 10px -10px gray; */
 	}
 </style>

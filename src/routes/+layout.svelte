@@ -286,7 +286,7 @@
 		</a>
 	</div>
 	<div class="sub-button shadow">
-		<a href="/faq" target="_blank">
+		<a href="/faq" >
 			<span class="material-symbols-outlined mat-icon fs-28">help_outline</span>
 		</a>
 	</div>
