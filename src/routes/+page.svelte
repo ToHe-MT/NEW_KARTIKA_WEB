@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import UmrohProcess from './UmrohProcess.svelte';
 	import PaketWisata from './PaketWisata.svelte';
+	import { goto } from '$app/navigation';
 
 	export let data;
 	console.log(data.umroh);
@@ -119,7 +120,11 @@
 					transportasi pariwisata.
 				</p>
 				<div class="button-tentang">
-					<button type="button" class="btn bg-primary-300 text-white">Lihat Paket</button>
+					<button
+						type="button"
+						class="btn bg-primary-300 text-white"
+						on:click={() => goto('paket/umroh')}>Lihat Paket</button
+					>
 				</div>
 			</div>
 		</div>
@@ -295,7 +300,7 @@
 					yang memberikan berbagai macam pilihan wisata dari domestik hingga internasional. Seperti
 					umroh, haji, trip luar negeri hingga dalam negeri.
 				</p>
-				<br>
+				<br />
 				<p>
 					Berlokasi di Jakarta Selatan, Kartika Mas tour and travel bergerak di bidang biro dan jasa
 					yang mengedepankan kualitas pelayanan terbaik dan profesionalisme dalam setiap perjalanan
@@ -304,14 +309,18 @@
 				</p>
 			</div>
 			<div class="p-4 button-tentang">
-				<button type="button" class="btn bg-primary-300 text-white">Tentang Kami</button>
+				<button
+					type="button"
+					class="btn bg-primary-300 text-white"
+					on:click={() => goto('tentang-kartikamas')}>Tentang Kami</button
+				>
 			</div>
 		</div>
 	</div>
 </div>
 
 <div class="hr-dashed"></div>
-<div class="container py-10">
+<div class="container py-20">
 	<div class="row px-4">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
 			<h5>Paket Umrah</h5>
@@ -326,15 +335,30 @@
 								<div class="swiper-wrapper">
 									{#if item.images && item.images.length > 0}
 										{#each item.images as image}
-											<div class="swiper-slide">
-												<div class="property-card__img">
-													<img
-														src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
-														alt="foto hotel"
-														class="img-fluid w-100"
-													/>
+											{#if image.primary === true}
+												<div class="swiper-slide">
+													<div class="property-card__img">
+														<img
+															src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
+															alt="foto hotel"
+															class="img-fluid w-100"
+														/>
+													</div>
 												</div>
-											</div>
+											{/if}
+										{/each}
+										{#each item.images as image}
+											{#if image.primary === false}
+												<div class="swiper-slide">
+													<div class="property-card__img">
+														<img
+															src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
+															alt="foto hotel"
+															class="img-fluid w-100"
+														/>
+													</div>
+												</div>
+											{/if}
 										{/each}
 									{/if}
 								</div>
@@ -467,8 +491,10 @@
 		{/if}
 	</div>
 </div>
+
 <div class="hr-dashed"></div>
-<div class="container py-10">
+<!-- FASILITAS -->
+<div class="container pt-30">
 	<div class="row px-20">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
 			<h5>FASILITAS JAMAAH</h5>
@@ -523,6 +549,46 @@
 					<button type="button" class="btn bg-primary-300 text-white">Daftar</button>
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+
+<!-- GALERRY JAMAAH -->
+<div class="container py-10">
+	<div class="row px-20">
+		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
+			<h5>FASILITAS JAMAAH</h5>
+			<h2>Fasilitas Yang Disediakan</h2>
+		</div>
+	</div>
+	<div class="container py-10">
+		<div class="row">
+			{#each contents as content}
+				<div class="col-lg-4 col-xs-12 py-8 px-4">
+					<div class="komponen-sll-ready">
+						<div
+							class="sub-komponen-sll skssl-box-icon"
+							style="color: #424242; text-align: left; background-color: #ffffff;"
+						>
+							<div class="mc-box-icon mc-box-icon-top">
+								<div class="mcbi-image">
+									<div
+										class="d-flex justify-content-center align-items-center bg-primary-300 h-100 rounded shadow-sm"
+									>
+										<span class="material-symbols-outlined mat-icon clr-primary-50 fs-1">
+											{content.icon}
+										</span>
+									</div>
+								</div>
+								<div class="mcbi-text py-3">
+									<div class="fs-5 pt-4 fw-bold">{content.title}</div>
+									<div class="fs-6">{content.description}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{/each}
 		</div>
 	</div>
 </div>
