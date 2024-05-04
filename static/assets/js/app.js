@@ -341,24 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
   * Testimonial Slider 2
   */
-  const testimonialSliderTwo = document.querySelector('.testimonial-slider-two')
-  if (testimonialSliderTwo) {
-    const testimonialSliderTwoInit = new Swiper(testimonialSliderTwo, {
-      loop: true,
-      slidesPerView: 1,
-      spaceBetween: 16,
-      navigation: {
-        nextEl: '.testimonial-slider-two__btn-next',
-        prevEl: '.testimonial-slider-two__btn-prev',
-      },
-      breakpoints: {
-        992: {
-          slidesPerView: 2,
-          spaceBetween: 24
-        }
-      }
-    })
-  }
+  
   /**
   * Team Slider
   */
