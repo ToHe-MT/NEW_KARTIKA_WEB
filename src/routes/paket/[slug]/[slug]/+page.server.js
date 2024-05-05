@@ -9,7 +9,6 @@ export async function load({ url, params }) {
 	const filter = {
 		slug: params.slug
 	};
-	console.log("FIRST" , params.slug);
 	var limit = 1;
 	const umroh = await db.collection('schedule').find(filter).limit(limit).toArray();
 	umroh.forEach((umroh) => {
@@ -43,14 +42,11 @@ export const actions = {
 			order_id: nanoid(),
 			slug: params.slug,
 
-			upgrade_kamar: data.get('upgrade_kamar').substring(0, 10),
 			jumlah_pax_quad: data.get('jumlah_pax_quad').substring(0, 5),
 			jumlah_pax_triple: data.get('jumlah_pax_triple').substring(0, 5),
 			jumlah_pax_double: data.get('jumlah_pax_double').substring(0, 5),
 			whatsapp: data.get('whatsapp').substring(0, 30),
 			nama_pemesan: data.get('nama_pemesan').substring(0, 100),
-			nik_pemesan: data.get('nik').substring(0, 16),
-			alamat_pemesan: data.get('alamat').substring(0, 355),
 
 			created_at: new Date(),
 			ip_address: request.headers.get('cf-connecting-ip'),
@@ -73,8 +69,6 @@ export const actions = {
 *Pax Triple Room*: ${newOrder.jumlah_pax_triple}
 
 *Nama*: ${newOrder.nama_pemesan}
-*NIK*: ${newOrder.nik_pemesan}
-*Alamat*: ${newOrder.alamat_pemesan}
 *Whatsapp*: ${newOrder.whatsapp}`;
 
 		redirect(302, `https://wa.me/62812100591?text=${encodeURI(text)}`);

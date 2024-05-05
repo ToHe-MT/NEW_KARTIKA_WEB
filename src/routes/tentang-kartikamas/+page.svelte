@@ -212,7 +212,7 @@
 </section>
 
 <!-- CONTACT US -->
-<section class="section-space position-relative z-1">
+<!-- <section class="section-space position-relative z-1">
 	<img
 		src="/assets/img/category-section-el.png"
 		alt="image"
@@ -335,4 +335,4 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
