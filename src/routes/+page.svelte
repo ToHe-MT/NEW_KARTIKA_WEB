@@ -12,7 +12,6 @@
 	import { Navigation, Pagination } from 'swiper/modules';
 
 	export let data;
-	console.log(data.umroh);
 	let form_action = {
 		umroh: '/paket/umroh',
 		'umroh plus': '/paket/umroh-plus',
@@ -121,11 +120,31 @@
 		});
 	});
 
+	let gambarSlider;
+
+	onMount(() => {
+		gambarSlider = new Swiper('.property-card-slider', {
+			loop: true,
+			pagination: {
+				el: '.swiper-pagination'
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-next'
+			},
+			modules: [Navigation, Pagination]
+		});
+	});
+
 	onDestroy(() => {
-		if (testimonialSliderTwo) {
-			testimonialSliderTwo.destroy();
-			testimonialSliderTwo = null;
+		if (gambarSlider) {
+			gambarSlider = null;
 		}
+	});
+
+	onMount(() => {
+		const button = document.querySelector('#popup');
+		button.click();
 	});
 </script>
 
@@ -133,7 +152,7 @@
 	<title>Kartika Mas Tours &amp; Travel | Umroh dan Haji Plus Murah</title>
 </svelte:head>
 
-<div class="primary-hero bg-primary-3p">
+<div class="primary bg-primary-3p">
 	<div class="container w-100">
 		<div class="row g-2 w-100">
 			<div class="col-lg-8 col-xl-10 title">
@@ -153,11 +172,10 @@
 		</div>
 	</div>
 	<div class="background-image-hero">
-		<img
-			src="/assets/img/DEPAN.jpg"
-			alt="makkah"
-			class="img-fluid primary-hero__el primary-hero__img-1"
-		/>
+		<img src="/assets/img/DEPAN.jpg" alt="makkah" class="img-fluid" />
+	</div>
+	<div class="background-image-bawah">
+		<img src="/assets/img/shape.svg" alt="makkah" class="img-fluid" />
 	</div>
 </div>
 
@@ -258,9 +276,9 @@
 						<span class="material-symbols-outlined mat-icon"> person </span>
 						<select name="level_paket" class="form-select" aria-label="Default select example">
 							<option selected value="">Paket</option>
-							<option value="reguler">Silver (⭐️⭐️⭐️)</option>
-							<option value="vip">Gold (⭐️⭐️⭐️⭐️)</option>
-							<option value="vvip">Platinum (⭐️⭐️⭐️⭐️⭐️)</option>
+							<option value="silver">Silver (⭐️⭐️⭐️)</option>
+							<option value="gold">Gold (⭐️⭐️⭐️⭐️)</option>
+							<option value="platinum">Platinum (⭐️⭐️⭐️⭐️⭐️)</option>
 							<option value="private">PRIVATE (CUSTOM)</option>
 						</select>
 					</div>
@@ -795,7 +813,42 @@
 <!-- <PaketTransport data={data.vehicle} />
 <PaketWisata paketWisata={data.paketWisata} /> -->
 
+<!-- Button trigger modal -->
+<button
+	type="button"
+	class="btn btn-primary"
+	data-bs-toggle="modal"
+	data-bs-target="#exampleModal"
+	style="display: none;"
+	id="popup"
+>
+	Launch demo modal
+</button>
+
+<!-- Modal -->
+<div
+	class="modal fade"
+	id="exampleModal"
+	tabindex="-1"
+	aria-labelledby="exampleModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<img src="/perlengkapan/silver1.png" alt="" class="img-fluid popup" />
+		</div>
+	</div>
+</div>
+
 <style>
+	.modal-body {
+		height: 80vh;
+		background: white;
+		padding: 0;
+	}
+	.popup {
+		width: 100%;
+	}
 	.button-tentang button {
 		width: 200px;
 		padding: 10px;
@@ -807,9 +860,15 @@
 		background: #660000;
 		transform: scale(1.1);
 	}
-	.primary-hero {
-		position: relative;
+	.primary {
+		padding-top: clamp(3.75rem, 6.5vw, 7.5rem);
+		padding-bottom: clamp(3.75rem, 6.5vw, 7.5rem);
+		background-color: hsl(var(--primary-300) / 0.03);
 		overflow: hidden;
+		position: relative;
+		display: grid;
+		place-content: center;
+		min-height: calc(100vh - 10.75rem);
 	}
 
 	.background-image-hero {
@@ -820,6 +879,18 @@
 		height: 100%;
 		z-index: -1;
 	}
+	.background-image-bawah {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 25%;
+		z-index: 10;
+	}
+	.background-image-bawah img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
 
 	.background-image-hero img {
 		object-fit: cover;
@@ -828,7 +899,7 @@
 		filter: brightness(30%);
 	}
 	.title {
-		color: #660000;
+		color: white;
 	}
 	@media (min-width: 1370px) {
 		.title {
@@ -840,7 +911,7 @@
 	}
 
 	.ngambang {
-		margin-top: -40px;
+		margin-top: -150px;
 		z-index: 1000;
 	}
 
@@ -980,7 +1051,7 @@
 		opacity: 1;
 		transform: scale(1.05);
 	}
-	.testimoni{
+	.testimoni {
 		/* box-shadow: inset 0 10px 10px -10px gray; */
 	}
 </style>

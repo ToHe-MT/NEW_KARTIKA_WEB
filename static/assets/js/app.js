@@ -209,21 +209,21 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
   * Property Card Slider
   */
-  const propertySlider = document.querySelectorAll('.property-card-slifsder')
-  if (propertySlider) {
-    propertySlider.forEach((e) => {
-      const propertySliderInit = new Swiper(e, {
-        loop: true,
-        pagination: {
-          el: '.property-card-pagination',
-        },
-        navigation: {
-          nextEl: '.property-card-next',
-          prevEl: '.property-card-prev',
-        },
-      })
-    })
-  }
+  // const propertySlider = document.querySelectorAll('.property-card-slifsder')
+  // if (propertySlider) {
+  //   propertySlider.forEach((e) => {
+  //     const propertySliderInit = new Swiper(e, {
+  //       loop: true,
+  //       pagination: {
+  //         el: '.property-card-pagination',
+  //       },
+  //       navigation: {
+  //         nextEl: '.property-card-next',
+  //         prevEl: '.property-card-prev',
+  //       },
+  //     })
+  //   })
+  // }
   /**
   * Team Member Slider
   */
