@@ -80,7 +80,7 @@
 </svelte:head>
 <!-- Property List -->
 <div class="section-space--sm bg-primary-3p">
-	<div class="container-lg p-10 border shadow-sm bg-white">
+	<div class="container-lg p-4 p-md-10 shadow-sm bg-white">
 		<form action="">
 			<div class="row g-4">
 				<div class="col-12">
@@ -97,10 +97,10 @@
 						<div class="hr-dashed my-6"></div>
 
 						<div class="row d-flex justify-content-center align-items-end mb-10">
-							<div class="col-11 row">
+							<div class= "col-md-11 row m-0 p-0 d-flex justify-content-center align-items-end">
 								{#if data.slug == 'umroh' || data.slug == 'umroh-plus'}
 									<div
-										class="col-3 d-flex flex-column justify-content-center align-items-start gap-1"
+										class="col-sm-6 col-md-3 d-flex flex-column justify-content-center align-items-start gap-1"
 									>
 										<div class="p-1 px-1 fw-bold">Jenis Paket</div>
 										<div class="property-search__select property-search__col rounded px-0 w-100">
@@ -119,7 +119,7 @@
 									</div>
 								{/if}
 								<div
-									class="col-3 d-flex flex-column justify-content-center align-items-start gap-1"
+									class="col-sm-6 col-md-3 d-flex flex-column justify-content-center align-items-start gap-1"
 								>
 									<div class="p-1 px-1 fw-bold">Bandara</div>
 									<div class="property-search__select property-search__col rounded px-0 w-100">
@@ -134,7 +134,7 @@
 									</div>
 								</div>
 								<div
-									class="col-3 d-flex flex-column justify-content-center align-items-start gap-1"
+									class="col-sm-6 col-md-3 d-flex flex-column justify-content-center align-items-start gap-1"
 								>
 									<div class="p-1 px-1 fw-bold">Range Harga</div>
 									<div class="property-search__select property-search__col rounded px-0 w-100">
@@ -152,23 +152,23 @@
 									</div>
 								</div>
 								<div
-									class="col-3 d-flex flex-column justify-content-center align-items-start gap-1"
+									class="col-sm-6 col-md-3 d-flex flex-column justify-content-center align-items-start gap-1"
 								>
 									<div class="p-1 px-1 fw-bold">Judul Paket</div>
 									<div
-										class="d-flex align-items-center justify-content-between rounded border border-neutral-40 bg-primary-3p px-2 py-1"
+										class="d-flex align-items-center justify-content-between rounded border border-neutral-40 bg-primary-3p px-2 py-1 w-100"
 									>
 										<input
 											name="q"
 											type="text"
-											class="form-control bg-transparent border-0 focus-outline-0"
+											class="form-control bg-transparent border-0 focus-outline-0 w-100"
 											placeholder="Keywords..."
 										/>
 									</div>
 								</div>
 							</div>
 							<div
-								class="col-1 d-flex flex-column justify-content-center align-items-start gap-1 h-100 p-1"
+								class="col-md-1 py-4 py-md-0 px-3 px-md-0 d-flex flex-column justify-content-center align-items-start gap-1 h-100 "
 							>
 								<button
 									style="min-height: 36px;"
@@ -292,10 +292,10 @@
 							</div>
 						</div>
 
-						{#if data.umroh.length > 0}
-							{#each data.umroh as item}
-								<div class="col-12 col-xl-4 col-md-6 p-4 mt-0">
-									<div class="property-card box-shadow border">
+						{#if data.umroh && data.umroh.length > 0}
+							{#each data.umroh.slice(0, 2) as item}
+								<div class="col-12 col-md-6 col-xl-4 p-0 p-md-4">
+									<div class="property-card border shadow-sm">
 										<div class="property-card__head">
 											<div class="swiper property-card-slider">
 												<div class="swiper-wrapper">
@@ -351,13 +351,13 @@
 										</div>
 										<div class="property-card__body">
 											<!-- <div class="d-flex align-items-center gap-1 mb-4">
-									 <span class="material-symbols-outlined mat-icon clr-tertiary-400"> flight_takeoff </span>
-									 <span class="d-inline-block"> {item.departure_from} </span>
-								 </div> -->
+							 <span class="material-symbols-outlined mat-icon clr-tertiary-400"> flight_takeoff </span>
+							 <span class="d-inline-block"> {item.departure_from} </span>
+						 </div> -->
 											<div class="d-flex justify-content-between mb-2">
 												<a
 													href="/paket/{item.jenis_paket}/{item.slug}"
-													class="link d-block flex-grow-1 clr-neutral-700 :clr-primary-300 fs-20 fw-medium"
+													class="link d-block flex-grow-1 clr-neutral-700 :clr-primary-300 title fw-medium"
 												>
 													{item.title}
 												</a>
@@ -375,32 +375,33 @@
 														<span class="material-symbols-outlined mat-icon clr-black">
 															flight_takeoff
 														</span>
-														<p class="mb-0">{item.departure_from}</p>
+														<p class="mb-0 fontcard">{item.departure_from}</p>
 													</div>
 												</li>
 												<li>
 													<div class="d-flex align-items-center gap-2">
-														<span class="clr-black">{formatDate(item.departure_date)}</span>
+														<span class="clr-black fontcard">{formatDate(item.departure_date)}</span
+														>
 														-
-														<span class="clr-black">{formatDate(item.return_date)}</span>
+														<span class="clr-black fontcard">{formatDate(item.return_date)}</span>
 													</div>
 												</li>
 												<!-- <li>
-											<div class="d-flex align-items-center gap-1">
-												<p class="mb-0">
-													{info.hotel_star}
-													<span
-														style="vertical-align: bottom;"
-														class="material-symbols-outlined mat-icon solid clr-tertiary-300"
-													>
-														star_rate
-													</span> Hotel
-												</p>
-											</div>
-										</li> -->
+									<div class="d-flex align-items-center gap-1">
+										<p class="mb-0">
+											{info.hotel_star}
+											<span
+												style="vertical-align: bottom;"
+												class="material-symbols-outlined mat-icon solid clr-tertiary-300"
+											>
+												star_rate
+											</span> Hotel
+										</p>
+									</div>
+								</li> -->
 											</ul>
 											<div class="hr-dashed"></div>
-											<ul class="list list-row row g-1 py-4">
+											<ul class="list list-row row g-1 pt-4">
 												{#if item.hotel && item.hotel.length > 0}
 													{#each item.hotel as item}
 														<li class="col-12">
@@ -410,12 +411,12 @@
 																>
 																	hotel
 																</span>
-																<span class="d-block"> {item.city}, {item.name}</span>
+																<span class="d-block fontcard"> {item.city}, {item.name}</span>
 																<div class="d-flex gap-0">
 																	{#each Array.from({ length: parseInt(item.star) }) as _, i}
 																		<!-- Content here -->
 																		<span
-																			class="material-symbols-rounded mat-icon fw-200 clr-secondary-500"
+																			class="material-symbols-rounded mat-icon fw-200 clr-secondary-500 fontcard"
 																		>
 																			star
 																		</span>
@@ -431,11 +432,11 @@
 														<li class="col-12">
 															<div class="d-flex align-items-center gap-2">
 																<span
-																	class="material-symbols-rounded mat-icon fw-200 clr-secondary-500"
+																	class=" fontcard material-symbols-rounded mat-icon fw-200 clr-secondary-500"
 																>
 																	{item.logo}
 																</span>
-																<span class="d-block"> {item.title} </span>
+																<span class="fontcard d-block"> {item.title} </span>
 															</div>
 														</li>
 													{/each}
@@ -448,8 +449,8 @@
 										<div class="property-card__body">
 											<div class="d-flex flex-wrap justify-content-between align-items-center">
 												<div>
-													<span>Harga Mulai Dari</span>
-													<span class="d-block fs-20 fw-medium clr-primary-300">
+													<span class="fontcard">Harga Mulai Dari</span>
+													<span class="d-block fs-20 fw-medium clr-primary-300 fontcard">
 														{money.format(item.hotel_price_quad)}
 													</span>
 												</div>
@@ -469,10 +470,7 @@
 								<div class="bg-neutral-0 rounded-2 py-3 px-6 box-shadow">
 									<div class="text-center">
 										<h2 class="mt-10 mb-5">Paket tidak ditemukan</h2>
-										<p class="mb-8">
-											Mohon rubah filter anda atau tunggu kartikamas membuat jadwal keberangkatan
-											baru
-										</p>
+										<p class="mb-8">Mohon Maaf Saat ini ada Error di Katalog kami</p>
 									</div>
 								</div>
 							</div>
@@ -504,3 +502,43 @@
 	</div>
 </div>
 <!-- /Property List -->
+
+<style>
+	@media (max-width: 1000px) {
+		.btn{
+			padding: 8px !important;
+			font-size: 12px;
+		}
+		.title {
+			font-size: 16px;
+		}
+		.badge{
+			font-size:10px;
+		}
+		h2 {
+			font-size: 24px;
+		}
+		.fontcard {
+			font-size: 14px;
+		}
+		.list.list-row{
+			font-size: 14px;
+		}
+		.list.list-row .form-select{
+			font-size: 14px;
+			
+		}
+		
+		
+	}
+	@media (max-width: 600px) {
+		.list.list-row{
+			font-size: 14px;
+		}
+		.list.list-row .form-select{
+			font-size: 14px;
+			max-width:100px ;
+			padding-inline-end: 2px;
+		}
+	}
+</style>
