@@ -8,7 +8,7 @@
 	}
 </script>
 
-<div class="py-3 border-bottom header-top">
+<div class="py-3 border-bottom header-top d-none d-md-block">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 d-flex justify-content-between align-items-center">
@@ -19,7 +19,7 @@
 	</div>
 </div>
 <!-- Header Top  -->
-<div class="py-5 border-bottom header-top">
+<div class="py-5 border-bottom header-top d-none d-lg-block">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -198,12 +198,13 @@
 			<div class="col-12">
 				<nav class="menu d-lg-flex justify-content-lg-center align-items-lg-center">
 					<div
-						class="menu-mobile-nav d-flex align-items-center justify-content-end py-3 py-lg-0 order-lg-2"
+						class="menu-mobile-nav d-flex align-items-center justify-content-between py-3 py-lg-0 order-lg-2"
 					>
+						<img src="/kartikamas-logo.png" alt="logo" class="logo d-block d-lg-none" />
 						<button
-							class="menu-toggle w-10 h-10 p-0 border-0 lh-1 bg-primary-300 clr-primary-50 transition :clr-primary-50 :bg-primary-300 rounded-1 flex-shrink-0 order-2 order-lg-1 d-lg-none"
+							class="menu-toggle w-10 h-10 p-0 border-0 lh-1 rounded-1 flex-shrink-0 order-2 order-lg-1 d-lg-none hamburger-icon transition"
 						>
-							<span class="material-symbols-outlined mat-icon fs-28"> menu </span>
+							<span class="material-symbols-outlined mat-icon fs-28 menu"> menu </span>
 						</button>
 					</div>
 					<ul class="list list-lg-row menu-nav order-lg-1">
@@ -286,7 +287,7 @@
 		</a>
 	</div>
 	<div class="sub-button shadow">
-		<a href="/faq" >
+		<a href="/faq">
 			<span class="material-symbols-outlined mat-icon fs-28">help_outline</span>
 		</a>
 	</div>
@@ -306,10 +307,8 @@
 		position: relative;
 	}
 
-	.hamburger-icon {
-		position: absolute;
-		bottom: 0;
-		right: 0;
+	.header-top {
+		background-color: white;
 	}
 	.header-top a {
 		color: #660000;
@@ -325,7 +324,7 @@
 		font-size: 16px;
 	}
 	.header--sticky {
-		background-color: #4b0000;
+		background-color: #ffffff;
 	}
 	.menu-link {
 		color: black;
@@ -335,10 +334,11 @@
 
 	@media (min-width: 992px) {
 		.menu-nav a {
-			color: white;
+			color: black;
 		}
 		.menu-nav a:hover {
 			text-decoration: underline;
+			color: #660000;
 		}
 		.menu-nav a.has-sub:hover {
 			text-decoration: none;
@@ -386,6 +386,9 @@
 	.expanded .sub-button:nth-child(6) {
 		transform: translateY(-320px);
 	}
+	.fab-container {
+		z-index: 1000;
+	}
 
 	.fab {
 		position: relative;
@@ -393,7 +396,7 @@
 		width: 70px;
 		background-color: #660000;
 		border-radius: 50%;
-		z-index: 2;
+		z-index: 1000;
 	}
 
 	.fab::before {
@@ -440,8 +443,28 @@
 		cursor: pointer;
 	}
 
-	.sub-button .material-symbols-outlined.mat-icon.fs-28 {
+	.fab-container .sub-button .material-symbols-outlined.mat-icon.fs-28 {
 		color: white;
 		padding-top: 6px;
+	}
+	@media (max-width: 1370px) {
+		.fs-1 {
+			font-size: 20px;
+		}
+		h1 {
+			font-size: 20px;
+		}
+	}
+	.hamburger-icon {
+		background-color: transparent;
+	}
+	.hamburger-icon span {
+		color: #660000 !important;
+	}
+	.hamburger-icon:hover {
+		background-color: #660000;
+	}
+	.hamburger-icon:hover span {
+		color: white !important;
 	}
 </style>

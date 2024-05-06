@@ -155,7 +155,7 @@
 <div class="primary bg-primary-3p">
 	<div class="container w-100">
 		<div class="row g-2 w-100">
-			<div class="col-lg-8 col-xl-10 title">
+			<div class="col-lg-8 col-xl-10 p-10 title">
 				<h1 class="d2 mb-6 title">Kartika Mas Tour and Travel</h1>
 				<p class="fs-20 mb-4">
 					Kartikamas mengakomodir kebutuhan umat mulai dari Umroh, Haji, hingga Penyewaan
@@ -181,7 +181,7 @@
 
 <div class="d-flex justify-content-center align-items-center ngambang">
 	<form action={form_action[jenis_produk]}>
-		<div class="property-search p-6 rounded-3 bg-neutral-0 py-12 px-12">
+		<div class="property-search p-6 rounded-md-3 bg-neutral-0 py-12 px-12 mx-20">
 			<div
 				class="property-search__content d-flex flex-wrap justify-content-center align-items-center gap-4"
 			>
@@ -283,9 +283,9 @@
 						</select>
 					</div>
 					<div
-						class="property-search__price property-search__col rounded-pill d-flex align-items-center gap-2 px-6 py-3"
+						class="property-search__price property-search__col rounded-pill d-flex align-items-center justify-content-between gap-2 px-6 py-3"
 					>
-						<div class="d-flex gap-2 align-items-center">
+						<div class="d-flex gap-4 align-items-center">
 							<span class="material-symbols-rounded mat-icon"> add_card </span>
 							<span class="d-inline-block fs-14"> Biaya </span>
 						</div>
@@ -362,14 +362,14 @@
 
 <div class="hr-dashed"></div>
 <div class="container py-20">
-	<div class="row px-4">
+	<div class="row px-1 px-md-4">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
 			<h5>Paket Umrah</h5>
 			<h2>Layanan Paket Umrah</h2>
 		</div>
 		{#if data.umroh && data.umroh.length > 0}
 			{#each data.umroh.slice(0, 2) as item}
-				<div class="col-12 col-xl-6 p-4">
+				<div class="col-12 col-xl-6 p-1 p-md-4">
 					<div class="property-card border shadow">
 						<div class="property-card__head">
 							<div class="swiper property-card-slider">
@@ -444,14 +444,14 @@
 										<span class="material-symbols-outlined mat-icon clr-black">
 											flight_takeoff
 										</span>
-										<p class="mb-0">{item.departure_from}</p>
+										<p class="mb-0 fontcard">{item.departure_from}</p>
 									</div>
 								</li>
 								<li>
 									<div class="d-flex align-items-center gap-2">
-										<span class="clr-black">{formatDate(item.departure_date)}</span>
+										<span class="clr-black fontcard">{formatDate(item.departure_date)}</span>
 										-
-										<span class="clr-black">{formatDate(item.return_date)}</span>
+										<span class="clr-black fontcard">{formatDate(item.return_date)}</span>
 									</div>
 								</li>
 								<!-- <li>
@@ -469,7 +469,7 @@
 								</li> -->
 							</ul>
 							<div class="hr-dashed"></div>
-							<ul class="list list-row row g-1 py-4">
+							<ul class="list list-row row g-1 pt-4">
 								{#if item.hotel && item.hotel.length > 0}
 									{#each item.hotel as item}
 										<li class="col-12">
@@ -477,12 +477,12 @@
 												<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
 													hotel
 												</span>
-												<span class="d-block"> {item.city}, {item.name}</span>
+												<span class="d-block fontcard"> {item.city}, {item.name}</span>
 												<div class="d-flex gap-0">
 													{#each Array.from({ length: parseInt(item.star) }) as _, i}
 														<!-- Content here -->
 														<span
-															class="material-symbols-rounded mat-icon fw-200 clr-secondary-500"
+															class="material-symbols-rounded mat-icon fw-200 clr-secondary-500 fontcard"
 														>
 															star
 														</span>
@@ -497,10 +497,12 @@
 									{#each item.bonus as item}
 										<li class="col-12">
 											<div class="d-flex align-items-center gap-2">
-												<span class="material-symbols-rounded mat-icon fw-200 clr-secondary-500">
+												<span
+													class=" fontcard material-symbols-rounded mat-icon fw-200 clr-secondary-500"
+												>
 													{item.logo}
 												</span>
-												<span class="d-block"> {item.title} </span>
+												<span class="fontcard d-block"> {item.title} </span>
 											</div>
 										</li>
 									{/each}
@@ -513,7 +515,7 @@
 						<div class="property-card__body">
 							<div class="d-flex flex-wrap justify-content-between align-items-center">
 								<div>
-									<span>Harga Mulai Dari</span>
+									<span class="fontcard">Harga Mulai Dari</span>
 									<span class="d-block fs-20 fw-medium clr-primary-300">
 										{money.format(item.hotel_price_quad)}
 									</span>
@@ -529,6 +531,15 @@
 					</div>
 				</div>
 			{/each}
+		{:else}
+			<div class="col-12">
+				<div class="bg-neutral-0 rounded-2 py-3 px-6 box-shadow">
+					<div class="text-center">
+						<h2 class="mt-10 mb-5">Paket tidak ditemukan</h2>
+						<p class="mb-8">Mohon Maaf Saat ini ada Error di Katalog kami</p>
+					</div>
+				</div>
+			</div>
 		{/if}
 	</div>
 </div>
@@ -539,17 +550,17 @@
 	<div class="row px-20">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
 			<h5>FASILITAS JAMAAH</h5>
-			<h2>Fasilitas Yang Disediakan</h2>
+			<h2 class="text-center">Fasilitas Yang Disediakan</h2>
 		</div>
 	</div>
 	<div class="container py-10">
 		<div class="row">
 			{#each contents as content}
-				<div class="col-lg-4 col-md-6 py-8 px-4">
+				<div class="col-lg-4 col-sm-6 py-8 px-12 px-sm-4">
 					<div class="komponen-sll-ready">
 						<div
 							class="sub-komponen-sll skssl-box-icon"
-							style="color: #424242; text-align: left; background-color: #ffffff;"
+							style="color: #424242; background-color: #ffffff;"
 						>
 							<div class="mc-box-icon mc-box-icon-top">
 								<div class="mcbi-image">
@@ -561,7 +572,7 @@
 										</span>
 									</div>
 								</div>
-								<div class="mcbi-text py-3">
+								<div class="mcbi-text py-3 mt-2">
 									<div class="fs-5 pt-4 fw-bold">{content.title}</div>
 									<div class="fs-6">{content.description}</div>
 								</div>
@@ -582,11 +593,13 @@
 		style="max-width: 100%; height: auto;"
 	/>
 	<div class="position-absolute top-50 start-50 text-center text-white responsiveTranslate">
-		<div class="col-sm-10 col-xs-12 bg-white p-10" style="opacity: 80%;">
-			<div style="color: #ffffff; text-align: left; opacit:100%">
-				<h3 class="fw-bold">Dapatkan pengalaman Umrah terbaik bersama kami</h3>
-				<p class="fw-bold clr-primary-300 p-2">Pelayanan terbaik Kartika Mas Tour &amp; Travel</p>
-				<div class="button-tentang p-2">
+		<div class="p-4 p-md-10 responbody w-100 h-100">
+			<div style="color: #ffffff; text-align: left;" class="respondalam">
+				<h3 class="fw-bold p-md-2">Dapatkan pengalaman Umrah terbaik bersama kami</h3>
+				<p class="fw-bold clr-primary-300 p-md-2">
+					Pelayanan terbaik Kartika Mas Tour &amp; Travel
+				</p>
+				<div class="button-tentang p-md-2">
 					<button type="button" class="btn bg-primary-300 text-white">Daftar</button>
 				</div>
 			</div>
@@ -595,11 +608,11 @@
 </div>
 
 <!-- GALERRY Perlengkapan -->
-<div class="p-10 bg-primary-3p">
-	<div class="row px-20">
+<div class="p-2 pt-30 bg-primary-3p">
+	<div class="row py-5">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
 			<h5>GALERRY PERLENGKAPAN</h5>
-			<h2>Perlengkapan Umroh Ekslusif Kartika Mas</h2>
+			<h2>Perlengkapan Ekslusif</h2>
 		</div>
 	</div>
 	<div class="container px-10">
@@ -912,7 +925,83 @@
 
 	.ngambang {
 		margin-top: -150px;
-		z-index: 1000;
+		z-index: 50;
+	}
+
+	@media (max-width: 1370px) {
+		.ngambang {
+			margin-top: -100px;
+			z-index: 1000;
+		}
+		.background-image-bawah {
+			display: none;
+		}
+	}
+
+	@media (max-width: 1370px) {
+		.title h1 {
+			font-size: 32px;
+		}
+	}
+	@media (max-width: 1000px) {
+		.title h1 {
+			font-size: 28px;
+		}
+		.fs-20 {
+			font-size: 16px;
+		}
+		.button-tentang button {
+			width: 150px;
+			padding: 10px;
+			font-size: 14px;
+		}
+		.skssl-box-icon {
+		}
+		h5 {
+			font-size: 18px;
+		}
+		h2 {
+			font-size: 24px;
+		}
+		h3 {
+			font-size: 26px;
+		}
+		.fontcard {
+			font-size: 14px;
+		}
+	}
+	@media (max-width: 700px) {
+		.form-select {
+			padding: 10px;
+			font-size: 12px;
+		}
+		.property-search__price {
+			padding-block: 8px !important;
+			font-size: 12px;
+		}
+		.property-search__price .fs-10 {
+			font-size: 8px;
+		}
+		.property-search__price .fs-14 {
+			font-size: 12px;
+		}
+		.title h1 {
+			font-size: 20px;
+		}
+		.fs-20 {
+			font-size: 14px;
+		}
+		.button-tentang button {
+			width: 100px;
+			padding: 10px;
+			font-size: 12px;
+		}
+		h5 {
+			font-size: 14px;
+		}
+		h2 {
+			font-size: 18px;
+		}
 	}
 
 	.ngambang * {
@@ -952,6 +1041,7 @@
 		box-shadow: 0 7px 37px 5px rgb(0 0 0 / 8%);
 		border: 1px solid var(--border-produk);
 		border-radius: 5px;
+		min-height: 200px;
 		/* overflow: hidden; */
 	}
 	.mc-box-icon.mc-box-icon-top {
@@ -1006,6 +1096,35 @@
 			min-width: none;
 			max-width: none;
 		}
+	}
+	@media (max-width: 700px) {
+		.responsiveTranslate {
+			width: 100%;
+			height: 100%;
+		}
+		.responsiveTranslate h3 {
+			font-size: 18px;
+		}
+		.responsiveTranslate p {
+			font-size: 14px;
+		}
+		.respondalam {
+			display: flex;
+			justify-content: center;
+			align-items: start;
+			flex-direction: column;
+			gap: 0px;
+			padding-top: 10px;
+		}
+		.responbody .btn {
+			padding: 4px;
+		}
+	}
+	.responbody {
+		background-color: #ffffffb8;
+		display: flex;
+		justify-content: center;
+		height: 105%;
 	}
 	.property-card__head {
 		padding: 0;
