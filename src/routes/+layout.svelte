@@ -192,7 +192,7 @@
 	</div>
 </div>
 <!-- Header -->
-<header class="header header--sticky">
+<header class="header header--sticky ">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">

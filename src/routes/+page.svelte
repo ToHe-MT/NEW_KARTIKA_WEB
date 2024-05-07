@@ -116,7 +116,10 @@
 				nextEl: '.testimonial-slider-two__btn-next',
 				prevEl: '.testimonial-slider-two__btn-prev'
 			},
-			modules: [Navigation]
+			modules: [Navigation],
+			autoplay: {
+				delay: 5000
+			}
 		});
 	});
 
@@ -180,8 +183,8 @@
 </div>
 
 <div class="d-flex justify-content-center align-items-center ngambang">
-	<form action={form_action[jenis_produk]}>
-		<div class="property-search p-6 rounded-md-3 bg-neutral-0 py-12 px-12 mx-20">
+	<form action={form_action[jenis_produk]} class="p-10">
+		<div class="property-search p-6 rounded-md-3 bg-neutral-0 py-12 px-sm-12 mx-auto w-100">
 			<div
 				class="property-search__content d-flex flex-wrap justify-content-center align-items-center gap-4"
 			>
@@ -363,7 +366,7 @@
 <div class="hr-dashed"></div>
 <div class="container py-20">
 	<div class="row px-1 px-md-4">
-		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
+		<div class="col-12 d-flex justify-content-center align-items-center flex-column container">
 			<h5>Paket Umrah</h5>
 			<h2>Layanan Paket Umrah</h2>
 		</div>
@@ -547,7 +550,7 @@
 <div class="hr-dashed"></div>
 <!-- FASILITAS -->
 <div class="pt-30 bg-primary-3p w-100">
-	<div class="row px-20">
+	<div class="row px-20 container">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
 			<h5>FASILITAS JAMAAH</h5>
 			<h2 class="text-center">Fasilitas Yang Disediakan</h2>
@@ -609,9 +612,9 @@
 
 <!-- GALERRY Perlengkapan -->
 <div class="p-2 pt-30 bg-primary-3p">
-	<div class="row py-5">
+	<div class="row py-5 container">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
-			<h5>GALERRY PERLENGKAPAN</h5>
+			<h5>GALLERY PERLENGKAPAN</h5>
 			<h2>Perlengkapan Ekslusif</h2>
 		</div>
 	</div>
@@ -699,19 +702,19 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="row">
-			<div class="col-1 d-flex justify-content-center align-items-center">
+		<div class="row d-flex">
+			<div class="col-1 d-none d-sm-flex justify-content-center align-items-center">
 				<div
 					class="swiper-button-prev testimonial-slider-two__btn testimonial-slider-two__btn-prev"
 				></div>
 			</div>
 
-			<div class="col-10">
+			<div class="col-sm-10 p-2">
 				<div class="swiper testimonial-slider-two">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<div class="p-5 rounded-4">
-								<div class="bg-primary-3p rounded-4 p-8">
+							<div class="p-sm-2 rounded-4">
+								<div class="bg-primary-3p rounded-4 p-4 p-sm-6">
 									<ul class="list list-row align-items-center justify-content-center mb-2">
 										<li>
 											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
@@ -805,7 +808,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-1 d-flex justify-content-center align-items-center">
+			<div class="col-1 d-none d-sm-flex justify-content-center align-items-center">
 				<div
 					class="swiper-button-next testimonial-slider-two__btn testimonial-slider-two__btn-next"
 				></div>
@@ -1172,5 +1175,8 @@
 	}
 	.testimoni {
 		/* box-shadow: inset 0 10px 10px -10px gray; */
+	}
+	.swiper-wrapper {
+		max-height: 250px;
 	}
 </style>

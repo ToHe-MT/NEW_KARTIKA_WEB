@@ -79,7 +79,7 @@
 	<title>Listing Paket Umroh dan Haji Termurah & Jaminan Berangkat</title>
 </svelte:head>
 <!-- Property List -->
-<div class="section-space--sm bg-primary-3p">
+<div class="section-space--sm bg-primary-3p p-4 p-md-10 pt-md-20">
 	<div class="container-lg p-4 p-md-10 shadow-sm bg-white">
 		<form action="">
 			<div class="row g-4">
@@ -266,7 +266,7 @@
 				<div class="col-12 mt-0">
 					<div class="row g-4">
 						<div class="col-12 mt-1">
-							<div class="bg-neutral-0 rounded-2 py-3 px-6">
+							<div class="bg-neutral-0 rounded-2 py-3 px-md-6">
 								<ul class="list list-row align-items-center flex-wrap gap-3">
 									<li class="d-block">
 										<p class="mb-0 clr-neutral-500">
@@ -293,8 +293,8 @@
 						</div>
 
 						{#if data.umroh && data.umroh.length > 0}
-							{#each data.umroh.slice(0, 2) as item}
-								<div class="col-12 col-md-6 col-xl-4 p-0 p-md-4">
+							{#each data.umroh as item}
+								<div class="col-12 col-md-6 col-xl-4 p-0 p-md-6">
 									<div class="property-card border shadow-sm">
 										<div class="property-card__head">
 											<div class="swiper property-card-slider">
@@ -522,10 +522,10 @@
 			font-size: 14px;
 		}
 		.list.list-row{
-			font-size: 14px;
+			font-size: 16px;
 		}
 		.list.list-row .form-select{
-			font-size: 14px;
+			font-size: 16px;
 			
 		}
 		
