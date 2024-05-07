@@ -186,8 +186,8 @@
 	/>
 </svelte:head>
 
-<div class="section-space--sm bg-primary-3p">
-	<div class="container-lg p-10 border shadow-sm bg-white">
+<div class="section-space--sm bg-primary-3p p-2 p-md-10 pt-md-20">
+	<div class="container-lg p-4 p-md-10 border shadow-sm bg-white">
 		<div>
 			<h3>{info.title}</h3>
 		</div>
@@ -242,9 +242,9 @@
 					></div>
 				</div>
 				<!-- CONTENT -->
-				<div class="p-4 p-4 mt-10">
+				<div class="p-1 p-md-4 mt-10">
 					<div class="row my-1">
-						<div class="col-6">
+						<div class="col-md-6">
 							<div>
 								<div class="fs-6">
 									<h6 class="m-0">Judul Paket</h6>
@@ -255,7 +255,7 @@
 					</div>
 					<div class="row my-1">
 						{#if info.tour_guide}
-							<div class="col-6">
+							<div class="col-md-6">
 								<div>
 									<div class="fs-6">
 										<h6 class="m-0">Tour Guide</h6>
@@ -265,7 +265,7 @@
 							</div>
 						{/if}
 						{#if info.guest}
-							<div class="col-6">
+							<div class="col-md-6">
 								<div>
 									<div class="fs-6">
 										<h6 class="m-0">Guest</h6>
@@ -276,7 +276,7 @@
 						{/if}
 					</div>
 					<div class="row my-1">
-						<div class="col-6">
+						<div class="col-sm-6">
 							<div>
 								<div class="fs-6">
 									<h6 class="m-0">Keberangkatan Dari</h6>
@@ -284,7 +284,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-6">
+						<div class="col-sm-6">
 							<div>
 								<div class="fs-6">
 									<h6 class="m-0">Durasi</h6>
@@ -296,7 +296,7 @@
 						</div>
 					</div>
 					<div class="row my-1">
-						<div class="col-6">
+						<div class="col-sm-6">
 							<div>
 								<div class="fs-6">
 									<h6 class="m-0">Departure Date</h6>
@@ -304,7 +304,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-6">
+						<div class="col-sm-6">
 							<div>
 								<div class="fs-6">
 									<h6 class="m-0">Return Date</h6>
@@ -349,7 +349,7 @@
 								<h6 class="">Hotel</h6>
 								{#if info.hotel_price_quad}
 									<div class="d-flex align-items-center">
-										<p style=" padding-right:16px">Quad Room - 4 Person</p>
+										<p style=" padding-right:16px">Quad - 4 Person</p>
 										<p style="" class="fw-bold">
 											{money.format(info.hotel_price_quad)}
 										</p>
@@ -358,7 +358,7 @@
 								{/if}
 								{#if info.hotel_price_triple}
 									<div class="d-flex align-items-center">
-										<p style=" padding-right:16px">Triple Room - 3 Person</p>
+										<p style=" padding-right:16px">Triple - 3 Person</p>
 										<p style="" class="fw-bold">
 											{money.format(info.hotel_price_triple)}
 										</p>
@@ -367,7 +367,7 @@
 								{/if}
 								{#if info.hotel_price_double}
 									<div class="d-flex align-items-center">
-										<p style=" padding-right:16px">Double Room - 2 Person</p>
+										<p style=" padding-right:16px">Double - 2 Person</p>
 										<p style="" class="fw-bold">
 											{money.format(info.hotel_price_double)}
 										</p>
@@ -378,262 +378,261 @@
 							<div class="hr-dashed my-5"></div>
 						</div>
 					</div>
-					<div class="" id="accordionFlushExample">
-						<div class="collapse-container">
-							<h2 class="fs-6 m-0" id="flush-headingOne">
-								<button
-									class="btn button-collapse w-100"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#flush-collapseOne"
-									aria-expanded="false"
-									aria-controls="flush-collapseOne"
-								>
-									Itinerary
-								</button>
-							</h2>
-							<div
-								id="flush-collapseOne"
-								class="accordion-collapse collapse"
-								aria-labelledby="flush-headingOne"
-								data-bs-parent="#accordionFlushExample"
+				</div>
+				<!-- CONTENT -->
+				<div class="" id="accordionFlushExample">
+					<div class="collapse-container">
+						<h2 class="fs-6 m-0" id="flush-headingOne">
+							<button
+								class="btn button-collapse w-100"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseOne"
+								aria-expanded="false"
+								aria-controls="flush-collapseOne"
 							>
-								<div class="p-4 px-8 border">
-									<ul class="timeline">
-										{#if info.itinerari && info.itinerari.length > 0}
-											{#each info.itinerari as item, idx}
-												<li class="timeline-item mb-5">
-													<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
-													<div class="d-flex gap-4 justify-content-start align-items-end">
-														<span
-															class="fw-bold fs-6"
-															data-bs-toggle="collapse"
-															href={`#collapseExample${idx}`}
-															role="button"
-															aria-expanded="false"
-															aria-controls={`collapseExample${idx}`}
-														>
-															Hari ke - {item.hari}
-														</span>
-														<p class="text-muted mb-0" style="font-size: 14px;">
-															{capitalizeEachWord(item.route)}
-														</p>
-													</div>
-													<div class="collapse" id={`collapseExample${idx}`}>
+								Itinerary
+							</button>
+						</h2>
+						<div
+							id="flush-collapseOne"
+							class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne"
+							data-bs-parent="#accordionFlushExample"
+						>
+							<div class="p-4 px-8 border">
+								<ul class="timeline">
+									{#if info.itinerari && info.itinerari.length > 0}
+										{#each info.itinerari as item, idx}
+											<li class="timeline-item mb-5">
+												<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+												<div class="d-flex gap-4 justify-content-start align-items-end">
+													<span
+														class="fw-bold fs-6"
+														data-bs-toggle="collapse"
+														href={`#collapseExample${idx}`}
+														role="button"
+														aria-expanded="false"
+														aria-controls={`collapseExample${idx}`}
+													>
+														Hari ke - {item.hari}
+													</span>
+													<p class="text-muted mb-0" style="font-size: 14px;">
+														{capitalizeEachWord(item.route)}
+													</p>
+												</div>
+												<div class="collapse" id={`collapseExample${idx}`}>
+													<div class="">
 														<div class="">
-															<div class="">
-																{#if item.deskripsi}
-																	<!-- content here -->
-																	<p class="text-muted fs-14 text-justify">
-																		{item.deskripsi}
-																	</p>
-																{:else}
-																	<p class="text-muted fs-14 text-justify">-</p>
-																{/if}
-															</div>
+															{#if item.deskripsi}
+																<!-- content here -->
+																<p class="text-muted fs-14 text-justify">
+																	{item.deskripsi}
+																</p>
+															{:else}
+																<p class="text-muted fs-14 text-justify">-</p>
+															{/if}
 														</div>
 													</div>
-												</li>
-											{/each}
-										{/if}
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="collapse-container">
-							<!-- What's Included -->
-							<h2 class="fs-6 m-0" id="flush-headingIncluded">
-								<button
-									class="btn button-collapse w-100"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#flush-collapseIncluded"
-									aria-expanded="false"
-									aria-controls="flush-collapseIncluded"
-								>
-									What's Included
-								</button>
-							</h2>
-							<div
-								id="flush-collapseIncluded"
-								class="accordion-collapse collapse"
-								aria-labelledby="flush-headingIncluded"
-								data-bs-parent="#accordionFlushExample"
-							>
-								<div class="p-4 px-8 border">
-									<ol class=" col-12 px-2 list-unstyled">
-										{#if info.included && info.included.length > 0}
-											{#each info.included as item, idx}
-												<div class="d-flex align-items-center gap-4 py-1">
-													<span
-														class="material-symbols-outlined mat-icon clr-secondary-400 rounded-circle fs-5 my-1"
-														style="background-color: #e4ffe2; font-weight:700;"
-													>
-														check
-													</span>
-													<p class="mb-0 fs-14">{item}</p>
 												</div>
-											{/each}
-										{/if}
-									</ol>
-								</div>
+											</li>
+										{/each}
+									{/if}
+								</ul>
 							</div>
 						</div>
-						<div class="collapse-container">
-							<!-- What's Not Included -->
+					</div>
+					<div class="collapse-container">
+						<!-- What's Included -->
+						<h2 class="fs-6 m-0" id="flush-headingIncluded">
+							<button
+								class="btn button-collapse w-100"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseIncluded"
+								aria-expanded="false"
+								aria-controls="flush-collapseIncluded"
+							>
+								What's Included
+							</button>
+						</h2>
+						<div
+							id="flush-collapseIncluded"
+							class="accordion-collapse collapse"
+							aria-labelledby="flush-headingIncluded"
+							data-bs-parent="#accordionFlushExample"
+						>
+							<div class="p-2 p-md-4 px-4 px-md-8 border">
+								<ol class=" col-12 px-2 list-unstyled">
+									{#if info.included && info.included.length > 0}
+										{#each info.included as item, idx}
+											<div class="d-flex align-items-center gap-4 py-1">
+												<span
+													class="material-symbols-outlined mat-icon clr-secondary-400 rounded-circle fs-5 my-1"
+													style="background-color: #e4ffe2; font-weight:700;"
+												>
+													check
+												</span>
+												<p class="mb-0">{item}</p>
+											</div>
+										{/each}
+									{/if}
+								</ol>
+							</div>
+						</div>
+					</div>
+					<div class="collapse-container">
+						<!-- What's Not Included -->
 
-							<h2 class="fs-6 m-0" id="flush-headingNotIncluded">
-								<button
-									class="btn button-collapse w-100"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#flush-collapseNotIncluded"
-									aria-expanded="false"
-									aria-controls="flush-collapseNotIncluded"
-								>
-									What's Not Included
-								</button>
-							</h2>
-							<div
-								id="flush-collapseNotIncluded"
-								class="accordion-collapse collapse"
-								aria-labelledby="flush-headingNotIncluded"
-								data-bs-parent="#accordionFlushExample"
+						<h2 class="fs-6 m-0" id="flush-headingNotIncluded">
+							<button
+								class="btn button-collapse w-100"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseNotIncluded"
+								aria-expanded="false"
+								aria-controls="flush-collapseNotIncluded"
 							>
-								<div class="p-4 px-8 border">
-									<ol class=" col-12 px-2 list-unstyled">
-										{#if info.not_included && info.not_included.length > 0}
-											{#each info.not_included as item, idx}
-												<div class="d-flex align-items-center gap-4 py-1">
-													<span
-														class="material-symbols-outlined mat-icon text-danger rounded-circle fs-5 my-1"
-														style="background-color: #FFE5E5; font-weight:700;"
-													>
-														close
-													</span>
-													<p class="mb-0 fs-14">{item}</p>
-												</div>
-											{/each}
-										{/if}
-									</ol>
-								</div>
+								What's Not Included
+							</button>
+						</h2>
+						<div
+							id="flush-collapseNotIncluded"
+							class="accordion-collapse collapse"
+							aria-labelledby="flush-headingNotIncluded"
+							data-bs-parent="#accordionFlushExample"
+						>
+							<div class="p-2 p-md-4 px-4 px-md-8 border">
+								<ol class=" col-12 px-2 list-unstyled">
+									{#if info.not_included && info.not_included.length > 0}
+										{#each info.not_included as item, idx}
+											<div class="d-flex align-items-center gap-4 py-1">
+												<span
+													class="material-symbols-outlined mat-icon text-danger rounded-circle fs-5 my-1"
+													style="background-color: #FFE5E5; font-weight:700;"
+												>
+													close
+												</span>
+												<p class="mb-0 fs-14">{item}</p>
+											</div>
+										{/each}
+									{/if}
+								</ol>
 							</div>
 						</div>
-						<!-- Persyaratan Administrasi -->
-						<div class="collapse-container">
-							<h2 class="fs-6 m-0" id="flush-headingPersyaratan">
-								<button
-									class="btn button-collapse w-100"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#flush-collapsePersyaratan"
-									aria-expanded="false"
-									aria-controls="flush-collapsePersyaratan"
-								>
-									Persyaratan Administrasi
-								</button>
-							</h2>
-							<div
-								id="flush-collapsePersyaratan"
-								class="accordion-collapse collapse"
-								aria-labelledby="flush-headingPersyaratan"
-								data-bs-parent="#accordionFlushExample"
+					</div>
+					<!-- Persyaratan Administrasi -->
+					<div class="collapse-container">
+						<h2 class="fs-6 m-0" id="flush-headingPersyaratan">
+							<button
+								class="btn button-collapse w-100"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#flush-collapsePersyaratan"
+								aria-expanded="false"
+								aria-controls="flush-collapsePersyaratan"
 							>
-								<div class="p-4 px-8 border">
-									<ul class="list-group">
-										<li class="list-group-item">DP Umroh Minimal Rp 10.000.000 (Tahap 1)</li>
-										<li class="list-group-item">
-											Paspor Asli (Nama minimal 2 suku kata), dengan masa berlaku minimal 9 bulan.
-										</li>
-										<li class="list-group-item">
-											Paspor foto terbaru berwarna dengan latar belakang putih.
-											<ul>
-												<li>80% ukuran kepala (fokus wajah).</li>
-												<li>Warna baju/hijab kontras dengan latar (bukan putih atau senada).</li>
-												<li>Tidak memakai peci.</li>
-												<li>Tidak memakai seragam dinas.</li>
-												<li>
-													Ukuran foto :
-													<ul>
-														<li>3x4 = 4 lembar</li>
-														<li>4x6 = 6 lembar</li>
-														<li>2x3 = 2 lembar</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-										<li class="list-group-item">Fotocopy KTP yang masih berlaku 2 lembar</li>
-										<li class="list-group-item">
-											Persyaratan lain :
-											<ul>
-												<li>
-													Suami Istri : Buku nikah asli + Fotocopy 3 lembar, Kartu keluarga asli +
-													Fotocopy 1 lembar
-												</li>
-												<li>
-													Suami Istri + Anak : Buku nikah asli + Fotocopy 3 lembar, Kartu keluarga
-													asli + Fotocopy 1 lembar
-												</li>
-												<li>
-													Adik + Kakak : Akte kelahiran anak asli + Fotocopy 2 lembar, Akte
-													kelahiran masing-masing anak + Fotocopy 2 lembar, Kartu keluarga asli +
-													Fotocopy 1 lembar
-												</li>
-											</ul>
-										</li>
-										<li class="list-group-item">
-											Wanita yang berangkat sendiri dikenakan biaya Muhrim
-										</li>
-									</ul>
-								</div>
+								Persyaratan Administrasi
+							</button>
+						</h2>
+						<div
+							id="flush-collapsePersyaratan"
+							class="accordion-collapse collapse"
+							aria-labelledby="flush-headingPersyaratan"
+							data-bs-parent="#accordionFlushExample"
+						>
+							<div class="p-2 p-md-4 px-4 px-md-8 border">
+								<ul class="list-group">
+									<li class="list-group-item">DP Umroh Minimal Rp 10.000.000 (Tahap 1)</li>
+									<li class="list-group-item">
+										Paspor Asli (Nama minimal 2 suku kata), dengan masa berlaku minimal 9 bulan.
+									</li>
+									<li class="list-group-item">
+										Paspor foto terbaru berwarna dengan latar belakang putih.
+										<ul>
+											<li>80% ukuran kepala (fokus wajah).</li>
+											<li>Warna baju/hijab kontras dengan latar (bukan putih atau senada).</li>
+											<li>Tidak memakai peci.</li>
+											<li>Tidak memakai seragam dinas.</li>
+											<li>
+												Ukuran foto :
+												<ul>
+													<li>3x4 = 4 lembar</li>
+													<li>4x6 = 6 lembar</li>
+													<li>2x3 = 2 lembar</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li class="list-group-item">Fotocopy KTP yang masih berlaku 2 lembar</li>
+									<li class="list-group-item">
+										Persyaratan lain :
+										<ul>
+											<li>
+												Suami Istri : Buku nikah asli + Fotocopy 3 lembar, Kartu keluarga asli +
+												Fotocopy 1 lembar
+											</li>
+											<li>
+												Suami Istri + Anak : Buku nikah asli + Fotocopy 3 lembar, Kartu keluarga
+												asli + Fotocopy 1 lembar
+											</li>
+											<li>
+												Adik + Kakak : Akte kelahiran anak asli + Fotocopy 2 lembar, Akte kelahiran
+												masing-masing anak + Fotocopy 2 lembar, Kartu keluarga asli + Fotocopy 1
+												lembar
+											</li>
+										</ul>
+									</li>
+									<li class="list-group-item">
+										Wanita yang berangkat sendiri dikenakan biaya Muhrim
+									</li>
+								</ul>
 							</div>
 						</div>
+					</div>
 
-						<!-- Pendaftaran Umroh -->
-						<div class="collapse-container">
-							<h2 class="fs-6 m-0" id="flush-headingPendaftaran">
-								<button
-									class="btn button-collapse w-100"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#flush-collapsePendaftaran"
-									aria-expanded="false"
-									aria-controls="flush-collapsePendaftaran"
-								>
-									Pendaftaran Umroh
-								</button>
-							</h2>
-							<div
-								id="flush-collapsePendaftaran"
-								class="accordion-collapse collapse"
-								aria-labelledby="flush-headingPendaftaran"
-								data-bs-parent="#accordionFlushExample"
+					<!-- Pendaftaran Umroh -->
+					<div class="collapse-container">
+						<h2 class="fs-6 m-0" id="flush-headingPendaftaran">
+							<button
+								class="btn button-collapse w-100"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#flush-collapsePendaftaran"
+								aria-expanded="false"
+								aria-controls="flush-collapsePendaftaran"
 							>
-								<div class="p-4 px-8 border">
-									<ul class="list-group">
-										<li class="list-group-item">Mengisi formulir pendaftaran.</li>
-										<li class="list-group-item">Membayar DP tahap 1 Rp. 10.000.000.</li>
-										<li class="list-group-item">Membayar DP tahap 2 Rp. 10.000.000.</li>
-										<li class="list-group-item">Membayar DP tahap 3 Rp. 9.500.000.</li>
-										<li class="list-group-item">
-											Menyerahkan persyaratan Umroh paling lambat 1 bulan sebelum keberangkatan.
-										</li>
-										<li class="list-group-item">
-											Melunasi biaya paket selambat-lambatnya 21 hari sebelum berangkat.
-										</li>
-									</ul>
-								</div>
+								Pendaftaran Umroh
+							</button>
+						</h2>
+						<div
+							id="flush-collapsePendaftaran"
+							class="accordion-collapse collapse"
+							aria-labelledby="flush-headingPendaftaran"
+							data-bs-parent="#accordionFlushExample"
+						>
+							<div class="p-2 p-md-4 px-4 px-md-8 border">
+								<ul class="list-group">
+									<li class="list-group-item">Mengisi formulir pendaftaran.</li>
+									<li class="list-group-item">Membayar DP tahap 1 Rp. 10.000.000.</li>
+									<li class="list-group-item">Membayar DP tahap 2 Rp. 10.000.000.</li>
+									<li class="list-group-item">Membayar DP tahap 3 Rp. 9.500.000.</li>
+									<li class="list-group-item">
+										Menyerahkan persyaratan Umroh paling lambat 1 bulan sebelum keberangkatan.
+									</li>
+									<li class="list-group-item">
+										Melunasi biaya paket selambat-lambatnya 21 hari sebelum berangkat.
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="hr-dashed"></div>
-				<!-- CONTENT -->
 			</div>
-			<div class="col-xl-5 d-flex justify-content-start align-items-center px-10 flex-column">
-				<form action="" method="post" class="border">
+			<div class="col-xl-5 d-flex justify-content-start align-items-center px-md-10 py-10 py-md-0 flex-column">
+				<form action="" method="post" class="box-shadow border bg-primary-5p">
 					<div class="section-space--sm pb-0 pt-0 mb-6 position-relative">
-						<div class="py-8 px-6">
+						<div class="py-8 px-3 px-md-6">
 							<p class="mb-3 fs-18 fw-medium">Harga Dasar per Pax</p>
 							<div class="d-flex align-items-start gap-2 mb-6">
 								<div class="d-flex gap-3 align-items-center">
@@ -718,7 +717,7 @@
 											</div>
 										</div>
 										<div class="col-12">
-											<div class="px-2 fw-bold">
+											<div class="fw-medium">
 												Quad <span class="text-body-tertiary fw-light px-2" style="font-size: 14px;"
 													>{money.format(parseInt(info.hotel_price_quad))}/pax</span
 												>
@@ -743,7 +742,7 @@
 											</div>
 										</div>
 										<div class="col-12">
-											<div class="px-2 fw-bold">
+											<div class="fw-medium">
 												Triple <span
 													class="text-body-tertiary fw-light px-2"
 													style="font-size: 14px;"
@@ -770,7 +769,7 @@
 											</div>
 										</div>
 										<div class="col-12">
-											<div class="px-2 fw-bold">
+											<div class="fw-medium">
 												Double <span
 													class="text-body-tertiary fw-light px-2"
 													style="font-size: 14px;"
@@ -1002,6 +1001,7 @@
 		</div>
 	</div>
 </div>
+
 <!-- Property Gallery  -->
 <!-- <div class="bg-primary-5p">
 	<div class="container-fluid p-0">
@@ -1662,8 +1662,9 @@
 		color: white;
 		display: flex;
 		justify-content: start;
-		padding: 10px;
+		padding: 6px;
 		border-radius: 0px !important;
+		font-size: 14px;
 	}
 	.button-collapse:hover {
 		background-color: #660000;
@@ -1675,5 +1676,25 @@
 	}
 	.list-group-item {
 		border: none;
+	}
+	@media (max-width: 580px) {
+		h6 {
+			font-size: 14px;
+		}
+		p {
+			font-size: 14px;
+		}
+		h3 {
+			font-size: 20px;
+		}
+		.collapse p {
+			font-size: 14px;
+		}
+		.accordion-collapse .list-group-item {
+			font-size: 14px;
+		}
+	}
+	.accordion-collapse {
+		transition: 0.5s ease-in-out;
 	}
 </style>
