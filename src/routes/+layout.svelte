@@ -6,6 +6,17 @@
 	function toggleFab() {
 		expanded = !expanded;
 	}
+	import { page } from '$app/stores';
+	// Get the current page URL
+
+	let currentPageUrl;
+	$: if (page) {
+		currentPageUrl = $page.url.pathname;
+	}
+
+	function isCurrentPage(href) {
+		return currentPageUrl.startsWith(href);
+	}
 </script>
 
 <div class="py-3 border-bottom header-top d-none d-md-block">
@@ -192,7 +203,7 @@
 	</div>
 </div>
 <!-- Header -->
-<header class="header header--sticky ">
+<header class="header header--sticky">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -207,58 +218,47 @@
 							<span class="material-symbols-outlined mat-icon fs-28 menu"> menu </span>
 						</button>
 					</div>
+
 					<ul class="list list-lg-row menu-nav order-lg-1">
-						<li class="menu-item current-page">
-							<a href="/" class="link menu-link"> Beranda </a>
+						<li class="menu-item {currentPageUrl === ('/') ? 'current-page' : ''}">
+							<a href="/" class="link menu-link">Beranda</a>
 						</li>
-						<li class="menu-list">
-							<a class="link menu-link has-sub"> Layanan </a>
+						<li
+							class="menu-list {currentPageUrl.startsWith('/paket') ||
+							currentPageUrl.startsWith('/paket-wisata') ||
+							currentPageUrl.startsWith('/sewa-transportasi')
+								? 'current-page'
+								: ''}"
+						>
+							<!-- svelte-ignore a11y-missing-attribute -->
+							<a class="link menu-link has-sub">Layanan</a>
 							<ul class="list menu-sub">
 								<li class="menu-sub-list">
-									<a href="/paket/umroh" class="link menu-sub-link"> Paket Umroh </a>
+									<a href="/paket/umroh" class="link menu-sub-link">Paket Umroh</a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="/paket/umroh-plus" class="link menu-sub-link"> Paket Umroh Plus</a>
+									<a href="/paket/umroh-plus" class="link menu-sub-link">Paket Umroh Plus</a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="/paket/haji" class="link menu-sub-link"> Paket Haji Plus/Furoda</a>
+									<a href="/paket/haji" class="link menu-sub-link">Paket Haji Plus/Furoda</a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="/sewa-transportasi" class="link menu-sub-link"> Sewa Transportasi </a>
+									<a href="/sewa-transportasi" class="link menu-sub-link">Sewa Transportasi</a>
 								</li>
 								<li class="menu-sub-list">
-									<a href="/paket-wisata" class="link menu-sub-link"> Paket Wisata </a>
+									<a href="/paket-wisata" class="link menu-sub-link">Paket Wisata</a>
 								</li>
 							</ul>
 						</li>
-						<!-- <li class="menu-item">
-							<a href="/sewa-transportasi" class="link menu-link"> Sewa Transportasi </a>
-						</li> -->
-						<!-- <li class="menu-item">
-							<a href="/paket-wisata" class="link menu-link"> Paket Wisata </a>
-						</li> -->
-						<li class="menu-item">
-							<a href="/blog" class="link menu-link"> Blog </a>
+						<li class="menu-item {currentPageUrl.startsWith('/perlengkapan-umroh') ? 'current-page' : ''}">
+							<a href="/perlengkapan-umroh" class="link menu-link">Perlengkapan Umroh</a>
 						</li>
-						<li class="menu-item">
-							<a href="/tentang-kartikamas" class="link menu-link"> Tentang Kami </a>
+						<li class="menu-item {currentPageUrl.startsWith('/blog') ? 'current-page' : ''}">
+							<a href="/blog" class="link menu-link">Blog</a>
 						</li>
-						<!-- <li class="menu-list">
-							<a href="#" class="link menu-link has-sub clear-content">
-								<span class="material-symbols-outlined mat-icon"> more_horiz </span>
-							</a>
-							<ul class="list menu-sub">
-								<li class="menu-sub-list">
-									<a href="/faq" class="link menu-sub-link"> Peryaratan Umroh </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="/privacy-policy" class="link menu-sub-link"> Kebijakan Privasi Data </a>
-								</li>
-								<li class="menu-sub-list">
-									<a href="/faq" class="link menu-sub-link"> FAQ </a>
-								</li>
-							</ul>
-						</li> -->
+						<li class="menu-item {currentPageUrl.startsWith('/tentang-kartikamas') ? 'current-page' : ''}">
+							<a href="/tentang-kartikamas" class="link menu-link">Tentang Kami</a>
+						</li>
 					</ul>
 				</nav>
 			</div>
@@ -294,6 +294,9 @@
 </div>
 
 <style>
+	.current-page a {
+		color: #660000 !important;
+	}
 	@media (max-width: 991px) {
 		.header-sub {
 			position: absolute;

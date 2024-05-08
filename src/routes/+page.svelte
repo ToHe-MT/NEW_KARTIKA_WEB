@@ -550,10 +550,12 @@
 <div class="hr-dashed"></div>
 <!-- FASILITAS -->
 <div class="pt-30 bg-primary-3p w-100">
-	<div class="row px-20 container">
-		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
-			<h5>FASILITAS JAMAAH</h5>
-			<h2 class="text-center">Fasilitas Yang Disediakan</h2>
+	<div class="container">
+		<div class="row py-5">
+			<div class="col-12 d-flex justify-content-center align-items-center flex-column">
+				<h5>FASILITAS JAMAAH</h5>
+				<h2 class="text-center">Fasilitas Yang Disediakan</h2>
+			</div>
 		</div>
 	</div>
 	<div class="container py-10">
@@ -612,75 +614,104 @@
 
 <!-- GALERRY Perlengkapan -->
 <div class="p-2 pt-30 bg-primary-3p">
-	<div class="row py-5 container">
-		<div class="col-12 d-flex justify-content-center align-items-center flex-column">
-			<h5>GALLERY PERLENGKAPAN</h5>
-			<h2>Perlengkapan Ekslusif</h2>
+	<div class="container">
+		<div class="row py-5">
+			<div class="col-12 d-flex justify-content-center align-items-center flex-column">
+				<h5>GALLERY PERLENGKAPAN</h5>
+				<h2>Perlengkapan Ekslusif</h2>
+			</div>
 		</div>
 	</div>
 	<div class="container px-10">
 		<div class="row">
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/BajuCewe-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/BajuCewe-2.JPG" class="card-img-top bottom" alt="..." />
 				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Kain Seragam Eksklusif</h6>
+				</div>
 			</div>
 
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/Banner-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/Banner-2.JPG" class="card-img-top bottom" alt="..." />
 				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Syal Rajut</h6>
+				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/BajuCowo-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/BajuCowo-2.JPG" class="card-img-top bottom" alt="..." />
 				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Kain Ihram Eksklusif</h6>
+				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/Bantal-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/Bantal-2.JPG" class="card-img-top bottom" alt="..." />
 				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Bantal Leher</h6>
+				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/Kalender-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/Kalender-2.JPG" class="card-img-top bottom" alt="..." />
 				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Guide Book</h6>
+				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/Koper-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/Koper-2.JPG" class="card-img-top bottom" alt="..." />
 				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Koper Bagasi & Cabin</h6>
+				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/Mukena-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/Mukena-2.JPG" class="card-img-top bottom" alt="..." />
 				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Mukenah Silk</h6>
+				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/Ransel-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/Ransel-2.JPG" class="card-img-top bottom" alt="..." />
 				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Tas Ransel Exclusive</h6>
+				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
 					<img src="/perlengkapan/Serut-1.JPG" class="card-img-top top" alt="..." />
 					<img src="/perlengkapan/Serut-2.JPG" class="card-img-top bottom" alt="..." />
+				</div>
+				<div class="d-flex justify-content-center align-items-center p-0 m-0">
+					<h6 class="text-center clr-primary-300 p-0 m-0">Tas Serut Exclusive</h6>
 				</div>
 			</div>
 			<div class="col-12 d-flex justify-content-center align-items-center p-4">
 				<div class="button-tentang">
 					<button
 						type="button"
-						class="btn bg-primary-300 text-white"
-						on:click={() => goto('paket/umroh')}>Lihat Paket</button
+						class="btn bg-primary-300 text-white fs-6 fw-bold p-3"
+						on:click={() => goto('perlengkapan-umroh')}>Lihat Perlengkapan Umroh</button
 					>
 				</div>
 			</div>
@@ -758,10 +789,9 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="swiper-slide">
-							<div class="p-5 rounded-4">
-								<div class="bg-primary-3p rounded-4 p-8">
+							<div class="p-sm-2 rounded-4">
+								<div class="bg-primary-3p rounded-4 p-4 p-sm-6">
 									<ul class="list list-row align-items-center justify-content-center mb-2">
 										<li>
 											<span class="material-symbols-outlined mat-icon solid fs-32 clr-tertiary-300">
@@ -866,7 +896,7 @@
 		width: 100%;
 	}
 	.button-tentang button {
-		width: 200px;
+		min-width: 200px;
 		padding: 10px;
 		font-size: 16px;
 		font-weight: 600;
@@ -954,7 +984,7 @@
 			font-size: 16px;
 		}
 		.button-tentang button {
-			width: 150px;
+			width: 200px;
 			padding: 10px;
 			font-size: 14px;
 		}
@@ -1126,7 +1156,7 @@
 	.responbody {
 		background-color: #ffffffb8;
 		display: flex;
-		justify-content: center;
+		justify-content: start;
 		height: 105%;
 	}
 	.property-card__head {

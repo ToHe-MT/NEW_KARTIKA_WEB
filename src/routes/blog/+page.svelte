@@ -1,6 +1,5 @@
 <script>
 	export let data;
-	console.log(data);
 
 	import { goto } from '$app/navigation';
 	let totalData = 1;
@@ -22,43 +21,46 @@
 
 <div class="section-space--sm bg-primary-5p">
 	<div class="container-xl">
-		<div class="col-12 px-10">
-			<div class="bg-neutral-0 rounded-2 py-3 px-6 box-shadow">
-				{#if false}
-					<ul class="list list-row align-items-center flex-wrap gap-3">
-						<!-- content here -->
-						<li class="d-block d-lg-block">
-							<p class="mb-0 clr-neutral-500">
-								Menampilkan {data.blogs.length} dari {totalData} paket wisata
-							</p>
-						</li>
-						<li class="flex-grow-1"></li>
-						<li class="d-none d-lg-flex align-items-center">
-							<p class="mb-0 clr-neutral-500 flex-grow-1">Urutkan Berdasarkan :</p>
-							<select
-								class="form-select py-0 border-0 w-auto"
-								name="sort_by"
-								on:change={() => {
-									destinasi = event.target.value;
-									changePage();
-								}}
-							>
-								<option value="all" selected={destinasi === ''}>Semua</option>
-								<option value="Terbaru" selected={destinasi === 'Lembang - Bandung'}
-									>Tanggal Terbaru</option
+		{#if false}
+			<!-- content here -->
+			<div class="col-12 px-10">
+				<div class="bg-neutral-0 rounded-2 py-3 px-6 box-shadow">
+					{#if false}
+						<ul class="list list-row align-items-center flex-wrap gap-3">
+							<!-- content here -->
+							<li class="d-block d-lg-block">
+								<p class="mb-0 clr-neutral-500">
+									Menampilkan {data.blogs.length} dari {totalData} paket wisata
+								</p>
+							</li>
+							<li class="flex-grow-1"></li>
+							<li class="d-none d-lg-flex align-items-center">
+								<p class="mb-0 clr-neutral-500 flex-grow-1">Urutkan Berdasarkan :</p>
+								<select
+									class="form-select py-0 border-0 w-auto"
+									name="sort_by"
+									on:change={() => {
+										destinasi = event.target.value;
+										changePage();
+									}}
 								>
-							</select>
-						</li>
-					</ul>
-					<!-- {:else}
-					<ul class="list list-row align-items-center flex-wrap gap-3">
-						<li class="d-none d-xl-block">
-							<p class="mb-0 clr-neutral-500">Blog Sedang Dalam Proses Pengembangan</p>
-						</li>
-					</ul> -->
-				{/if}
+									<option value="all" selected={destinasi === ''}>Semua</option>
+									<option value="Terbaru" selected={destinasi === 'Lembang - Bandung'}
+										>Tanggal Terbaru</option
+									>
+								</select>
+							</li>
+						</ul>
+						<!-- {:else}
+						 <ul class="list list-row align-items-center flex-wrap gap-3">
+							 <li class="d-none d-xl-block">
+								 <p class="mb-0 clr-neutral-500">Blog Sedang Dalam Proses Pengembangan</p>
+							 </li>
+						 </ul> -->
+					{/if}
+				</div>
 			</div>
-		</div>
+		{/if}
 		<div class="row px-10">
 			{#if data.blogs && data.blogs.length > 0 && false}
 				{#each data.blogs as item}
