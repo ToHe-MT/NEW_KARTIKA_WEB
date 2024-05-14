@@ -364,8 +364,8 @@
 </div>
 
 <div class="hr-dashed"></div>
-<div class="container py-20">
-	<div class="row px-1 px-md-4">
+<div class="container py-5">
+	<div class="row px-1 px-md-4 py-15">
 		<div class="col-12 d-flex justify-content-center align-items-center flex-column container">
 			<h5>Paket Umrah</h5>
 			<h2>Layanan Paket Umrah</h2>
@@ -544,6 +544,15 @@
 				</div>
 			</div>
 		{/if}
+		<div class="col-12 d-flex justify-content-center align-items-center p-4 mt-4">
+			<div class="button-tentang">
+				<button
+					type="button"
+					class="btn bg-primary-300 text-white fs-6 fw-bold p-3"
+					on:click={() => goto('paket/umroh')}>Lihat Paket Umroh</button
+				>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -1207,6 +1216,6 @@
 		/* box-shadow: inset 0 10px 10px -10px gray; */
 	}
 	.swiper-wrapper {
-		max-height: 250px;
+		/* max-height: 250px; */
 	}
 </style>
