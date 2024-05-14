@@ -43,7 +43,8 @@ export async function load({ cookies, locals, url, params }) {
 	}
 
 	
-
+	
+	match.status="active"
 	let totalData = await db.collection('paket-wisata-kartika').find(match).count();
 
 	let maxPage = Math.ceil(totalData/limit)
