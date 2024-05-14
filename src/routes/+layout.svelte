@@ -297,6 +297,9 @@
 	.current-page a {
 		color: #660000 !important;
 	}
+	.current-page ul li a:hover{
+		color: white !important;
+	}
 	@media (max-width: 991px) {
 		.header-sub {
 			position: absolute;

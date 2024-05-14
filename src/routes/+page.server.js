@@ -13,6 +13,8 @@ export const load = async ({ url }) => {
 	if (url.searchParams.get('category')) {
 		filter.type_category = url.searchParams.get('category');
 	}
+
+	filter.status = 'active'
 	const umroh = await db.collection('schedule').find(filter).toArray();
 	umroh.forEach((umroh) => {
 		delete umroh._id;

@@ -36,6 +36,8 @@ export async function load({ url, params }) {
 		};
 	}
 
+	filter.status = 'active'
+
 	let facility = [];
 	if (query.get('kereta_cepat')) {
 		facility.push('kereta_cepat');

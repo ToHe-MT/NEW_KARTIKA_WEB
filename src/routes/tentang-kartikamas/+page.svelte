@@ -420,18 +420,14 @@
 
 <!-- Contact Us-->
 <div class="py-30 w-100">
-	<div class="container">
-		<div class="row py-5">
-			<div class="col-12 d-flex justify-content-center align-items-center flex-column">
+	<div class="container Contact">
+		<div
+			class="d-flex justify-content-centar align-items-center box-shadow flex-column gap-8 py-20 mx-4 mx-md-30 border"
+		>
+			<div class="d-flex justify-content-center align-items-center flex-column">
 				<h5>CONTACT US</h5>
 				<h2 class="text-center">Kartika Mas</h2>
 			</div>
-		</div>
-	</div>
-	<div class="container py-4 Contact">
-		<div
-			class="d-flex justify-content-centar align-items-center box-shadow flex-column gap-8 py-8 mx-4 mx-md-30 border"
-		>
 			<a
 				href="mailto:admin@kartikamas.com"
 				class="d-flex justify-content-center align-items-center gap-5 :clr-primary-300"
@@ -440,7 +436,7 @@
 				<h6 class="m-0">admin@kartikamas.com</h6>
 			</a>
 			<a
-				href="mailto:admin@kartikamas.com"
+				href="https://maps.app.goo.gl/SmofqqxQzWGUVTpL6?g_st=ic"
 				target="_blank"
 				class="d-flex justify-content-center align-items-center gap-5 :clr-primary-300"
 			>
@@ -456,12 +452,12 @@
 					<a href="https://wa.me/62812100592" target="_blank">
 						<h6 class="m-0">Admin 2 (62) 812-100-592</h6>
 					</a>
-					
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <!-- OUR SERVICES-->
 
 <!-- KENAPA KAMi -->
