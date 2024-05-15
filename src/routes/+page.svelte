@@ -1,4 +1,5 @@
 <script>
+	import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 	import PaketTransport from './PaketTransport.svelte';
 	import Category from './Category.svelte';
 	import PaketUmroh from './PaketUmroh.svelte';
@@ -134,7 +135,7 @@
 			},
 			navigation: {
 				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-next'
+				prevEl: '.swiper-button-prev'
 			},
 			modules: [Navigation, Pagination]
 		});
@@ -332,11 +333,12 @@
 <div class="container py-30">
 	<div class="row">
 		<div class="col-12 col-lg-6 p-4 d-flex justify-content-start">
-			<enhancedimg
-				src="./DEPAN.jpg?w=1000;700;600"
+			<enhanced:img
+				src="./DEPANSEDANG.jpg?w=1000;700;600"
 				alt="makkah"
 				class="img-fluid"
 				sizes="(min-width:1920px) 1000px, (min-width:1080px) 700px, (min-width:768px) 600px,(min-width:500) 600px"
+				style="max-width:100%; height:auto"
 			/>
 		</div>
 		<div
@@ -391,9 +393,10 @@
 												<div class="swiper-slide">
 													<div class="property-card__img">
 														<img
-															src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
+															data-src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
 															alt="foto hotel"
 															class="img-fluid w-100"
+															use:lazyImage
 														/>
 													</div>
 												</div>
@@ -404,9 +407,10 @@
 												<div class="swiper-slide">
 													<div class="property-card__img">
 														<img
-															src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
+															data-src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
 															alt="foto hotel"
 															class="img-fluid w-100"
+															use:lazyImage
 														/>
 													</div>
 												</div>

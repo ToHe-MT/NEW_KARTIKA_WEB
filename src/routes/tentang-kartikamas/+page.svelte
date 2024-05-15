@@ -74,7 +74,7 @@
 		<!-- ABOUT US AND LOGO -->
 		<div class="row px-3 px-md-10 gap-4 gap-md-0 CompanyProfile">
 			<div class="col-md-4 d-flex justify-content-center align-items-center">
-				<img src="kartikamas-logo.png" alt="assets" class="img-fluid" style="max-height: 200px;" />
+				<enhanced:img src="../../../static/kartikamas-logo.png?w=200" alt="assets" class="img-fluid" style="max-height: 200px; max-width:200px" />
 			</div>
 			<div class="col-md-8 d-flex justify-content-end fs-6 flex-column gap-2">
 				<h3 class="fw-light clr-primary-300 text-md-start text-center">COMPANY PROFILE</h3>
@@ -164,20 +164,20 @@
 				class="izin d-flex justify-content-center align-items-center gap-4 gap-md-10"
 				style="width: 100%;"
 			>
-				<img
-					src="tentang/5pasti.png"
+				<enhanced:img
+					src="../../../static/tentang/5pasti.png"
 					alt="assets"
 					class="img-fluid w-auto"
-					style="max-height:100px;"
+					style="max-height:100px;width:auto"
 				/>
 
-				<img src="tentang/IATA.png" alt="assets" class="img-fluid" style="max-height:100px;" />
+				<enhanced:img src="../../../static/tentang/IATA.png" alt="assets" class="img-fluid" style="max-height:100px;width:auto" />
 
-				<img src="tentang/Kan.png" alt="assets" class="img-fluid" style="max-height:100px;" />
+				<enhanced:img src="../../../static/tentang/Kan.png" alt="assets" class="img-fluid" style="max-height:100px;width:auto" />
 
-				<img src="tentang/Kemenga.png" alt="assets" class="img-fluid" style="max-height:100px;" />
+				<enhanced:img src="../../../static/tentang/Kemenga.png" alt="assets" class="img-fluid" style="max-height:100px;width:auto" />
 
-				<img src="tentang/SiskoPatuh.png" alt="assets" class="img-fluid" style="max-height:80px;" />
+				<enhanced:img src="../../../static/tentang/SiskoPatuh.png" alt="assets" class="img-fluid" style="max-height:100px;width:auto" />
 			</div>
 			<div class="izinppu d-flex justify-content-center pt-10">
 				<h5 class="clr-primary-300">PPIU NO IZIN: 91205049813140002 TAHUN 2022</h5>
@@ -228,12 +228,12 @@
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
 							<div class="property-card__img">
-								<img src="tentang/Makkah1.png" alt="foto hotel" class="img-fluid w-100" />
+								<enhanced:img src="../../../static/tentang/Makkah1.png?w=500px" alt="foto hotel" class="img-fluid w-100" />
 							</div>
 						</div>
 						<div class="swiper-slide">
 							<div class="property-card__img">
-								<img src="tentang/Makkah1.png" alt="foto hotel" class="img-fluid w-100" />
+								<enhanced:img src="../../../static/tentang/Makkah1.png?w=500px" alt="foto hotel" class="img-fluid w-100" />
 							</div>
 						</div>
 					</div>
@@ -248,12 +248,12 @@
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
 							<div class="property-card__img">
-								<img src="tentang/Madinah1.png" alt="foto hotel" class="img-fluid w-100" />
+								<enhanced:img src="../../../static/tentang/Madinah1.png?w=500" alt="foto hotel" class="img-fluid w-100" />
 							</div>
 						</div>
 						<div class="swiper-slide">
 							<div class="property-card__img">
-								<img src="tentang/Madinah1.png" alt="foto hotel" class="img-fluid w-100" />
+								<enhanced:img src="../../../static/tentang/Madinah1.png?w=500" alt="foto hotel" class="img-fluid w-100" />
 							</div>
 						</div>
 					</div>
@@ -268,17 +268,17 @@
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
 							<div class="property-card__img">
-								<img src="tentang/Bonus1.png" alt="foto hotel" class="img-fluid w-100" />
+								<enhanced:img src="../../../static/tentang/Bonus1.png?w=500" alt="foto hotel" class="img-fluid w-100" />
 							</div>
 						</div>
 						<div class="swiper-slide">
 							<div class="property-card__img">
-								<img src="tentang/Bonus2.png" alt="foto hotel" class="img-fluid w-100" />
+								<enhanced:img src="../../../static/tentang/Bonus2.png?w=500" alt="foto hotel" class="img-fluid w-100" />
 							</div>
 						</div>
 						<div class="swiper-slide">
 							<div class="property-card__img">
-								<img src="tentang/Bonus3.png" alt="foto hotel" class="img-fluid w-100" />
+								<enhanced:img src="../../../static/tentang/Bonus3.png?w=500" alt="foto hotel" class="img-fluid w-100" />
 							</div>
 						</div>
 					</div>
@@ -362,8 +362,8 @@
 							<div class="row" transition:fade>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 									<div class="card-gallery">
-										<img src="/perlengkapan/BajuCewe-1.JPG" class="card-img-top top" alt="..." />
-										<img src="/perlengkapan/BajuCewe-2.JPG" class="card-img-top bottom" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/BajuCewe-1.png?w=500" class="card-img-top top" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/BajuCewe-2.png?w=500" class="card-img-top bottom" alt="..." />
 									</div>
 									<div class="d-flex justify-content-center align-items-center p-0 m-0">
 										<h6 class="text-center clr-primary-300 p-0 m-0">Kain Seragam Eksklusif</h6>
@@ -371,8 +371,8 @@
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 									<div class="card-gallery">
-										<img src="/perlengkapan/Mukena-1.JPG" class="card-img-top top" alt="..." />
-										<img src="/perlengkapan/Mukena-2.JPG" class="card-img-top bottom" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/Mukena-1.png?w=500" class="card-img-top top" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/Mukena-2.png?w=500" class="card-img-top bottom" alt="..." />
 									</div>
 									<div class="d-flex justify-content-center align-items-center p-0 m-0">
 										<h6 class="text-center clr-primary-300 p-0 m-0">Mukenah Silk</h6>
@@ -383,8 +383,8 @@
 							<div class="row" transition:fade>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 									<div class="card-gallery">
-										<img src="/perlengkapan/KainCowo-1.JPG" class="card-img-top top" alt="..." />
-										<img src="/perlengkapan/KainCowo-2.jpg" class="card-img-top bottom" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/KainCowo-1.png?w=500" class="card-img-top top" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/KainCowo-2.png?w=500" class="card-img-top bottom" alt="..." />
 									</div>
 									<div class="d-flex justify-content-center align-items-center p-0 m-0">
 										<h6 class="text-center clr-primary-300 p-0 m-0">Kain Seragam Eksklusif</h6>
@@ -392,8 +392,8 @@
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 									<div class="card-gallery">
-										<img src="/perlengkapan/BajuCowo-1.JPG" class="card-img-top top" alt="..." />
-										<img src="/perlengkapan/BajuCowo-2.JPG" class="card-img-top bottom" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/BajuCowo-1.png?w=500" class="card-img-top top" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/BajuCowo-2.png?w=500" class="card-img-top bottom" alt="..." />
 									</div>
 									<div class="d-flex justify-content-center align-items-center p-0 m-0">
 										<h6 class="text-center clr-primary-300 p-0 m-0">Kain Ihram Eksklusif</h6>

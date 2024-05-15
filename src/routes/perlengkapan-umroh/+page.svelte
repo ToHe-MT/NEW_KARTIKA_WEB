@@ -31,8 +31,8 @@
 				<div class="col-xl-2"></div>
 				<div class="col-xl-4 px-xl-10 col-lg-6 col-md-6 col-12 d-flex justify-content-between">
 					<div class="card-gallery">
-						<img src="/perlengkapan/BajuCewe-1.JPG" class="card-img-top top" alt="..." />
-						<img src="/perlengkapan/KainCowo-1.JPG" class="card-img-top bottom" alt="..." />
+						<enhanced:img src="../../../static/perlengkapan/BajuCewe-1.png?w=500" class="card-img-top top" alt="..." />
+						<enhanced:img src="../../../static/perlengkapan/KainCowo-1.png?w=500" class="card-img-top bottom" alt="..." />
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-6 col-12">
@@ -99,8 +99,8 @@
 					<div class="row" transition:fade>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 							<div class="card-gallery">
-								<img src="/perlengkapan/BajuCewe-1.JPG" class="card-img-top top" alt="..." />
-								<img src="/perlengkapan/BajuCewe-2.JPG" class="card-img-top bottom" alt="..." />
+								<enhanced:img src="../../../static/perlengkapan/BajuCewe-1.png?w=500" class="card-img-top top" alt="..." />
+								<enhanced:img src="../../../static/perlengkapan/BajuCewe-2.png?w=500" class="card-img-top bottom" alt="..." />
 							</div>
 							<div class="d-flex justify-content-center align-items-center p-0 m-0">
 								<h6 class="text-center clr-primary-300 p-0 m-0">Kain Seragam Eksklusif</h6>
@@ -109,8 +109,8 @@
 
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 							<div class="card-gallery">
-								<img src="/perlengkapan/Mukena-1.JPG" class="card-img-top top" alt="..." />
-								<img src="/perlengkapan/Mukena-2.JPG" class="card-img-top bottom" alt="..." />
+								<enhanced:img src="../../../static/perlengkapan/Mukena-1.png?w=500" class="card-img-top top" alt="..." />
+								<enhanced:img src="../../../static/perlengkapan/Mukena-2.png?w=500" class="card-img-top bottom" alt="..." />
 							</div>
 							<div class="d-flex justify-content-center align-items-center p-0 m-0">
 								<h6 class="text-center clr-primary-300 p-0 m-0">Mukenah Silk</h6>
@@ -121,8 +121,8 @@
 					<div class="row" transition:fade>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 							<div class="card-gallery">
-								<img src="/perlengkapan/KainCowo-1.JPG" class="card-img-top top" alt="..." />
-								<img src="/perlengkapan/KainCowo-2.jpg" class="card-img-top bottom" alt="..." />
+								<enhanced:img src="../../../static/perlengkapan/KainCowo-1.png?w=500" class="card-img-top top" alt="..." />
+								<enhanced:img src="../../../static/perlengkapan/KainCowo-2.png?w=500" class="card-img-top bottom" alt="..." />
 							</div>
 							<div class="d-flex justify-content-center align-items-center p-0 m-0">
 								<h6 class="text-center clr-primary-300 p-0 m-0">Kain Seragam Eksklusif</h6>
@@ -131,8 +131,8 @@
 
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 							<div class="card-gallery">
-								<img src="/perlengkapan/BajuCowo-1.JPG" class="card-img-top top" alt="..." />
-								<img src="/perlengkapan/BajuCowo-2.JPG" class="card-img-top bottom" alt="..." />
+								<enhanced:img src="../../../static/perlengkapan/BajuCowo-1.png?w=500" class="card-img-top top" alt="..." />
+								<enhanced:img src="../../../static/perlengkapan/BajuCowo-2.png?w=500" class="card-img-top bottom" alt="..." />
 							</div>
 							<div class="d-flex justify-content-center align-items-center p-0 m-0">
 								<h6 class="text-center clr-primary-300 p-0 m-0">Kain Ihram Eksklusif</h6>
@@ -165,8 +165,8 @@
 				<div class="row">
 					<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 						<div class="card-gallery">
-							<img src="/perlengkapan/Banner-1.JPG" class="card-img-top top" alt="..." />
-							<img src="/perlengkapan/Banner-2.JPG" class="card-img-top bottom" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Banner-1.png?w=500" class="card-img-top top" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Banner-2.png?w=500" class="card-img-top bottom" alt="..." />
 						</div>
 						<div class="d-flex justify-content-center align-items-center p-0 m-0">
 							<h6 class="text-center clr-primary-300 p-0 m-0">Syal Rajut</h6>
@@ -174,8 +174,8 @@
 					</div>
 					<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 						<div class="card-gallery">
-							<img src="/perlengkapan/Bantal-1.JPG" class="card-img-top top" alt="..." />
-							<img src="/perlengkapan/Bantal-2.JPG" class="card-img-top bottom" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Bantal-1.png?w=500" class="card-img-top top" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Bantal-2.png?w=500" class="card-img-top bottom" alt="..." />
 						</div>
 						<div class="d-flex justify-content-center align-items-center p-0 m-0">
 							<h6 class="text-center clr-primary-300 p-0 m-0">Bantal Leher</h6>
@@ -183,8 +183,8 @@
 					</div>
 					<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 						<div class="card-gallery">
-							<img src="/perlengkapan/Kalender-1.JPG" class="card-img-top top" alt="..." />
-							<img src="/perlengkapan/Kalender-2.JPG" class="card-img-top bottom" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Kalender-1.png?w=500" class="card-img-top top" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Kalender-2.png?w=500" class="card-img-top bottom" alt="..." />
 						</div>
 						<div class="d-flex justify-content-center align-items-center p-0 m-0">
 							<h6 class="text-center clr-primary-300 p-0 m-0">Guide Book</h6>
@@ -192,8 +192,8 @@
 					</div>
 					<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 						<div class="card-gallery">
-							<img src="/perlengkapan/Koper-1.JPG" class="card-img-top top" alt="..." />
-							<img src="/perlengkapan/Koper-2.JPG" class="card-img-top bottom" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Koper-1.png?w=500" class="card-img-top top" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Koper-2.png?w=500" class="card-img-top bottom" alt="..." />
 						</div>
 						<div class="d-flex justify-content-center align-items-center p-0 m-0">
 							<h6 class="text-center clr-primary-300 p-0 m-0">Koper Bagasi & Cabin</h6>
@@ -201,8 +201,8 @@
 					</div>
 					<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 						<div class="card-gallery">
-							<img src="/perlengkapan/Ransel-1.JPG" class="card-img-top top" alt="..." />
-							<img src="/perlengkapan/Ransel-2.JPG" class="card-img-top bottom" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Ransel-1.png?w=500" class="card-img-top top" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Ransel-2.png?w=500" class="card-img-top bottom" alt="..." />
 						</div>
 						<div class="d-flex justify-content-center align-items-center p-0 m-0">
 							<h6 class="text-center clr-primary-300 p-0 m-0">Tas Ransel Exclusive</h6>
@@ -210,8 +210,8 @@
 					</div>
 					<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 						<div class="card-gallery">
-							<img src="/perlengkapan/Serut-1.JPG" class="card-img-top top" alt="..." />
-							<img src="/perlengkapan/Serut-2.JPG" class="card-img-top bottom" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Serut-1.png?w=500" class="card-img-top top" alt="..." />
+							<enhanced:img src="../../../static/perlengkapan/Serut-2.png?w=500" class="card-img-top bottom" alt="..." />
 						</div>
 						<div class="d-flex justify-content-center align-items-center p-0 m-0">
 							<h6 class="text-center clr-primary-300 p-0 m-0">Tas Serut Exclusive</h6>

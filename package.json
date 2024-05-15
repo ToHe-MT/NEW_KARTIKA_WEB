@@ -25,6 +25,7 @@
 		"@sveltejs/adapter-node": "^5.0.1",
 		"mongodb": "^6.4.0",
 		"nanoid": "^5.0.6",
+		"svelte-lazy-image": "^0.5.1",
 		"svelte-turnstile": "^0.5.0",
 		"swiper": "^11.0.7",
 		"uuidv4": "^6.2.13"
