@@ -231,7 +231,7 @@
 								: ''}"
 						>
 							<!-- svelte-ignore a11y-missing-attribute -->
-							<a class="link menu-link has-sub">Layanan</a>
+							<div class="link menu-link has-sub superlink">Layanan</div>
 							<ul class="list menu-sub">
 								<li class="menu-sub-list">
 									<a href="/paket/umroh" class="link menu-sub-link">Paket Umroh</a>
@@ -295,6 +295,9 @@
 
 <style>
 	.current-page a {
+		color: #660000 !important;
+	}
+	.current-page .superlink {
 		color: #660000 !important;
 	}
 	.current-page ul li a:hover{
@@ -472,5 +475,8 @@
 	}
 	.hamburger-icon:hover span {
 		color: white !important;
+	}
+	.superlink:hover{
+		color: #660000;
 	}
 </style>
