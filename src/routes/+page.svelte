@@ -6,6 +6,7 @@
 	import UmrohProcess from './UmrohProcess.svelte';
 	import PaketWisata from './PaketWisata.svelte';
 	import { goto } from '$app/navigation';
+	import hero from '$lib/assets/img/DEPAN.jpg';
 
 	import Swiper from 'swiper';
 	import 'swiper/css';
@@ -175,10 +176,16 @@
 		</div>
 	</div>
 	<div class="background-image-hero">
-		<img src="/assets/img/DEPAN.jpg" alt="makkah" class="img-fluid" />
+		<enhanced:img
+			src="./Depan.jpg?w=1800;1400;1000;800;600"
+			alt="makkah"
+			class="img-fluid"
+			sizes="(min-width:1920px) 1800px, (min-width:1080px) 1400px, (min-width:768px) 800px,(min-width:500) 600px"
+		/>
+		<!-- <img src="./assets/img/DEPAN.jpg" alt="makkah" class="img-fluid" /> -->
 	</div>
 	<div class="background-image-bawah">
-		<img src="/assets/img/shape.svg" alt="makkah" class="img-fluid" />
+		<img src="./assets/img/shape.svg" alt="makkah" class="img-fluid" />
 	</div>
 </div>
 
@@ -304,6 +311,7 @@
 								oninput="rangevalue.value=value"
 								style="background-size: {minPrice * 2}% 100%;"
 							/>
+							<label for="price_start" style="display: none;"></label>
 						</div>
 						<div class="property-search__range-price">
 							<span class="d-inline-block fs-10 clr-primary-300">
@@ -324,11 +332,11 @@
 <div class="container py-30">
 	<div class="row">
 		<div class="col-12 col-lg-6 p-4 d-flex justify-content-start">
-			<img
-				src="/assets/img/DEPANKECIL.jpg"
+			<enhancedimg
+				src="./DEPAN.jpg?w=1000;700;600"
 				alt="makkah"
 				class="img-fluid"
-				style="max-height: 400px; object-fit:cover"
+				sizes="(min-width:1920px) 1000px, (min-width:1080px) 700px, (min-width:768px) 600px,(min-width:500) 600px"
 			/>
 		</div>
 		<div
@@ -495,7 +503,9 @@
 										</li>
 									{/each}
 								{/if}
-								<div class="hr-dashed my-4"></div>
+								<li>
+									<div class="hr-dashed my-4"></div>
+								</li>
 								{#if item.bonus && item.bonus.length > 0}
 									{#each item.bonus as item}
 										<li class="col-12">
@@ -600,11 +610,12 @@
 </div>
 
 <div class="position-relative">
-	<img
-		src="assets/img/DEPANKECIL.jpg"
+	<enhanced:img
+		src="./DEPANKECIL.jpg?w=1800;1200;800;600"
 		alt=""
 		class="w-100"
 		style="max-width: 100%; height: auto;"
+		sizes="(min-width:1920px) 1800px, (min-width:1080px) 1200px, (min-width:768px) 800px,(min-width:500) 600px"
 	/>
 	<div class="position-absolute top-50 start-50 text-center text-white responsiveTranslate">
 		<div class="p-4 p-md-10 responbody w-100 h-100">
@@ -635,8 +646,16 @@
 		<div class="row">
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/BajuCewe-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/BajuCewe-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/BajuCewe-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/BajuCewe-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Kain Seragam Eksklusif</h6>
@@ -645,8 +664,16 @@
 
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/Banner-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/Banner-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/Banner-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/Banner-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Syal Rajut</h6>
@@ -654,8 +681,16 @@
 			</div>
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/BajuCowo-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/BajuCowo-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/BajuCowo-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/BajuCowo-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Kain Ihram Eksklusif</h6>
@@ -663,8 +698,16 @@
 			</div>
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/Bantal-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/Bantal-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/Bantal-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/Bantal-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Bantal Leher</h6>
@@ -672,8 +715,16 @@
 			</div>
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/Kalender-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/Kalender-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/Kalender-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/Kalender-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Guide Book</h6>
@@ -681,8 +732,16 @@
 			</div>
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/Koper-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/Koper-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/Koper-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/Koper-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Koper Bagasi & Cabin</h6>
@@ -690,8 +749,16 @@
 			</div>
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/Mukena-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/Mukena-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/Mukena-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/Mukena-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Mukenah Silk</h6>
@@ -699,8 +766,16 @@
 			</div>
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/Ransel-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/Ransel-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/Ransel-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/Ransel-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Tas Ransel Exclusive</h6>
@@ -708,8 +783,16 @@
 			</div>
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-8">
 				<div class="card-gallery">
-					<img src="/perlengkapan/Serut-1.JPG" class="card-img-top top" alt="..." />
-					<img src="/perlengkapan/Serut-2.JPG" class="card-img-top bottom" alt="..." />
+					<enhanced:img
+						src="../../static/perlengkapan/Serut-1.png?w=500"
+						class="card-img-top top"
+						alt="..."
+					/>
+					<enhanced:img
+						src="../../static/perlengkapan/Serut-2.png?w=500"
+						class="card-img-top bottom"
+						alt="..."
+					/>
 				</div>
 				<div class="d-flex justify-content-center align-items-center p-0 m-0">
 					<h6 class="text-center clr-primary-300 p-0 m-0">Tas Serut Exclusive</h6>
@@ -890,7 +973,12 @@
 >
 	<div class="modal-dialog modal-dialog-centered modal-lg">
 		<div class="modal-content">
-			<img src="/perlengkapan/silver1.png" alt="" class="img-fluid popup" />
+			<enhanced:img
+				src="../../static/perlengkapan/silver1.png?w=1200;900;600;550"
+				alt=""
+				class="img-fluid popup"
+				sizes="(min-width:1920px) 1200px, (min-width:900px) 900px, (min-width:768px) 600px,(min-width:500) 550px"
+			/>
 		</div>
 	</div>
 </div>
