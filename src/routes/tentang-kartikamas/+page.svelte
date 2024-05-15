@@ -362,8 +362,8 @@
 							<div class="row" transition:fade>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 									<div class="card-gallery">
-										<enhanced:img src="../../../static/perlengkapan/BajuCewe-1.png?w=500" class="card-img-top top" alt="..." />
-										<enhanced:img src="../../../static/perlengkapan/BajuCewe-2.png?w=500" class="card-img-top bottom" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/BajuCewe-1.png?w=1000" class="card-img-top top" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/BajuCewe-2.png?w=1000" class="card-img-top bottom" alt="..." />
 									</div>
 									<div class="d-flex justify-content-center align-items-center p-0 m-0">
 										<h6 class="text-center clr-primary-300 p-0 m-0">Kain Seragam Eksklusif</h6>
@@ -371,8 +371,8 @@
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 									<div class="card-gallery">
-										<enhanced:img src="../../../static/perlengkapan/Mukena-1.png?w=500" class="card-img-top top" alt="..." />
-										<enhanced:img src="../../../static/perlengkapan/Mukena-2.png?w=500" class="card-img-top bottom" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/Mukena-1.png?w=1000" class="card-img-top top" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/Mukena-2.png?w=1000" class="card-img-top bottom" alt="..." />
 									</div>
 									<div class="d-flex justify-content-center align-items-center p-0 m-0">
 										<h6 class="text-center clr-primary-300 p-0 m-0">Mukenah Silk</h6>
@@ -383,8 +383,8 @@
 							<div class="row" transition:fade>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 									<div class="card-gallery">
-										<enhanced:img src="../../../static/perlengkapan/KainCowo-1.png?w=500" class="card-img-top top" alt="..." />
-										<enhanced:img src="../../../static/perlengkapan/KainCowo-2.png?w=500" class="card-img-top bottom" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/KainCowo-1.png?w=1000" class="card-img-top top" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/KainCowo-2.png?w=1000" class="card-img-top bottom" alt="..." />
 									</div>
 									<div class="d-flex justify-content-center align-items-center p-0 m-0">
 										<h6 class="text-center clr-primary-300 p-0 m-0">Kain Seragam Eksklusif</h6>
@@ -392,8 +392,8 @@
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pb-8">
 									<div class="card-gallery">
-										<enhanced:img src="../../../static/perlengkapan/BajuCowo-1.png?w=500" class="card-img-top top" alt="..." />
-										<enhanced:img src="../../../static/perlengkapan/BajuCowo-2.png?w=500" class="card-img-top bottom" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/BajuCowo-1.png?w=1000" class="card-img-top top" alt="..." />
+										<enhanced:img src="../../../static/perlengkapan/BajuCowo-2.png?w=1000" class="card-img-top bottom" alt="..." />
 									</div>
 									<div class="d-flex justify-content-center align-items-center p-0 m-0">
 										<h6 class="text-center clr-primary-300 p-0 m-0">Kain Ihram Eksklusif</h6>
