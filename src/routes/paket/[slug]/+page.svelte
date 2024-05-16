@@ -1,6 +1,7 @@
 <script>
 	import Category from '../../Category.svelte';
 	import PaketItem from '../../PaketItem.svelte';
+	import { useLazyImage as lazyImage } from 'svelte-lazy-image';
 
 	import Swiper from 'swiper';
 	import 'swiper/css';
@@ -68,7 +69,7 @@
 			},
 			navigation: {
 				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-next'
+				prevEl: '.swiper-button-prev'
 			},
 			modules: [Navigation, Pagination]
 		});
@@ -319,10 +320,11 @@
 																<div class="swiper-slide">
 																	<div class="property-card__img">
 																		<img
-																			src="{import.meta.env
+																			data-src="{import.meta.env
 																				.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
 																			alt="foto hotel"
 																			class="img-fluid w-100"
+																			use:lazyImage
 																		/>
 																	</div>
 																</div>

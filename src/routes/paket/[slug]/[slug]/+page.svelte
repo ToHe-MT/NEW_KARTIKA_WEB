@@ -1,4 +1,6 @@
 <script>
+	import { useLazyImage as lazyImage } from 'svelte-lazy-image';
+
 	import { Turnstile } from 'svelte-turnstile';
 
 	export let data;
@@ -224,10 +226,11 @@
 								<div class="swiper-slide" style="width: auto;">
 									<div class="link property-gallery paroperty-card__img">
 										<img
-											src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
+											data-src="{import.meta.env.VITE_S3_PUBLIC_URL}/schedule/{image.picture_id}"
 											alt="foto hotel"
 											class="img-fluid w-full"
 											style="object-fit:cover"
+											use:lazyImage
 										/>
 									</div>
 								</div>
@@ -629,7 +632,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-5 d-flex justify-content-start align-items-center px-md-10 py-10 py-md-0 flex-column">
+			<div
+				class="col-xl-5 d-flex justify-content-start align-items-center px-md-10 py-10 py-md-0 flex-column"
+			>
 				<form action="" method="post" class="box-shadow border bg-primary-5p">
 					<div class="section-space--sm pb-0 pt-0 mb-6 position-relative">
 						<div class="py-8 px-3 px-md-6">
@@ -716,85 +721,94 @@
 												</span>
 											</div>
 										</div>
-										<div class="col-12">
-											<div class="fw-medium">
-												Quad <span class="text-body-tertiary fw-light px-2" style="font-size: 14px;"
-													>{money.format(parseInt(info.hotel_price_quad))}/pax</span
-												>
-											</div>
-											<div class="input-group">
-												<input
-													required
-													bind:value={jumlah_pax_quad}
-													name="jumlah_pax_quad"
-													min="1"
-													type="number"
-													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
-													placeholder="Jumlah Pax"
-												/>
-												<span
-													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
-												>
-													<span class="material-symbols-outlined mat-icon clr-neutral-100">
-														group
+										{#if info.hotel_price_quad}
+											<div class="col-12">
+												<div class="fw-medium">
+													Quad <span
+														class="text-body-tertiary fw-light px-2"
+														style="font-size: 14px;"
+														>{money.format(parseInt(info.hotel_price_quad))}/pax</span
+													>
+												</div>
+												<div class="input-group">
+													<input
+														required
+														bind:value={jumlah_pax_quad}
+														name="jumlah_pax_quad"
+														min="1"
+														type="number"
+														class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
+														placeholder="Jumlah Pax"
+													/>
+													<span
+														class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
+													>
+														<span class="material-symbols-outlined mat-icon clr-neutral-100">
+															group
+														</span>
 													</span>
-												</span>
+												</div>
 											</div>
-										</div>
-										<div class="col-12">
-											<div class="fw-medium">
-												Triple <span
-													class="text-body-tertiary fw-light px-2"
-													style="font-size: 14px;"
-													>{money.format(parseInt(info.hotel_price_triple))}/pax</span
-												>
-											</div>
-											<div class="input-group">
-												<input
-													required
-													bind:value={jumlah_pax_triple}
-													name="jumlah_pax_triple"
-													min="1"
-													type="number"
-													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
-													placeholder="Jumlah Pax"
-												/>
-												<span
-													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
-												>
-													<span class="material-symbols-outlined mat-icon clr-neutral-100">
-														group
+										{/if}
+										{#if info.hotel_price_triple}
+											<div class="col-12">
+												<div class="fw-medium">
+													Triple <span
+														class="text-body-tertiary fw-light px-2"
+														style="font-size: 14px;"
+														>{money.format(parseInt(info.hotel_price_triple))}/pax</span
+													>
+												</div>
+												<div class="input-group">
+													<input
+														required
+														bind:value={jumlah_pax_triple}
+														name="jumlah_pax_triple"
+														min="1"
+														type="number"
+														class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
+														placeholder="Jumlah Pax"
+													/>
+													<span
+														class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
+													>
+														<span class="material-symbols-outlined mat-icon clr-neutral-100">
+															group
+														</span>
 													</span>
-												</span>
+												</div>
 											</div>
-										</div>
-										<div class="col-12">
-											<div class="fw-medium">
-												Double <span
-													class="text-body-tertiary fw-light px-2"
-													style="font-size: 14px;"
-													>{money.format(parseInt(info.hotel_price_double))}/pax</span
-												>
-											</div>
-											<div class="input-group">
-												<input
-													required
-													bind:value={jumlah_pax_double}
-													name="jumlah_pax_double"
-													min="1"
-													type="number"
-													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
-													placeholder="Jumlah Pax"
-												/>
-												<span
-													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
-												>
-													<span class="material-symbols-outlined mat-icon clr-neutral-100">
-														group
+										{/if}
+										{#if info.hotel_price_double}
+											<!-- content here -->
+											<div class="col-12">
+												<div class="fw-medium">
+													Double <span
+														class="text-body-tertiary fw-light px-2"
+														style="font-size: 14px;"
+														>{money.format(parseInt(info.hotel_price_double))}/pax</span
+													>
+												</div>
+												<div class="input-group">
+													<input
+														required
+														bind:value={jumlah_pax_double}
+														name="jumlah_pax_double"
+														min="1"
+														type="number"
+														class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
+														placeholder="Jumlah Pax"
+													/>
+													<span
+														class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
+													>
+														<span class="material-symbols-outlined mat-icon clr-neutral-100">
+															group
+														</span>
 													</span>
-												</span>
+												</div>
 											</div>
-										</div>
+										{/if}
 										<!-- <div class="col-12">
 											<div class="property-search__select property-search__col rounded px-6">
 												<select
@@ -870,17 +884,16 @@
 									{jumlah_pax}
 								</p>
 							</div>
-							<div class="d-flex align-items-center justify-content-between mb-4">
-								<p class="mb-0 clr-neutral-500">Base Price</p>
-								<p class="mb-0 fw-medium">{money.format(info.base_price)}</p>
-							</div>
-							<div class="d-flex align-items-center justify-content-between mb-4">
-								<p class="mb-0 clr-neutral-500 fw-semibold">Total Base Price</p>
-								<p class="mb-0 fw-bold">{money.format(info.base_price * jumlah_pax)}</p>
-							</div>
-
 							{#if jumlah_pax_double || jumlah_pax_triple}
 								<div class="hr-dashed my-4"></div>
+							{/if}
+							{#if jumlah_pax_quad}
+								<div class="d-flex align-items-center justify-content-between mb-4">
+									<p class="mb-0 clr-neutral-500">Quad - {jumlah_pax_quad} pax</p>
+									<p class="mb-0 fw-medium">
+										{money.format(jumlah_pax_quad * info.hotel_price_quad)}
+									</p>
+								</div>
 							{/if}
 							{#if jumlah_pax_triple}
 								<div class="d-flex align-items-center justify-content-between mb-4">
@@ -898,41 +911,21 @@
 									</p>
 								</div>
 							{/if}
-							{#if jumlah_pax_double || jumlah_pax_triple}
-								<div class="d-flex align-items-center justify-content-between mb-4">
-									<p class="mb-0 clr-neutral-500 fw-semibold fs-6">Total Upgrade Kamar</p>
-									<p class="mb-0 fw-semibold">
-										{money.format(
-											jumlah_pax_triple * info.hotel_price_triple +
-												jumlah_pax_double * info.hotel_price_double
-										)}
-									</p>
-								</div>
-							{/if}
 							<div class="hr-dashed my-4"></div>
 							<div class="d-flex align-items-center justify-content-between mb-10">
 								<p class="mb-0 clr-neutral-500 fw-bold">Total</p>
 								<p class="mb-0 fw-bold">
 									{#if jumlah_pax > 0}
 										{money.format(
-											jumlah_pax_triple * info.hotel_price_triple +
-												jumlah_pax_double * info.hotel_price_double +
-												info.base_price * jumlah_pax
+											jumlah_pax_triple * (info.hotel_price_triple || 0) +
+												jumlah_pax_double * (info.hotel_price_double || 0) +
+												jumlah_pax_double * (info.hotel_price_quad || 0)
 										)}
 									{:else}
 										<i>tuliskan jumlah pax</i>
 									{/if}
 								</p>
 							</div>
-							<input
-								type="text"
-								style="display: none;"
-								name="price"
-								value={upgrade_kamar == ''
-									? parseInt(info.base_price) * parseInt(jumlah_pax)
-									: (parseInt(info.base_price) + parseInt(info['hotel_price_' + upgrade_kamar])) *
-										parseInt(jumlah_pax)}
-							/>
 							<button
 								type="submit"
 								class="link d-inline-flex align-items-center gap-2 py-3 px-6 rounded bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-medium w-100 justify-content-center mb-6"
