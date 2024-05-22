@@ -5,7 +5,26 @@
 
 	export let data;
 	const info = data.umroh;
-	console.log(info);
+	let form;
+	async function handleSubmit(event) {
+		event.preventDefault();
+
+		const formData = new FormData(form);
+
+		const response = await fetch('', {
+			method: 'POST',
+			body: formData
+		});
+
+		const result = await response.json();
+		const result_data = JSON.parse(result.data)
+		// const result_data_json = await result_data.json();
+		// console.log(result_data_json);
+
+		if (result.type === 'success') {
+			window.open(result_data[1], '_blank');
+		}
+	}
 
 	import Swiper from 'swiper';
 	import 'swiper/css';
@@ -36,35 +55,11 @@
 		minimumFractionDigits: 0
 	});
 
-	var fac1 = [];
-	var fac2 = [];
-	var fac3 = [];
-	var fac4 = [];
-
-	function distributeFacilities(facilities) {
-		var totalFacilities = facilities.length;
-		var chunkSize = Math.ceil(totalFacilities / 4);
-
-		for (var i = 0; i < totalFacilities; i++) {
-			if (i < chunkSize) {
-				fac1.push(facilities[i]);
-			} else if (i >= chunkSize && i < 2 * chunkSize) {
-				fac2.push(facilities[i]);
-			} else if (i >= 2 * chunkSize && i < 3 * chunkSize) {
-				fac3.push(facilities[i]);
-			} else {
-				fac4.push(facilities[i]);
-			}
-		}
-	}
-
-	distributeFacilities(info.facility);
-
 	let upgrade_kamar = '';
 
-	let jumlah_pax_quad = '';
-	let jumlah_pax_triple = '';
-	let jumlah_pax_double = '';
+	let jumlah_pax_quad = 0;
+	let jumlah_pax_triple = 0;
+	let jumlah_pax_double = 0;
 
 	// Function to safely parse an integer
 	function safeParseInt(value) {
@@ -78,10 +73,6 @@
 			return 0; // Return 0 or any default value if parsing failed
 		}
 	}
-	$: jumlah_pax =
-		safeParseInt(jumlah_pax_double) +
-			safeParseInt(jumlah_pax_triple) +
-			safeParseInt(jumlah_pax_quad) || '';
 
 	let requirements = [
 		'Pasport asli berlaku minimal 8 bulan sebelum keberangkatan',
@@ -178,6 +169,33 @@
 			link: 'https://wa.me/+62882006843722'
 		}
 	];
+
+	let total_pax = 1;
+	let jenis_kamar = 'quad';
+	$: if (total_pax < 0) {
+		total_pax = 0;
+	}
+
+	let total_harga;
+	$: if (jenis_kamar === 'double') {
+		total_harga = info.hotel_price_double * total_pax;
+	} else if (jenis_kamar === 'triple') {
+		total_harga = info.hotel_price_triple * total_pax;
+	} else if (jenis_kamar === 'quad') {
+		total_harga = info.hotel_price_quad * total_pax;
+	} else if (jenis_kamar === 'custom') {
+		total_harga =
+			info.hotel_price_double * jumlah_pax_double +
+			info.hotel_price_triple * jumlah_pax_triple +
+			info.hotel_price_quad * jumlah_pax_quad;
+	}
+
+	let check_pax = false;
+	$: if (jumlah_pax_double + jumlah_pax_triple + jumlah_pax_quad === total_pax) {
+		check_pax = true;
+	} else {
+		check_pax = false;
+	}
 </script>
 
 <svelte:head>
@@ -635,7 +653,7 @@
 			<div
 				class="col-xl-5 d-flex justify-content-start align-items-center px-md-10 py-10 py-md-0 flex-column"
 			>
-				<form action="" method="post" class="box-shadow border bg-primary-5p">
+				<form bind:this={form} on:submit={handleSubmit} class="box-shadow border bg-primary-5p">
 					<div class="section-space--sm pb-0 pt-0 mb-6 position-relative">
 						<div class="py-8 px-3 px-md-6">
 							<p class="mb-3 fs-18 fw-medium">Harga Dasar per Pax</p>
@@ -685,24 +703,6 @@
 												</span>
 											</div>
 										</div>
-										<!-- <div class="col-12">
-											<div class="input-group">
-												<input
-													required
-													name="alamat"
-													type="text"
-													class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
-													placeholder="Alamat"
-												/>
-												<span
-													class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
-												>
-													<span class="material-symbols-outlined mat-icon clr-neutral-100">
-														home
-													</span>
-												</span>
-											</div>
-										</div> -->
 										<div class="col-12">
 											<div class="input-group">
 												<input
@@ -721,108 +721,288 @@
 												</span>
 											</div>
 										</div>
-										{#if info.hotel_price_quad}
-											<div class="col-12">
-												<div class="fw-medium">
-													Quad <span
-														class="text-body-tertiary fw-light px-2"
-														style="font-size: 14px;"
-														>{money.format(parseInt(info.hotel_price_quad))}/pax</span
-													>
+										<div class="hr-dashed"></div>
+										<div class="col-12">
+											<div class="d-flex justify-content-between pe-2">
+												<div class="d-flex justify-content-center align-items-center">
+													Total Pax
 												</div>
-												<div class="input-group">
-													<input
-														required
-														bind:value={jumlah_pax_quad}
-														name="jumlah_pax_quad"
-														min="1"
-														type="number"
-														class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
-														placeholder="Jumlah Pax"
-													/>
-													<span
-														class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
+												<div class="d-flex gap-2">
+													<div
+														class="rounded-circle bg-primary-300 d-flex justify-content-center align-items-center cursor-pointer"
+														style="width:24px;height:24px"
+														on:click={() => total_pax--}
 													>
-														<span class="material-symbols-outlined mat-icon clr-neutral-100">
-															group
+														<span
+															class="material-symbols-outlined mat-icon"
+															style="color: white;font-size:20px"
+														>
+															remove
 														</span>
-													</span>
+													</div>
+													<div class="d-flex justify-content-center align-items-center px-4">
+														<span class="fw-bold">
+															{total_pax}
+														</span>
+													</div>
+													<div
+														class="rounded-circle bg-primary-300 d-flex justify-content-center align-items-center cursor-pointer"
+														style="width:24px;height:24px"
+														on:click={() => total_pax++}
+													>
+														<span
+															class="material-symbols-outlined mat-icon"
+															style="color: white;font-size:20px"
+														>
+															add
+														</span>
+													</div>
+													<input
+														type="text"
+														name="total_pax"
+														bind:value={total_pax}
+														style="display: none;"
+													/>
 												</div>
 											</div>
-										{/if}
-										{#if info.hotel_price_triple}
-											<div class="col-12">
-												<div class="fw-medium">
-													Triple <span
-														class="text-body-tertiary fw-light px-2"
-														style="font-size: 14px;"
-														>{money.format(parseInt(info.hotel_price_triple))}/pax</span
-													>
+										</div>
+										<div class="col-12">
+											<div class="d-flex justify-content-between">
+												<div class="d-flex justify-content-center align-items-center">
+													Jenis Kamar
 												</div>
-												<div class="input-group">
-													<input
-														required
-														bind:value={jumlah_pax_triple}
-														name="jumlah_pax_triple"
-														min="1"
-														type="number"
-														class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
-														placeholder="Jumlah Pax"
-													/>
-													<span
-														class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
-													>
-														<span class="material-symbols-outlined mat-icon clr-neutral-100">
-															group
-														</span>
-													</span>
-												</div>
-											</div>
-										{/if}
-										{#if info.hotel_price_double}
-											<!-- content here -->
-											<div class="col-12">
-												<div class="fw-medium">
-													Double <span
-														class="text-body-tertiary fw-light px-2"
-														style="font-size: 14px;"
-														>{money.format(parseInt(info.hotel_price_double))}/pax</span
-													>
-												</div>
-												<div class="input-group">
-													<input
-														required
-														bind:value={jumlah_pax_double}
-														name="jumlah_pax_double"
-														min="1"
-														type="number"
-														class="form-control bg-primary-3p border border-end-0 border-neutral-40 rounded rounded-end-0 py-2 px-5"
-														placeholder="Jumlah Pax"
-													/>
-													<span
-														class="input-group-text bg-primary-3p border border-start-0 border-neutral-40 rounded rounded-start-0 py-2 pe-5 ps-0"
-													>
-														<span class="material-symbols-outlined mat-icon clr-neutral-100">
-															group
-														</span>
-													</span>
-												</div>
-											</div>
-										{/if}
-										<!-- <div class="col-12">
-											<div class="property-search__select property-search__col rounded px-6">
 												<select
-													name="upgrade_kamar"
-													class="form-select"
-													aria-label="Default select example"
-													bind:value={upgrade_kamar}
+													name="sort_by"
+													class="form-select border-0 w-auto"
+													style="background-color: transparent;"
+													bind:value={jenis_kamar}
 												>
-													<option value="" selected="">Upgrade Kamar (Dari Quad)</option>
-													<option value="triple">Triple - 3 orang 1 kamar</option>
-													<option value="double">Double - 2 orang 1 kamar</option>
+													{#if info.hotel_price_quad}
+														<option value="quad">Quad</option>
+													{/if}
+													{#if info.hotel_price_triple}
+														<option value="triple">Triple</option>
+													{/if}
+													{#if info.hotel_price_double}
+														<option value="double">Double</option>
+													{/if}
+													<option value="custom">Custom</option>
 												</select>
+												<input
+													type="text"
+													bind:value={jenis_kamar}
+													style="display: none;"
+													name="jenis_kamar"
+												/>
 											</div>
-										</div> -->
+										</div>
+										{#if jenis_kamar === 'quad'}
+											<div class="d-flex justify-content-between pe-4">
+												<div class="d-flex justify-content-center align-items-center">
+													Quad - {money.format(info.hotel_price_quad)}/pax
+												</div>
+												<div class="d-flex justify-content-center align-items-center">
+													{money.format(info.hotel_price_quad * total_pax)}
+												</div>
+												<input
+													type="text"
+													name="jumlah_pax_double"
+													id=""
+													bind:value={total_pax}
+													style="display: none;"
+												/>
+											</div>
+										{:else if jenis_kamar === 'triple'}
+											<div class="d-flex justify-content-between pe-4">
+												<div class="d-flex justify-content-center align-items-center">
+													Triple - {money.format(info.hotel_price_triple)}/pax
+												</div>
+												<div class="d-flex justify-content-center align-items-center">
+													{money.format(info.hotel_price_triple * total_pax)}
+												</div>
+												<input
+													type="text"
+													name="jumlah_pax_triple"
+													id=""
+													bind:value={total_pax}
+													style="display: none;"
+												/>
+											</div>
+										{:else if jenis_kamar === 'double'}
+											<div class="d-flex justify-content-between pe-4">
+												<div class="d-flex justify-content-center align-items-center">
+													Double - {money.format(info.hotel_price_double)}/pax
+												</div>
+												<div class="d-flex justify-content-center align-items-center">
+													{money.format(info.hotel_price_double * total_pax)}
+												</div>
+												<input
+													type="text"
+													name="jumlah_pax_double"
+													id=""
+													bind:value={total_pax}
+													style="display: none;"
+												/>
+											</div>
+										{:else if jenis_kamar === 'custom'}
+											<div class="hr-dashed"></div>
+											<div class="d-flex justify-content-between pe-2">
+												<div class="d-flex justify-content-center align-items-center">
+													Quad Pax - {money.format(info.hotel_price_quad)}/pax
+												</div>
+												<div class="d-flex gap-2">
+													<button
+														class="rounded-circle bg-primary-300 d-flex justify-content-center align-items-center cursor-pointer border-0"
+														style="width:24px;height:24px"
+														on:click={() => jumlah_pax_quad--}
+														type="button"
+													>
+														<span
+															class="material-symbols-outlined mat-icon"
+															style="color: white;font-size:20px"
+														>
+															remove
+														</span>
+													</button>
+													<div class="d-flex justify-content-center align-items-center px-4">
+														<span class="fw-bold">
+															{jumlah_pax_quad}
+														</span>
+													</div>
+													<button
+														class="rounded-circle bg-primary-300 d-flex justify-content-center align-items-center cursor-pointer border-0"
+														style="width:24px;height:24px"
+														on:click={() => jumlah_pax_quad++}
+														type="button"
+													>
+														<span
+															class="material-symbols-outlined mat-icon"
+															style="color: white;font-size:20px"
+														>
+															add
+														</span>
+													</button>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between pe-2">
+												<div class="d-flex justify-content-center align-items-center">
+													Triple Pax - {money.format(info.hotel_price_triple)}/pax
+												</div>
+												<div class="d-flex gap-2">
+													<button
+														class="rounded-circle bg-primary-300 d-flex justify-content-center align-items-center cursor-pointer border-0"
+														style="width:24px;height:24px"
+														on:click={() => jumlah_pax_triple--}
+														type="button"
+													>
+														<span
+															class="material-symbols-outlined mat-icon"
+															style="color: white;font-size:20px"
+														>
+															remove
+														</span>
+													</button>
+													<div class="d-flex justify-content-center align-items-center px-4">
+														<span class="fw-bold">
+															{jumlah_pax_triple}
+														</span>
+													</div>
+													<button
+														class="rounded-circle bg-primary-300 d-flex justify-content-center align-items-center cursor-pointer border-0"
+														style="width:24px;height:24px"
+														on:click={() => jumlah_pax_triple++}
+														type="button"
+													>
+														<span
+															class="material-symbols-outlined mat-icon"
+															style="color: white;font-size:20px"
+														>
+															add
+														</span>
+													</button>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between pe-2">
+												<div class="d-flex justify-content-center align-items-center">
+													double Pax - {money.format(info.hotel_price_double)}/pax
+												</div>
+												<div class="d-flex gap-2">
+													<button
+														class="rounded-circle bg-primary-300 d-flex justify-content-center align-items-center cursor-pointer border-0"
+														style="width:24px;height:24px"
+														on:click={() => jumlah_pax_double--}
+														type="button"
+													>
+														<span
+															class="material-symbols-outlined mat-icon"
+															style="color: white;font-size:20px"
+														>
+															remove
+														</span>
+													</button>
+													<div class="d-flex justify-content-center align-items-center px-4">
+														<span class="fw-bold">
+															{jumlah_pax_double}
+														</span>
+													</div>
+													<button
+														class="rounded-circle bg-primary-300 d-flex justify-content-center align-items-center cursor-pointer border-0"
+														style="width:24px;height:24px"
+														on:click={() => jumlah_pax_double++}
+														type="button"
+													>
+														<span
+															class="material-symbols-outlined mat-icon"
+															style="color: white;font-size:20px"
+														>
+															add
+														</span>
+													</button>
+												</div>
+												<input
+													type="number"
+													bind:value={jumlah_pax_double}
+													name="jumlah_pax_double"
+													style="display: none;"
+												/>
+												<input
+													type="number"
+													bind:value={jumlah_pax_triple}
+													name="jumlah_pax_triple"
+													style="display: none;"
+												/>
+												<input
+													type="number"
+													bind:value={jumlah_pax_quad}
+													name="jumlah_pax_quad"
+													style="display: none;"
+												/>
+											</div>
+											{#if check_pax === false}
+												<div>
+													<span class="text-danger">
+														Jumlah Pax harus sama dengan Total Pax, {total_pax} Pax
+													</span>
+												</div>
+											{/if}
+										{/if}
+										<div class="hr-dashed"></div>
+										<div class="col-12">
+											<div class="d-flex justify-content-between pe-4">
+												<div class="d-flex justify-content-center align-items-center">
+													Total Harga
+												</div>
+												<div class="d-flex gap-2">
+													{money.format(total_harga)}
+												</div>
+												<input
+													type="number"
+													name="total_harga"
+													bind:value={total_harga}
+													style="display: none;"
+												/>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="enquiry-list">
@@ -878,60 +1058,33 @@
 									</div>
 								</div>
 							</div>
-							<div class="d-flex align-items-center justify-content-between mb-4">
-								<p class="mb-0 clr-neutral-500">Total Pax</p>
-								<p class="mb-0 fw-medium">
-									{jumlah_pax}
-								</p>
-							</div>
-							{#if jumlah_pax_double || jumlah_pax_triple}
-								<div class="hr-dashed my-4"></div>
+
+							{#if jenis_kamar === 'custom'}
+								{#if check_pax === true}
+									<button
+										type="submit"
+										class="border-0 link d-inline-flex align-items-center gap-2 py-3 px-6 rounded bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-medium w-100 justify-content-center mb-6"
+									>
+										<span class="d-inline-block"> Konsultasi Paket </span>
+									</button>
+								{:else}
+									<button
+										type="submit"
+										class="border-0 link d-inline-flex align-items-center gap-2 py-3 px-6 rounded fw-medium w-100 justify-content-center mb-6"
+										disabled
+										style="background-color: gainsboro;color:maroon"
+									>
+										<span class="d-inline-block"> Jumlah Pax Tidak Sesuai </span>
+									</button>
+								{/if}
+							{:else}
+								<button
+									type="submit"
+									class="border-0 link d-inline-flex align-items-center gap-2 py-3 px-6 rounded bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-medium w-100 justify-content-center mb-6"
+								>
+									<span class="d-inline-block"> Konsultasi Paket </span>
+								</button>
 							{/if}
-							{#if jumlah_pax_quad}
-								<div class="d-flex align-items-center justify-content-between mb-4">
-									<p class="mb-0 clr-neutral-500">Quad - {jumlah_pax_quad} pax</p>
-									<p class="mb-0 fw-medium">
-										{money.format(jumlah_pax_quad * info.hotel_price_quad)}
-									</p>
-								</div>
-							{/if}
-							{#if jumlah_pax_triple}
-								<div class="d-flex align-items-center justify-content-between mb-4">
-									<p class="mb-0 clr-neutral-500">Triple - {jumlah_pax_triple} pax</p>
-									<p class="mb-0 fw-medium">
-										{money.format(jumlah_pax_triple * info.hotel_price_triple)}
-									</p>
-								</div>
-							{/if}
-							{#if jumlah_pax_double}
-								<div class="d-flex align-items-center justify-content-between mb-4">
-									<p class="mb-0 clr-neutral-500">Double - {jumlah_pax_double} pax</p>
-									<p class="mb-0 fw-medium">
-										{money.format(jumlah_pax_double * info.hotel_price_double)}
-									</p>
-								</div>
-							{/if}
-							<div class="hr-dashed my-4"></div>
-							<div class="d-flex align-items-center justify-content-between mb-10">
-								<p class="mb-0 clr-neutral-500 fw-bold">Total</p>
-								<p class="mb-0 fw-bold">
-									{#if jumlah_pax > 0}
-										{money.format(
-											jumlah_pax_triple * (info.hotel_price_triple || 0) +
-												jumlah_pax_double * (info.hotel_price_double || 0) +
-												jumlah_pax_double * (info.hotel_price_quad || 0)
-										)}
-									{:else}
-										<i>tuliskan jumlah pax</i>
-									{/if}
-								</p>
-							</div>
-							<button
-								type="submit"
-								class="link d-inline-flex align-items-center gap-2 py-3 px-6 rounded bg-primary-300 clr-neutral-0 :bg-primary-400 :clr-neutral-0 fw-medium w-100 justify-content-center mb-6"
-							>
-								<span class="d-inline-block"> Konsultasi Paket </span>
-							</button>
 							<ul class="list list-row justify-content-center gap-3 flex-wrap">
 								<li>
 									<img

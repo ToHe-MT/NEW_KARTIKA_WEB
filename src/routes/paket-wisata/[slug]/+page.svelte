@@ -2,12 +2,9 @@
 	import { goto } from '$app/navigation';
 
 	export let data;
-	// console.log(data)
 
 	const paket = data.info_paket;
-	console.log(paket);
 	const others = data.others;
-	console.log(others);
 
 	const images = paket.images;
 
