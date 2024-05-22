@@ -11,7 +11,6 @@
 	});
 
 	export let paketWisata;
-    console.log(paketWisata);
 	let swiper;
 	let container, pagination;
 	onMount(() => {
@@ -62,7 +61,6 @@
 	});
 
 	let paketWisataDone = [];
-    $:console.log(paketWisataDone)
 </script>
 
 <!-- Featured Property  -->

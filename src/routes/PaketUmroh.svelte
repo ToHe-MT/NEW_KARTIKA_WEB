@@ -4,7 +4,6 @@
 
 	export let data;
 	let filteredData = data
-	console.log(data);
 	function filterData(model){
 		if(model === ""){
 			filteredData=data

@@ -27,7 +27,6 @@
 	export let data;
 
 	const info = data.info;
-	console.log(info);
 	const money = new Intl.NumberFormat('id-ID', {
 		style: 'currency',
 		currency: 'IDR',
@@ -99,7 +98,6 @@
 			endDateMin = new Date(startDate);
 			endDateMin.setDate(endDateMin.getDate() + minimumDays - 1);
 			endDateMin = endDateMin.toISOString().split('T')[0];
-			console.log(endDateMin);
 		}
 	}
 </script>

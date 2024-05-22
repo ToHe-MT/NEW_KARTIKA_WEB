@@ -26,7 +26,6 @@ export async function load({ url, params }) {
 	route_list.forEach((item) => {
 		delete item._id;
 	});
-	console.log(route_list);
 
 	return { info: vehicles[0], slug: params.slug, route_list };
 }

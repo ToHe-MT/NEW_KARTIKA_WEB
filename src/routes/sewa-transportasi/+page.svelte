@@ -2,7 +2,6 @@
 	export let data;
 	import { goto } from '$app/navigation';
 
-	console.log(data);
 	const changePage = (page) => {
 		const urlParams = new URLSearchParams(window.location.search);
 		urlParams.set('page', page);

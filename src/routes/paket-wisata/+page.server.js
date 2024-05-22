@@ -22,7 +22,6 @@ export async function load({ cookies, locals, url, params }) {
 	if (url.searchParams.get('hari')) {
 		if (url.searchParams.get('hari') !== 'all') {
 			hari = parseInt(url.searchParams.get('hari'));
-			console.log(hari);
 			match.duration=hari;
 		}
 	}
