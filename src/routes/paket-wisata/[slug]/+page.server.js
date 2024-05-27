@@ -2,7 +2,7 @@ import db from '$lib/server/db.js';
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load({ params, locals, url, query }) {
-	const data = await db.collection('paket-wisata-kartika').find({ slug: params.slug }).toArray();
+	const data = await db.collection('paket-wisata-domestik').find({ slug: params.slug }).toArray();
 
 	if (data[0].itinerari) {
 		data[0].itinerari.forEach((itinerary) => {
@@ -26,7 +26,7 @@ export async function load({ params, locals, url, query }) {
 	let tab = url.searchParams.get('tab');
 
 
-	const others = await db.collection('paket-wisata-kartika').aggregate([{ $sample: { size: 3 } }]).toArray();
+	const others = await db.collection('paket-wisata-domestik').aggregate([{ $sample: { size: 3 } }]).toArray();
 	others.forEach(function (obj) {
 		obj['_id'] && delete obj['_id'];
 	});

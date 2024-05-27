@@ -44,7 +44,7 @@ export async function load({ cookies, locals, url, params }) {
 	
 	
 	match.status="active"
-	let totalData = await db.collection('paket-wisata-kartika').find(match).count();
+	let totalData = await db.collection('paket-wisata-domestik').find(match).count();
 
 	let maxPage = Math.ceil(totalData/limit)
 	if (page>maxPage){
@@ -54,7 +54,7 @@ export async function load({ cookies, locals, url, params }) {
 
 
 	let paket_wisata = await db
-		.collection('paket-wisata-kartika')
+		.collection('paket-wisata-domestik')
 		.aggregate([
 			{ $match: match},
 			{ $sort: sort },
@@ -67,8 +67,8 @@ export async function load({ cookies, locals, url, params }) {
 		obj['_id'] && delete obj['_id'];
 	});
 
-	let destinations = await db.collection('paket-wisata-kartika').distinct('destination');
-	let durations = await db.collection('paket-wisata-kartika').distinct('duration');
+	let destinations = await db.collection('paket-wisata-domestik').distinct('destination');
+	let durations = await db.collection('paket-wisata-domestik').distinct('duration');
 
 	return {
 		paket_wisata,
